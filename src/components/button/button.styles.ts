@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { fontCSS, theme } from "../../styles/theme";
 
 export const ButtonContainer = styled.button`
-  ${fontCSS(theme.typography.subtitle.medium)};;
+  ${fontCSS(theme.typography.subtitle.medium)};
   background-color: transparent;
   border-width: ${theme.border.width.regular};
   border-style: solid;

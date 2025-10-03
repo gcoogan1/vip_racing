@@ -1,10 +1,18 @@
-import Menu from "./assets/icon/menu.svg?react";
+import Button from "./components/button/button";
+
+
 function App() {
 
   return (
-    <div>
-      <h1>Hello Vite + React!</h1>
-      <Menu color="red" />
+    <div style={{
+        display: "flex", 
+        alignItems: "center", 
+        justifyContent: "center", 
+        backgroundColor: "black",
+        padding: "20px",
+        minHeight: "100vh"
+      }}>
+      <Button label="Label" onClick={() => alert("Button Clicked!")} />
     </div>
   )
 }

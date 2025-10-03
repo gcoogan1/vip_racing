@@ -1,4 +1,47 @@
-export const theme = {
+import { css } from "styled-components";
+
+type FontType = {
+  fontSize: string;
+  fontFamily: string;
+  fontWeight: number;
+  lineHeight: string;
+  fontStyle?: string;
+  textTransform?: string;
+};
+
+
+export const fontCSS = (font: FontType) => css`
+  font-size: ${font.fontSize};
+  font-family: ${font.fontFamily};
+  font-weight: ${font.fontWeight};
+  line-height: ${font.lineHeight};
+  font-style: ${font.fontStyle || "normal"};
+  text-transform: ${font.textTransform || "none"};
+`;
+
+
+export type Theme = {
+  colors: {
+    primary: Record<string, string>;
+    surface: Record<string, string>;
+    accent: Record<string, string>;
+  };
+  typography: {
+    title: Record<string, FontType>;
+    subtitle: Record<string, FontType>;
+    body: Record<string, FontType>;
+  };
+  border: {
+    width: Record<string, string>;
+    radius: Record<string, string>;
+  };
+  layout: {
+    space: Record<string, string>;
+  };
+};
+
+
+export const theme: Theme = {
   colors: {
     primary: {
       yellow: "#f1e447",
@@ -95,7 +138,7 @@ export const theme = {
       xsmall: "4px",
       small: "8px",
       medSmall: "12px",
-      medium: " 16px",
+      medium: "16px",
       medLarge: "24px",
       large: "32px",
       xlarge: "64px",

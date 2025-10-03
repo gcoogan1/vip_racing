@@ -1,5 +1,9 @@
-body {
+* {
   margin: 0;
-  font-family: "'Quantico', sans-serif"
+  box-sizing: border-box;
 }
 
+body {
+  font-family: "'Quantico', sans-serif";
+  background-color: black;
+}

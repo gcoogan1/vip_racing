@@ -1,20 +1,16 @@
-import NavbarLink from "../components/navbar/navbarLink/navbarLink";
+import Navbar from "../components/navbar/navbar/navbar";
+import ArrowRight from "../assets/icon/ArrowRight.svg?react";
+import Button from "../components/button/button";
 
 const Home = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "black",
-        padding: "20px",
-        minHeight: "100vh",
-      }}
-    >
-      <NavbarLink label="Drivers" to="/drivers" />
-      <NavbarLink label="Media" to="/media" />
-      <NavbarLink label="Shop" to="/shop" />
+    <div>
+      <Navbar />
+      <Button
+        label="Click Me"
+        onClick={() => console.log("Button clicked")}
+        icon={<ArrowRight width={16} height={16} />}
+      />
     </div>
   );
 };

@@ -1,16 +1,18 @@
 import { ButtonContainer } from "./button.styles";
-import ArrowRight from "../../assets/icon/ArrowRight.svg?react";
+
+// NOTE: Remember to add width and height of 16px to svg icon
 
 type ButtonProps = {
-  label: string;
   onClick: () => void;
+  label?: string;
+  icon?: React.ReactNode;
 };
-  
-const Button = ({ label, onClick }: ButtonProps) => {
+
+const Button = ({ label, onClick, icon }: ButtonProps) => {
   return (
     <ButtonContainer onClick={onClick}>
       {label}
-      <ArrowRight className="icon" width={16} height={16}/>
+      {icon}
     </ButtonContainer>
   )
 }

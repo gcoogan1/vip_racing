@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-import { fontCSS, theme } from "../../styles/theme";
+import { fontCSS, theme } from "../../../styles/theme";
+
 
 export const ButtonContainer = styled.button`
   ${fontCSS(theme.typography.subtitle.medium)};
@@ -14,10 +15,6 @@ export const ButtonContainer = styled.button`
   display: flex;
   align-items: center;
   cursor: pointer;
-
-  .button-icon {
-    fill: currentColor;
-  }
 
   &:hover {
     background-color: ${theme.colors.surface.text1};

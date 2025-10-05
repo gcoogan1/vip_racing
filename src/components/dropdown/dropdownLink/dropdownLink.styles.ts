@@ -1,21 +1,21 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
-import { fontCSS, theme } from "../../styles/theme";
+import { fontCSS, theme } from "../../../styles/theme";
 
-export const ButtonContainer = styled.button`
+export const DropdownLinkContainer = styled(NavLink)`
   ${fontCSS(theme.typography.subtitle.medium)};
   background-color: transparent;
-  border-width: ${theme.border.width.regular};
-  border-style: solid;
-  border-color: ${theme.colors.surface.text1};
   color: ${theme.colors.surface.text1};
   padding: ${theme.layout.space.medium};
-  gap: ${theme.layout.space.xsmall};
+  gap: ${theme.layout.space.small};
+  justify-content: space-between;
   display: flex;
   align-items: center;
   cursor: pointer;
+  text-decoration: none;
 
-  .button-icon {
+  svg{
     fill: currentColor;
   }
 

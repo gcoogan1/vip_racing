@@ -1,8 +1,8 @@
-import NavbarLink from "../navbarLink/navbarLink";
-import DropdownMenu from "../../dropdown/dropdownMenu/dropdownMenu";
-import GoldLogo from "../../../assets/VIPGold.svg?react";
-import { leagueLinks, menuLinks } from "../../../appRoutes/linkLists";
-import { useMediaQuery } from "../../../util/hooks/useMediaQuery";
+import NavbarLink from "./navbarLink/navbarLink";
+import DropdownMenu from "../dropdown/dropdownMenu";
+import GoldLogo from "../../assets/VIPGold.svg?react";
+import { leagueLinks, menuLinks } from "../../appRoutes/linkLists";
+import { useMediaQuery } from "../../util/hooks/useMediaQuery";
 import {
   LinksContainer,
   Logo,

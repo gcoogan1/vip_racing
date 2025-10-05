@@ -1,4 +1,4 @@
-import Navbar from "../components/navbar/navbar/navbar";
+import Navbar from "../components/navbar/navbar";
 
 const Home = () => {
   return (

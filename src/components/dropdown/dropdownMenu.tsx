@@ -1,9 +1,9 @@
 import { useState, useRef, useCallback } from "react";
 import { DropdownMenuContainer, MenuContent } from "./dropdownMenu.styles";
-import DropdownButton from "../dropdownButton/dropdownButton";
-import DropdownLink from "../dropdownLink/dropdownLink";
-import ArrowRight from "../../../assets/icon/ArrowRight.svg?react";
-import { useOutsideClick } from "../../../util/hooks/useOutsideHook";
+import DropdownButton from "./dropdownButton/dropdownButton";
+import DropdownLink from "./dropdownLink/dropdownLink";
+import ArrowRight from "../../assets/icon/ArrowRight.svg?react";
+import { useOutsideClick } from "../../util/hooks/useOutsideHook";
 
 type Link = {
   to: string;

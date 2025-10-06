@@ -1,7 +1,7 @@
 import NavbarLink from "./navbarLink/navbarLink";
 import DropdownMenu from "../dropdownMenu/dropdownMenu";
 import GoldLogo from "../../assets/VIPGold.svg?react";
-import { leagueLinks, menuLinks } from "../../appRoutes/linkLists";
+import { vipLeagues, menuLinks } from "../../appRoutes/linkLists";
 import { useMediaQuery } from "../../util/hooks/useMediaQuery";
 import {
   LinksContainer,
@@ -27,7 +27,7 @@ const Navbar = () => {
                 <NavbarLink key={link.to} label={link.label} to={link.to} />
               ))}
               <DropdownMenu
-                links={leagueLinks}
+                links={vipLeagues}
                 menuLabel="Leagues"
               />
             </>
@@ -35,7 +35,7 @@ const Navbar = () => {
             <>
             <DropdownMenu 
                 links={menuLinks}
-                leagues={leagueLinks}
+                leagues={vipLeagues}
                 menuLabel="Menu"
               />
             </>

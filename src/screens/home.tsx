@@ -1,17 +1,15 @@
 import Navbar from "../components/navbar/navbar";
-import TabMenu from "../components/tabs/tabMenu/tabMenu";
+import TabButton from "../components/tabs/tabButton/tabButton";
 
 const Home = () => {
   return (
     <div style={{ backgroundColor: "black" }}>
       <Navbar />
       <div style={{ width: "100%", margin: "20px", display: "flex", justifyContent: "center" }}>
-        <div>
-          <TabMenu tabs={[
-          { id: "tab1", label: "Tab Link" },
-          { id: "tab2", label: "Tab Link" },
-          { id: "tab3", label: "Tab Link" },
-        ]} />
+        <div style={{ display: "flex", gap: "10px" }}>
+          <TabButton label="Label" onClick={() => { } } active={false} />
+          <TabButton label="Label" onClick={() => { } } active={true} />
+          <TabButton label="Label" onClick={() => { } } isDisabled  />
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { fontCSS, theme } from "../../../styles/theme";
 
 export const NavbarLinkContainer= styled(NavLink)`
-${fontCSS(theme.typography.subtitle.medium)};
+  ${fontCSS(theme.typography.subtitle.medium)};
   border-bottom: ${theme.border.width.thick} solid transparent;
   color: ${theme.colors.surface.text1};
   padding: ${theme.layout.space.medium};

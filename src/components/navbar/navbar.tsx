@@ -1,5 +1,5 @@
 import NavbarLink from "./navbarLink/navbarLink";
-import DropdownMenu from "../dropdown/dropdownMenu";
+import DropdownMenu from "../dropdownMenu/dropdownMenu";
 import GoldLogo from "../../assets/VIPGold.svg?react";
 import { leagueLinks, menuLinks } from "../../appRoutes/linkLists";
 import { useMediaQuery } from "../../util/hooks/useMediaQuery";

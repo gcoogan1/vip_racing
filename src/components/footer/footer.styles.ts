@@ -10,7 +10,7 @@ export const FooterContainer = styled.div`
   padding: ${theme.layout.space.xlarge};
   background-color: ${theme.colors.surface.base};
   position: fixed;
-  bottom: 0;
+  /* bottom: 0; */
   left: 0;
 
   @media (max-width: 703px) {
@@ -73,6 +73,7 @@ export const LinksSection = styled.div`
   flex-direction: column;
   gap: ${theme.layout.space.medium};
 `;
+
 export const LinkTile = styled.p`
   ${fontCSS(theme.typography.subtitle.medium)};
   color: ${theme.colors.surface.text3};

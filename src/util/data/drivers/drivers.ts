@@ -15,6 +15,11 @@ import Left2PassU from "../../../assets/drivers/Left2PassU.png";
 import JPScale from "../../../assets/drivers/JPScale.png";
 import RowdyBurns from "../../../assets/drivers/RowdyBurns.png";
 
+type SocialLink = {
+  username: string;
+  url: string;
+}
+
 type Driver = {
   id: number;
   name: string;
@@ -26,9 +31,9 @@ type Driver = {
   hardware: string;
   cardImg: string;
   socials?: {
-    twitch?: string;
-    youtube?: string;
-    discord?: string;
+    twitch?: SocialLink;
+    youtube?: SocialLink;
+    discord?: SocialLink;
   };
 }
 
@@ -44,8 +49,8 @@ export const drivers: Driver[] = [
     hardware: "Fanatec DD Pro",
     cardImg: CyrusNiki,
     socials: {
-      twitch: "@username",
-      youtube: "@usernmame",
+      twitch: { username: "@username", url: "https://twitch.tv/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username" },
     }
   },
   {
@@ -59,8 +64,8 @@ export const drivers: Driver[] = [
     hardware: "Fanatec DD Pro",
     cardImg: AlmostPodium,
     socials: {
-      twitch: "@username",
-      youtube: "@usernmame",
+      twitch: { username: "@username", url: "https://twitch.tv/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username" },
     }
   },
   {
@@ -74,8 +79,8 @@ export const drivers: Driver[] = [
     hardware: "Fanatec DD Pro",
     cardImg: KForman,
     socials: {
-      twitch: "@username",
-      youtube: "@usernmame",
+      twitch: { username: "@username", url: "https://twitch.tv/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username" },
     }
   },
   {
@@ -89,8 +94,8 @@ export const drivers: Driver[] = [
     hardware: "Fanatec DD Pro",
     cardImg: NotCrawl3r,
     socials: {
-      twitch: "@username",
-      youtube: "@usernmame",
+      twitch: { username: "@username", url: "https://twitch.tv/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username" },
     }
   },
   {
@@ -104,8 +109,8 @@ export const drivers: Driver[] = [
     hardware: "Fanatec DD Pro",
     cardImg: LCBroker,
     socials: {
-      twitch: "@username",
-      youtube: "@usernmame",
+      twitch: { username: "@username", url: "https://twitch.tv/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username" },
     }
   },
   {
@@ -119,8 +124,8 @@ export const drivers: Driver[] = [
     hardware: "Fanatec DD Pro",
     cardImg: ThrottleGeist,
     socials: {
-      twitch: "@username",
-      youtube: "@usernmame",
+      twitch: { username: "@username", url: "https://twitch.tv/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username" },
     }
   },
   {
@@ -134,8 +139,8 @@ export const drivers: Driver[] = [
     hardware: "Fanatec DD Pro",
     cardImg: TheCap,
     socials: {
-      twitch: "@username",
-      youtube: "@usernmame",
+      twitch: { username: "@username", url: "https://twitch.tv/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username" },
     }
   },
   {
@@ -149,8 +154,8 @@ export const drivers: Driver[] = [
     hardware: "Fanatec DD Pro",
     cardImg: Scarlxrd,
     socials: {
-      twitch: "@username",
-      youtube: "@usernmame",
+      twitch: { username: "@username", url: "https://twitch.tv/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username" },
     }
   },
   {
@@ -164,8 +169,8 @@ export const drivers: Driver[] = [
     hardware: "Fanatec DD Pro",
     cardImg: Player,
     socials: {
-      twitch: "@username",
-      youtube: "@usernmame",
+      twitch: { username: "@username", url: "https://twitch.tv/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username" },
     }
   },
   {
@@ -179,8 +184,8 @@ export const drivers: Driver[] = [
     hardware: "Fanatec DD Pro",
     cardImg: AceGT,
     socials: {
-      twitch: "@username",
-      youtube: "@usernmame",
+      twitch: { username: "@username", url: "https://twitch.tv/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username" },
     }
   },
   {
@@ -194,8 +199,8 @@ export const drivers: Driver[] = [
     hardware: "Fanatec DD Pro",
     cardImg: StrokerAce,
     socials: {
-      twitch: "@username",
-      youtube: "@usernmame",
+      twitch: { username: "@username", url: "https://twitch.tv/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username" },
     }
   },
   {
@@ -209,8 +214,8 @@ export const drivers: Driver[] = [
     hardware: "Fanatec DD Pro",
     cardImg: DewayneT,
     socials: {
-      twitch: "@username",
-      youtube: "@usernmame",
+      twitch: { username: "@username", url: "https://twitch.tv/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username" },
     }
   },
   {
@@ -224,8 +229,8 @@ export const drivers: Driver[] = [
     hardware: "Fanatec DD Pro",
     cardImg: PrincePlaka,
     socials: {
-      twitch: "@username",
-      youtube: "@usernmame",
+      twitch: { username: "@username", url: "https://twitch.tv/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username" },
     }
   },
   {
@@ -239,8 +244,8 @@ export const drivers: Driver[] = [
     hardware: "Fanatec DD Pro",
     cardImg: Left2PassU,
     socials: {
-      twitch: "@username",
-      youtube: "@usernmame",
+      twitch: { username: "@username", url: "https://twitch.tv/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username" },
     }
   },
   {
@@ -254,8 +259,8 @@ export const drivers: Driver[] = [
     hardware: "Fanatec DD Pro",
     cardImg: JPScale,
     socials: {
-      twitch: "@username",
-      youtube: "@usernmame",
+      twitch: { username: "@username", url: "https://twitch.tv/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username" },
     }
   },
   {
@@ -269,8 +274,8 @@ export const drivers: Driver[] = [
     hardware: "Fanatec DD Pro",
     cardImg: RowdyBurns,
     socials: {
-      twitch: "@username",
-      youtube: "@usernmame",
+      twitch: { username: "@username", url: "https://twitch.tv/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username" },
     }
   },
 ]

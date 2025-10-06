@@ -128,7 +128,7 @@ export const theme: Theme = {
     radius: {
       small: "8px",
       medium: "16px",
-      large: "32x",
+      large: "32px",
       round: "999px",
     },
   },

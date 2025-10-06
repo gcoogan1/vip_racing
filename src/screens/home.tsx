@@ -1,18 +1,18 @@
 
 import Navbar from "../components/navbar/navbar";
-import SocialLink from "../components/socialLink/socialLink";
-import Youtube from "../assets/SocialYoutube.svg?react";
-import Twitch from "../assets/SocialTwitch.svg?react";
 import Footer from "../components/footer/footer";
+import DriverCard from "../components/cards/driverCard/driverCard";
+import { drivers } from "../util/data/drivers/drivers";
+
+const driver1 = drivers[0];
 
 const Home = () => {
   return (
     <div>
       <Navbar />
-      <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-        <div style={{ display: "flex", gap: "10px" }}>
-          <SocialLink href="https://www.youtube.com/@vipracingllc" icon={<Youtube width={20} height={20} />} label="@username" />
-          <SocialLink href="https://www.twitch.tv/vipracingllc" icon={<Twitch width={20} height={20} />} label="@username" />
+      <div style={{ width: "100%", display: "flex", justifyContent: "center", paddingBottom: "200px" }}>
+        <div style={{ display: "flex", width: "400px" }}>
+          <DriverCard {...driver1} />
         </div>
       </div>
       <Footer />

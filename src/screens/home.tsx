@@ -1,5 +1,5 @@
+import CloseButton from "../components/closeButton/closeButton";
 import Navbar from "../components/navbar/navbar";
-import TabButton from "../components/tabs/tabButton/tabButton";
 
 const Home = () => {
   return (
@@ -7,9 +7,7 @@ const Home = () => {
       <Navbar />
       <div style={{ width: "100%", margin: "20px", display: "flex", justifyContent: "center" }}>
         <div style={{ display: "flex", gap: "10px" }}>
-          <TabButton label="Label" onClick={() => { } } active={false} />
-          <TabButton label="Label" onClick={() => { } } active={true} />
-          <TabButton label="Label" onClick={() => { } } isDisabled  />
+          <CloseButton onClick={() => { }} />
         </div>
       </div>
     </div>

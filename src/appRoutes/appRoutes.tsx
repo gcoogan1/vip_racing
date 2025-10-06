@@ -1,4 +1,4 @@
-import Home from "../screens/home";
+import HomeScreen from "../screens/homeScreen";
 
 type Route = {
   path: string;
@@ -8,6 +8,6 @@ type Route = {
 export const ROUTES: Route[] = [
   {
     path: '/',
-    element: <Home /> 
+    element: <HomeScreen/> 
   }
 ]

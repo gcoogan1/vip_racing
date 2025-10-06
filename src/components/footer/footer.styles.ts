@@ -9,9 +9,6 @@ export const FooterContainer = styled.div`
   justify-content: center;
   padding: ${theme.layout.space.xlarge};
   background-color: ${theme.colors.surface.base};
-  position: fixed;
-  /* bottom: 0; */
-  left: 0;
 
   @media (max-width: 703px) {
     min-width: 360px;

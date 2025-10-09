@@ -1,6 +1,6 @@
 import SocialLink from "../../socialLink/socialLink";
-import Youtube from "../../../assets/SocialYoutube.svg?react";
-import Twitch from "../../../assets/SocialTwitch.svg?react";
+import Youtube from "../../../assets/social/SocialYoutube.svg?react";
+import Twitch from "../../../assets/social/SocialTwitch.svg?react";
 import USFlag from "../../../assets/icon/USFlag.svg?react";
 import {
   DriverCardContainer,

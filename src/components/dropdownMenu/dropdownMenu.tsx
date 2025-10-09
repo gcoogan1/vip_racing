@@ -53,7 +53,7 @@ const DropdownMenu = ({ links, leagues, menuLabel }: DropdownMenuProps) => {
           ))}
           {insideMenu && (
             <DropdownMenuContainer>
-              <DropdownButton
+                <DropdownButton
                 label={"Leagues"}
                 onClick={toggleLeague}
                 isOpen={openLeague}

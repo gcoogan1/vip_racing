@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 type Streamer = {
   name: string;
@@ -20,59 +20,38 @@ export const useYouTubeStreams = (streamers: Streamer[]) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const apiKey = import.meta.env.VITE_YOUTUBE_API_KEY;
-
   useEffect(() => {
-    const fetchVideos = async () => {
-      try {
-        setLoading(true);
-        const results = await Promise.all(
-          streamers.map(async (s) => {
-            // Check for live stream first
-            const liveRes = await fetch(
-              `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${s.channelId}&eventType=live&type=video&key=${apiKey}`
-            );
-            const liveData = await liveRes.json();
-            if (liveData.items && liveData.items.length > 0) {
-              const liveItem = liveData.items[0];
-              return {
-                id: liveItem.id.videoId,
-                title: liveItem.snippet.title,
-                thumbnail: liveItem.snippet.thumbnails.high.url,
-                channelTitle: liveItem.snippet.channelTitle,
-                publishedAt: liveItem.snippet.publishedAt,
-                username: s.username || liveItem.snippet.channelTitle,
-              };
-            }
+    if (!streamers || streamers.length === 0) return;
 
-            // If not live, fetch the latest video
-            const res = await fetch(
-              `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${s.channelId}&maxResults=1&order=date&type=video&key=${apiKey}`
-            );
-            const data = await res.json();
-            const item = data.items?.[0];
-            return {
-              id: item?.id?.videoId,
-              title: item?.snippet?.title,
-              thumbnail: item?.snippet?.thumbnails?.high?.url,
-              channelTitle: item?.snippet?.channelTitle,
-              publishedAt: item?.snippet?.publishedAt,
-              username: s.username || item?.snippet?.channelTitle,
-            };
-          })
+    const fetchVideos = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(
+          `${import.meta.env.VITE_SUPABASE_FUNCTIONS_URL}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+            },
+            body: JSON.stringify({ streamers }),
+          }
         );
 
-        setVideos(results.filter(Boolean));
-      } catch (err) {
+        if (!res.ok) throw new Error("Failed to fetch from Edge Function");
+
+        const data: Video[] = await res.json();
+        setVideos(data);
+      } catch (err: any) {
         console.error(err);
-        setError("Failed to fetch videos");
+        setError(err.message || "Unknown error");
       } finally {
         setLoading(false);
       }
     };
 
     fetchVideos();
-  }, [streamers, apiKey]);
+  }, [streamers]);
 
   return { videos, loading, error };
 };

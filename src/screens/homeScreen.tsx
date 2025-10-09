@@ -52,6 +52,8 @@ const HomeScreen = () => {
 
   if (loading) return <p>Loading videos...</p>;
   if (error) return <p>{error}</p>;
+
+  console.log(videos);
   
   return (
     <>
@@ -171,7 +173,7 @@ const HomeScreen = () => {
             <Parallelogram />
           </TextContent>
           <StreamVideoContainer>
-            {videos.map((video) => (
+            {/* {videos.map((video) => (
               <VideoLink
                 key={video.id}
                 id={video.id}
@@ -180,7 +182,7 @@ const HomeScreen = () => {
                 channelTitle={video.channelTitle}
                 username={video.username}
               />
-            ))}
+            ))} */}
           </StreamVideoContainer>
         </SectionContent>
       </SectionContainer>

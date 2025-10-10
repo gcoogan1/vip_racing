@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { teamData } from "../util/data/team/team";
 import { drivers } from "../util/data/drivers/drivers";
@@ -45,7 +46,10 @@ import VipLeaguesCard from "../components/sectionCards/vipLeaguesCard/vipLeagues
 import SportModeTable from "../components/tables/sportModeTable/sportModeTable";
 import VideoLink from "../components/videoLink/videoLink";
 
+
 const HomeScreen = () => {
+
+  const aboutRef = useRef<HTMLDivElement>(null);
 
   const { videos, error } = useYouTubeStreams(
     streamers,
@@ -55,6 +59,10 @@ const HomeScreen = () => {
   if (error) {
     console.error("Error fetching YouTube streams:", error);
   }
+
+  const scrollToSection = () => {
+    aboutRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
   
   return (
     <>
@@ -68,12 +76,12 @@ const HomeScreen = () => {
             <ButtonsContainer>
               <Button
                 label="Discover More"
-                onClick={() => {}}
+                onClick={() => scrollToSection()}
                 icon={<ArrowDown width={16} height={16} />}
               />
               <Button
                 label="THE 2026 vip f1 league"
-                onClick={() => {}}
+                onClick={() => navigate("/leagues/vip-formula1")}
                 icon={<ArrowRight width={16} height={16} />}
               />
             </ButtonsContainer>
@@ -87,7 +95,7 @@ const HomeScreen = () => {
           <F1Logo loading="lazy" src={f1} alt="F1 Logo" />
         </GamesContainer>
       </GamesSection>
-      <SectionContainer>
+      <SectionContainer ref={aboutRef}>
         <SectionContent>
           <TextContent>
             <TextTitle>Our Team</TextTitle>

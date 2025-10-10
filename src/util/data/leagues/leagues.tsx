@@ -25,7 +25,7 @@ export const leagues: League[] = [
     image: MclarenDrifting,
     imgAlt: "McLaren car drifting on a racetrack",
     buttonLabel: "Coming Soon",
-    route: "/vip-gt3-championship"
+    route: "/leagues/vip-gt3"
   },
   {
     name: "VIP Formula 1 League",
@@ -36,7 +36,7 @@ export const leagues: League[] = [
     imgAlt: "F3500 car on a racetrack",
     buttonLabel: "Go to League",
     buttonIcon: <ArrowRight width={16} height={16} />,
-    route: "/vip-formula-1-league"
+    route: "/leagues/vip-formula1"
   },
   {
     name: "VIP Monthly Lobby",
@@ -46,6 +46,6 @@ export const leagues: League[] = [
     image: CarsRacingHighlands,
     imgAlt: "Cars racing in the highlands",
     buttonLabel: "Coming Soon",
-    route: "/vip-monthly-lobby"
+    route: "/leagues/vip-lobby"
   }
 ]

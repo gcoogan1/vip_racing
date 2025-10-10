@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../../button/button";
 import {
   CardContainer,
@@ -26,6 +27,16 @@ type VipLeaguesCardProps = {
 };
 
 const VipLeaguesCard = ({ cardImage, imgAlt, titleImg, title, subtitle, description, buttonLabel, route, buttonIcon }: VipLeaguesCardProps) => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path: string | undefined) => {
+    if (path) {
+      navigate(path);
+    } else {
+      console.log("Route is undefined");
+    }
+  }
+  
   return (
     <CardContainer>
       <ImageWrapper>
@@ -43,7 +54,7 @@ const VipLeaguesCard = ({ cardImage, imgAlt, titleImg, title, subtitle, descript
           </TextInfo>
         </TextContent>
         <div>
-          <Button label={buttonLabel} onClick={() => console.log(`Navigating to ${route}`)} icon={buttonIcon} />
+          <Button label={buttonLabel} onClick={() => handleNavigation(route)} icon={buttonIcon} />
         </div>
       </TextContainer>
     </CardContainer>

@@ -5,7 +5,7 @@ import Discord from "../../assets/icon/Discord.svg?react";
 import Twitch from "../../assets/icon/Twitch.svg?react";
 import Youtube from "../../assets/icon/Youtube.svg?react";
 import { competitionLinks, gameLinks, vipLeagues } from "../../appRoutes/linkLists";
-import { BrandContainer, FooterContainer, FooterContent, Link, LinksContainer, LinksSection, LinkTile, Logo, SocialsContainer } from "./footer.styles"
+import { BrandContainer, ExternalLink, FooterContainer, FooterContent, Link, LinksContainer, LinksSection, LinkTile, Logo, SocialsContainer } from "./footer.styles"
 
 
 const Footer = () => {
@@ -25,20 +25,20 @@ const Footer = () => {
         <LinksContainer>
           <LinksSection>
             <LinkTile>Games</LinkTile>
-            {gameLinks.map((link) => (
-              <Link key={link.to} to={link.to}>{link.label}</Link>
+            {gameLinks.map((link, index) => (
+              <ExternalLink key={index} href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</ExternalLink>
             ))}
           </LinksSection>
           <LinksSection>
             <LinkTile>VIP Leagues</LinkTile>
-            {vipLeagues.map((link) => (
-              <Link key={link.to} to={link.to}>{link.label}</Link>
+            {vipLeagues.map((link, index) => (
+              <Link key={index} to={link.to}>{link.label}</Link>
             ))}
           </LinksSection>
           <LinksSection>
             <LinkTile>Competitions</LinkTile>
-            {competitionLinks.map((link) => (
-              <Link key={link.to} to={link.to}>{link.label}</Link>
+            {competitionLinks.map((link, index) => (
+              <Link key={index} to={link.to}>{link.label}</Link>
             ))}
           </LinksSection>
         </LinksContainer>

@@ -3,6 +3,8 @@ import { lazy } from "react";
 const HomeScreen = lazy(() => import("../screens/homeScreen"));
 const DriversScreen = lazy(() => import("../screens/drivers/driversScreen"));
 const MediaScreen = lazy(() => import("../screens/media/mediaScreen"));
+const ShopScreen = lazy(() => import("../screens/shop/shopScreen"));
+import ComingSoonScreen from "../screens/comingHome/comeingSoonScreen";
 
 type Route = {
   path: string;
@@ -21,5 +23,34 @@ export const ROUTES: Route[] = [
   {
     path: '/media',
     element: <MediaScreen /> 
+  },
+  {
+    path: '/shop',
+    element: <ShopScreen />
+  },
+  {
+    path: '/leagues',
+    element: <ComingSoonScreen />
+  },
+  {
+    path: '/leagues/vip-gt3',
+    element: <ComingSoonScreen />
+  },
+  {
+    path: '/leagues/vip-formula1',
+    element: <ComingSoonScreen />
+  },
+  {
+    path: '/leagues/vip-lobby',
+    element: <ComingSoonScreen />
+
+  },
+  {
+    path: '/competitions/gt-world-series',
+    element: <ComingSoonScreen />
+  },
+  {
+    path: '/competitions/naughty-racing-league',
+    element: <ComingSoonScreen />
   },
 ]

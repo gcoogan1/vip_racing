@@ -75,7 +75,18 @@ export const LinkTile = styled.p`
   ${fontCSS(theme.typography.subtitle.medium)};
   color: ${theme.colors.surface.text3};
 `;
+
 export const Link = styled(NavLink)`
+  ${fontCSS(theme.typography.body.regular)};
+  color: ${theme.colors.surface.text3};
+  text-decoration: none;
+
+  &:hover {
+    color: ${theme.colors.surface.text2};
+  }
+`;
+
+export const ExternalLink = styled.a`
   ${fontCSS(theme.typography.body.regular)};
   color: ${theme.colors.surface.text3};
   text-decoration: none;

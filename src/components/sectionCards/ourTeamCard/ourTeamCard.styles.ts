@@ -81,6 +81,7 @@ export const TextContainer = styled.div`
   align-content: center;
   justify-content: center;
   gap: ${theme.layout.space.small};
+  text-align: left;
 
   @media (max-width: 703px) {
     width: 100%;

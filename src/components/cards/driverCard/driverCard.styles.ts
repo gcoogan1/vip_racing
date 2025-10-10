@@ -90,12 +90,12 @@ export const DriverInfoItem = styled.li`
 
 export const DriverInfoLabel = styled.p`
   ${fontCSS(theme.typography.body.regular)};
-  flex: 1;
+  width: 80px;
   color: ${theme.colors.surface.text3};
 `;
 
 export const DriverInfoValue = styled.p`
   ${fontCSS(theme.typography.body.bold)};
-  flex: 3;
+  flex: 1;
   color: ${theme.colors.surface.text2};
 `;

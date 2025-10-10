@@ -13,6 +13,8 @@ export const NavbarContainer = styled.div`
 		min-width: 360px;
     max-width: 703px;
     width: 100%;
+    padding: 0px ${theme.layout.space.large};
+    justify-content: space-between;
 }
 `;
 

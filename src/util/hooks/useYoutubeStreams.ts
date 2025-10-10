@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { toCamelCase } from "../helper/helperFunctions";
 
 type Streamer = {
   name: string;
@@ -13,7 +14,19 @@ type Video = {
   channelTitle: string;
   publishedAt: string;
   username?: string;
+  channelId: string;
 };
+
+type DatabaseVideo = {
+  id: string;
+  title: string;
+  thumbnail: string;
+  channel_title: string;
+  published_at: string;
+  username?: string;
+  channel_id: string;
+};
+
 
 export const useYouTubeStreams = (streamers: Streamer[]) => {
   const [videos, setVideos] = useState<Video[]>([]);
@@ -40,8 +53,12 @@ export const useYouTubeStreams = (streamers: Streamer[]) => {
 
         if (!res.ok) throw new Error("Failed to fetch from Edge Function");
 
-        const data: Video[] = await res.json();
-        setVideos(data);
+        const data: DatabaseVideo[] = await res.json();
+
+        // Map each object from snake_case to camelCase
+        const camelData: Video[] = data.map(toCamelCase) as Video[];
+
+        setVideos(camelData);
       } catch (err: any) {
         console.error(err);
         setError(err.message || "Unknown error");

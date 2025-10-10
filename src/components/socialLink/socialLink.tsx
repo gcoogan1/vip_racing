@@ -1,3 +1,4 @@
+import React from "react";
 import { SocialLinkContainer } from "./socialLink.styles";
 
 // NOTE: Remember to add width and height of 20px to svg icon
@@ -17,4 +18,4 @@ const SocialLink = ({ href, icon, label }: SocialLinkProps) => {
   )
 }
 
-export default SocialLink
+export default React.memo(SocialLink);

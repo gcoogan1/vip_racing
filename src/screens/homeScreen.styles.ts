@@ -266,6 +266,7 @@ export const LeagueCardContainer = styled.div`
   width: 100%;
   flex-direction: column;
   gap: ${theme.layout.space.large};
+  text-align: left
 `;
 /* =====================================
   SPORT MODE SECTION STYLES

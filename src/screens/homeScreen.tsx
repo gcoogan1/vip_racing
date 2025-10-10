@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { teamData } from "../util/data/team/team";
 import { drivers } from "../util/data/drivers/drivers";
 import { leagues } from "../util/data/leagues/leagues";
@@ -8,7 +9,7 @@ import HeroSection from "../components/heroSection/heroSection";
 import Button from "../components/button/button";
 import OurTeamCard from "../components/sectionCards/ourTeamCard/ourTeamCard";
 import DriverCard from "../components/cards/driverCard/driverCard";
-import CarsRacingFinishLine from "../assets/hero/CarsRacingFinishLineLarge.jpg";
+import CarsRacingFinishLine from "../assets/hero/CarsRacingFinishLineLargeOp.jpg";
 import Parallelogram from "../assets/icon/Parallelogram.svg?react";
 import ArrowDown from "../assets/icon/ArrowDown.svg?react";
 import ArrowRight from "../assets/icon/ArrowRight.svg?react";
@@ -43,21 +44,21 @@ import {
 import VipLeaguesCard from "../components/sectionCards/vipLeaguesCard/vipLeaguesCard";
 import SportModeTable from "../components/tables/sportModeTable/sportModeTable";
 import VideoLink from "../components/videoLink/videoLink";
+import Footer from "../components/footer/footer";
 
 const HomeScreen = () => {
 
-  const { videos, loading, error } = useYouTubeStreams(
-    streamers,
-  );
+  // const { videos, error } = useYouTubeStreams(
+  //   streamers,
+  // );
+  // const navigate = useNavigate();
 
-  if (loading) return <p>Loading videos...</p>;
-  if (error) return <p>{error}</p>;
-
-  console.log(videos);
+  // console.log("Videos:", videos);
+  // console.log("Error:", error);
   
   return (
     <>
-      <HeroSection backgroundImage={CarsRacingFinishLine}>
+      <HeroSection backgroundImage={CarsRacingFinishLine} large>
         <HeroTextContainer>
           <HeroTextContent>
             <TitleContainer>
@@ -81,9 +82,9 @@ const HomeScreen = () => {
       </HeroSection>
       <GamesSection>
         <GamesContainer>
-          <IRacingLogo src={iRacing} alt="iRacing Logo" />
-          <GtLogo src={gt7} alt="GT7 Logo" />
-          <F1Logo src={f1} alt="F1 Logo" />
+          <IRacingLogo loading="lazy" src={iRacing} alt="iRacing Logo" />
+          <GtLogo loading="lazy" src={gt7} alt="GT7 Logo" />
+          <F1Logo loading="lazy" src={f1} alt="F1 Logo" />
         </GamesContainer>
       </GamesSection>
       <SectionContainer>
@@ -100,6 +101,7 @@ const HomeScreen = () => {
                 title={info.title}
                 info={info.info}
                 imageSrc={info.imageSrc}
+                imgAlt={info.imgAlt}
               />
             ))}
           </AboutCardContainer>
@@ -121,7 +123,7 @@ const HomeScreen = () => {
               <DriverCard id={2} name={drivers[2].name} rank={drivers[2].rank} gtTag={drivers[2].gtTag} psnId={drivers[2].psnId} favCar={drivers[2].favCar} favTrack={drivers[2].favTrack} hardware={drivers[2].hardware} cardImg={drivers[2].cardImg} socials={drivers[2].socials} />
             </RightList>
           </DriversList>
-              <div style={{ zIndex: 4, position: "absolute", bottom: 0 }}><Button label="View All Drivers" onClick={() => {}} icon={<ArrowRight width={16} height={16} />} /></div>
+              <div style={{ zIndex: 4, position: "absolute", bottom: 0 }}><Button label="View All Drivers" onClick={() => navigate("/drivers")} icon={<ArrowRight width={16} height={16} />} /></div>
         </DriversContent>
       </SectionContainer>
       <SectionContainer>

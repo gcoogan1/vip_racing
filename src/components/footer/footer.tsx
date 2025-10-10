@@ -1,10 +1,11 @@
-import { BrandContainer, FooterContainer, FooterContent, Link, LinksContainer, LinksSection, LinkTile, Logo, SocialsContainer } from "./footer.styles"
+import React from "react";
 import WhiteLogo from "../../assets/VIPWhite.svg?react";
 import Button from "../button/button";
 import Discord from "../../assets/icon/Discord.svg?react";
 import Twitch from "../../assets/icon/Twitch.svg?react";
 import Youtube from "../../assets/icon/Youtube.svg?react";
 import { competitionLinks, gameLinks, vipLeagues } from "../../appRoutes/linkLists";
+import { BrandContainer, FooterContainer, FooterContent, Link, LinksContainer, LinksSection, LinkTile, Logo, SocialsContainer } from "./footer.styles"
 
 
 const Footer = () => {
@@ -46,4 +47,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default React.memo(Footer);

@@ -9,15 +9,17 @@ import {
   NavbarContainer,
   NavbarContent,
 } from "./navbar.styles";
+import { useNavigate } from "react-router-dom";
 
 
 const Navbar = () => {
   const isMobile = useMediaQuery("(max-width: 703px)");
+  const navigate = useNavigate()
 
   return (
     <NavbarContainer>
       <NavbarContent>
-        <Logo>
+        <Logo onClick={() => navigate("/")}>
           <GoldLogo width={200} height={120} />
         </Logo>
         <LinksContainer>

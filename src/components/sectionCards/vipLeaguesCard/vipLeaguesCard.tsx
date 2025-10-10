@@ -1,3 +1,4 @@
+import React from "react";
 import Button from "../../button/button";
 import {
   CardContainer,
@@ -28,7 +29,7 @@ const VipLeaguesCard = ({ cardImage, imgAlt, titleImg, title, subtitle, descript
   return (
     <CardContainer>
       <ImageWrapper>
-        <ImageContainer src={cardImage} alt={imgAlt} />
+        <ImageContainer src={cardImage} alt={imgAlt} loading="lazy" />
       </ImageWrapper>
       <TextContainer>
         <TextContent>
@@ -49,4 +50,4 @@ const VipLeaguesCard = ({ cardImage, imgAlt, titleImg, title, subtitle, descript
   );
 };
 
-export default VipLeaguesCard;
+export default React.memo(VipLeaguesCard);

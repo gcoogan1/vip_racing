@@ -1,3 +1,4 @@
+import React from "react";
 import SocialLink from "../../socialLink/socialLink";
 import Youtube from "../../../assets/social/SocialYoutube.svg?react";
 import Twitch from "../../../assets/social/SocialTwitch.svg?react";
@@ -53,7 +54,7 @@ const DriverCard = ({
 }: DriverCardProps) => {
   return (
     <DriverCardContainer>
-      <DriverImage src={cardImg} alt={name} />
+      <DriverImage src={cardImg} alt={name} loading="lazy" />
       <DriverInfo>
         <DriverTextContainer>
           <DriverTitleContainer>
@@ -109,4 +110,4 @@ const DriverCard = ({
   );
 };
 
-export default DriverCard;
+export default React.memo(DriverCard);

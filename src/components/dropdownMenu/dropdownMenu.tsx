@@ -1,9 +1,10 @@
-import { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import { DropdownMenuContainer, MenuContent } from "./dropdownMenu.styles";
 import DropdownButton from "./dropdownButton/dropdownButton";
 import DropdownLink from "./dropdownLink/dropdownLink";
 import ArrowRight from "../../assets/icon/ArrowRight.svg?react";
 import { useOutsideClick } from "../../util/hooks/useOutsideHook";
+
 
 type Link = {
   to: string;
@@ -79,4 +80,4 @@ const DropdownMenu = ({ links, leagues, menuLabel }: DropdownMenuProps) => {
   );
 };
 
-export default DropdownMenu;
+export default React.memo(DropdownMenu);

@@ -1,3 +1,4 @@
+import React from "react";
 import { CardContainer, ImageContainer, ImageWrapper, Info, TextContainer, Title } from "./ourTeamCard.styles";
 
 type OurTeamCardProps = {
@@ -5,15 +6,16 @@ type OurTeamCardProps = {
   title: string;
   info: string;
   imageSrc: string;
+  imgAlt: string;
 }
 
-const OurTeamCard = ({ side, title, info, imageSrc }: OurTeamCardProps) => {
+const OurTeamCard = ({ side, title, info, imageSrc, imgAlt }: OurTeamCardProps) => {
   return (
     <CardContainer $from={side}>
       {side === "left" ? (
         <>
           <ImageWrapper $from={side}>
-            <ImageContainer src={imageSrc} alt="Racing Cars in Forest" />
+            <ImageContainer src={imageSrc} alt={imgAlt} loading="lazy" />
           </ImageWrapper>
           <TextContainer>
             <Title>{title}</Title>
@@ -27,7 +29,7 @@ const OurTeamCard = ({ side, title, info, imageSrc }: OurTeamCardProps) => {
             <Info>{info}</Info>
           </TextContainer>
           <ImageWrapper $from={side}>
-            <ImageContainer src={imageSrc} alt="Racing Cars in Forest" />
+            <ImageContainer src={imageSrc} alt={imgAlt} loading="lazy" />
           </ImageWrapper>
         </>
       )}
@@ -35,4 +37,4 @@ const OurTeamCard = ({ side, title, info, imageSrc }: OurTeamCardProps) => {
   )
 }
 
-export default OurTeamCard;
+export default React.memo(OurTeamCard);

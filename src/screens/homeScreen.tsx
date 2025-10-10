@@ -15,7 +15,7 @@ import Parallelogram from "../assets/icon/Parallelogram.svg?react";
 import ArrowDown from "../assets/icon/ArrowDown.svg?react";
 import ArrowRight from "../assets/icon/ArrowRight.svg?react";
 import iRacing from "../assets/game/iRacing.svg";
-import gt7 from "../assets/game/gt7.svg";
+import gt7 from "../assets/game/GT7.svg";
 import f1 from "../assets/game/F125.svg";
 import {
   AboutCardContainer,

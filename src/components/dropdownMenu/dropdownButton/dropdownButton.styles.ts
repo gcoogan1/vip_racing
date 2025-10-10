@@ -16,6 +16,7 @@ export const ButtonContainer = styled.button`
   align-items: center;
   cursor: pointer;
   justify-self: end;
+  margin-left: auto;
 
   &:hover {
     background-color: ${theme.colors.surface.text1};

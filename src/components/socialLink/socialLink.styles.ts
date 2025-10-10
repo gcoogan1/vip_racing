@@ -14,4 +14,9 @@ export const SocialLinkContainer = styled.a`
   color: ${theme.colors.surface.base};
   padding: ${theme.layout.space.small} ${theme.layout.space.medSmall};
   gap: ${theme.layout.space.xsmall};
+
+  &:hover {
+    background-color: ${theme.colors.surface.text2};
+      border: ${theme.border.width.regular} solid ${theme.colors.surface.text2};
+  }
 `

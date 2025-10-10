@@ -20,7 +20,7 @@ const Navbar = () => {
     <NavbarContainer>
       <NavbarContent>
         <Logo onClick={() => navigate("/")}>
-          <GoldLogo width={200} height={120} />
+          <GoldLogo width="100%" height="100%" />
         </Logo>
         <LinksContainer>
           {!isMobile ? (

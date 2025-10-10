@@ -25,9 +25,14 @@ export const NavbarContent = styled.div`
 `
 
 export const Logo = styled.div`
-  height: 120px;
   width: 200px;
+  height: 120px;
   cursor: pointer;
+
+  @media (max-width: 703px) {
+    width: 134px;
+    height: 80px;
+  }
 `
 
 export const LinksContainer = styled.div`

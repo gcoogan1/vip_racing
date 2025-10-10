@@ -1,4 +1,4 @@
-import { ButtonContainer } from "./closeButton.styles"
+import { ButtonContainer, Text } from "./closeButton.styles"
 import Close from "../../assets/icon/Close.svg?react";
 
 type CloseButtonProps = {
@@ -8,7 +8,7 @@ type CloseButtonProps = {
 const CloseButton = ({ onClick }: CloseButtonProps) => {
   return (
     <ButtonContainer onClick={onClick}>
-      <Close />
+      <Text>Close</Text><Close />
     </ButtonContainer>
   )
 }

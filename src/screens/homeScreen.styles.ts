@@ -268,6 +268,7 @@ export const LeagueCardContainer = styled.div`
   gap: ${theme.layout.space.large};
   text-align: left
 `;
+
 /* =====================================
   SPORT MODE SECTION STYLES
 ===================================== */
@@ -287,6 +288,8 @@ export const StreamVideoContainer = styled.div`
   display: flex;
   width: 100%;
   gap: ${theme.layout.space.medium};
+  justify-content: center;
+  align-items: center;
 
   @media (max-width: 703px) {
     flex-direction: column;

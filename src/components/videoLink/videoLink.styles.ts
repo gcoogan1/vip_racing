@@ -6,6 +6,8 @@ export const VideoLinkContainer = styled.div`
   align-items: center;
   flex-direction: column;
   min-width: 240px;
+  width: 100%;
+  max-width: 320px;
   border-radius: ${theme.border.radius.medium};
   padding: ${theme.layout.space.small};
   gap: ${theme.layout.space.small};

@@ -1,8 +1,8 @@
 import { lazy } from "react";
-import LoadingScreen from "../screens/loading/loadingScreen";
 
 const HomeScreen = lazy(() => import("../screens/homeScreen"));
 const DriversScreen = lazy(() => import("../screens/drivers/driversScreen"));
+const MediaScreen = lazy(() => import("../screens/media/mediaScreen"));
 
 type Route = {
   path: string;
@@ -17,5 +17,9 @@ export const ROUTES: Route[] = [
   {
     path: '/drivers',
     element: <DriversScreen /> 
+  },
+  {
+    path: '/media',
+    element: <MediaScreen /> 
   },
 ]

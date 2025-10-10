@@ -20,6 +20,10 @@ type SocialLink = {
   url: string;
 }
 
+type YoutubeSocialLink = SocialLink & {
+  channelId: string;
+};
+
 type Driver = {
   id: number;
   name: string;
@@ -32,7 +36,7 @@ type Driver = {
   cardImg: string;
   socials?: {
     twitch?: SocialLink;
-    youtube?: SocialLink;
+    youtube?: YoutubeSocialLink;
     discord?: SocialLink;
   };
 }
@@ -50,7 +54,7 @@ export const drivers: Driver[] = [
     cardImg: CyrusNiki,
     socials: {
       twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username" },
+      youtube: { username: "@CyrusNiki-GT", url: "https://www.youtube.com/@CyrusNiki-GT", channelId: "UCj2rFlSoPUPqmCzRsTpeGEg" },
     }
   },
   {
@@ -63,10 +67,10 @@ export const drivers: Driver[] = [
     favTrack: "Watkins Glen",
     hardware: "Fanatec DD Pro",
     cardImg: AlmostPodium,
-    socials: {
-      twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username" },
-    }
+    // socials: {
+    //   twitch: { username: "@username", url: "https://twitch.tv/username" },
+    //   youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
+    // }
   },
   {
     id: 3,
@@ -78,10 +82,10 @@ export const drivers: Driver[] = [
     favTrack: "Watkins Glen",
     hardware: "Fanatec DD Pro",
     cardImg: KForman,
-    socials: {
-      twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username" },
-    }
+    // socials: {
+    //   twitch: { username: "@username", url: "https://twitch.tv/username" },
+    //   youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
+    // }
   },
   {
     id: 7,
@@ -95,7 +99,7 @@ export const drivers: Driver[] = [
     cardImg: NotCrawl3r,
     socials: {
       twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username" },
+      youtube: { username: "@Da_Crawl3r", url: "https://youtube.com/@Da_Crawl3r", channelId: "UChhn-Ho72-weSlgGyKqqIog" },
     }
   },
   {
@@ -108,10 +112,10 @@ export const drivers: Driver[] = [
     favTrack: "Watkins Glen",
     hardware: "Fanatec DD Pro",
     cardImg: LCBroker,
-    socials: {
-      twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username" },
-    }
+    // socials: {
+    //   twitch: { username: "@username", url: "https://twitch.tv/username" },
+    //   youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
+    // }
   },
   {
     id: 316,
@@ -125,7 +129,7 @@ export const drivers: Driver[] = [
     cardImg: ThrottleGeist,
     socials: {
       twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
     }
   },
   {
@@ -138,10 +142,10 @@ export const drivers: Driver[] = [
     favTrack: "Watkins Glen",
     hardware: "Fanatec DD Pro",
     cardImg: TheCap,
-    socials: {
-      twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username" },
-    }
+    // socials: {
+    //   twitch: { username: "@username", url: "https://twitch.tv/username" },
+    //   youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw"},
+    // }
   },
   {
     id: 36,
@@ -155,7 +159,7 @@ export const drivers: Driver[] = [
     cardImg: Scarlxrd,
     socials: {
       twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
     }
   },
   {
@@ -170,7 +174,7 @@ export const drivers: Driver[] = [
     cardImg: Player,
     socials: {
       twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
     }
   },
   {
@@ -183,10 +187,10 @@ export const drivers: Driver[] = [
     favTrack: "Watkins Glen",
     hardware: "Fanatec DD Pro",
     cardImg: AceGT,
-    socials: {
-      twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username" },
-    }
+    // socials: {
+    //   twitch: { username: "@username", url: "https://twitch.tv/username" },
+    //   youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
+    // }
   },
   {
     id: 88,
@@ -198,10 +202,10 @@ export const drivers: Driver[] = [
     favTrack: "Watkins Glen",
     hardware: "Fanatec DD Pro",
     cardImg: StrokerAce,
-    socials: {
-      twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username" },
-    }
+    // socials: {
+    //   twitch: { username: "@username", url: "https://twitch.tv/username" },
+    //   youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
+    // }
   },
   {
     id: 66,
@@ -215,7 +219,7 @@ export const drivers: Driver[] = [
     cardImg: DewayneT,
     socials: {
       twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username" },
+      youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
     }
   },
   {
@@ -230,7 +234,7 @@ export const drivers: Driver[] = [
     cardImg: PrincePlaka,
     socials: {
       twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username" },
+      youtube: { username: "@plakaplumtv3831", url: "https://youtube.com/@plakaplumtv3831", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
     }
   },
   {
@@ -243,10 +247,10 @@ export const drivers: Driver[] = [
     favTrack: "Watkins Glen",
     hardware: "Fanatec DD Pro",
     cardImg: Left2PassU,
-    socials: {
-      twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username" },
-    }
+    // socials: {
+    //   twitch: { username: "@username", url: "https://twitch.tv/username" },
+    //   youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
+    // }
   },
   {
     id: 14,
@@ -258,10 +262,10 @@ export const drivers: Driver[] = [
     favTrack: "Watkins Glen",
     hardware: "Fanatec DD Pro",
     cardImg: JPScale,
-    socials: {
-      twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username" },
-    }
+    // socials: {
+    //   twitch: { username: "@username", url: "https://twitch.tv/username" },
+    //   youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
+    // }
   },
   {
     id: 23,
@@ -273,9 +277,9 @@ export const drivers: Driver[] = [
     favTrack: "Watkins Glen",
     hardware: "Fanatec DD Pro",
     cardImg: RowdyBurns,
-    socials: {
-      twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username" },
-    }
+    // socials: {
+    //   twitch: { username: "@username", url: "https://twitch.tv/username" },
+    //   youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
+    // }
   },
 ]

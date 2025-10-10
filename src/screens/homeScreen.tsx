@@ -44,17 +44,17 @@ import {
 import VipLeaguesCard from "../components/sectionCards/vipLeaguesCard/vipLeaguesCard";
 import SportModeTable from "../components/tables/sportModeTable/sportModeTable";
 import VideoLink from "../components/videoLink/videoLink";
-import Footer from "../components/footer/footer";
 
 const HomeScreen = () => {
 
-  // const { videos, error } = useYouTubeStreams(
-  //   streamers,
-  // );
-  // const navigate = useNavigate();
+  const { videos, error } = useYouTubeStreams(
+    streamers,
+  );
+  const navigate = useNavigate();
 
-  // console.log("Videos:", videos);
-  // console.log("Error:", error);
+  if (error) {
+    console.error("Error fetching YouTube streams:", error);
+  }
   
   return (
     <>
@@ -175,7 +175,7 @@ const HomeScreen = () => {
             <Parallelogram />
           </TextContent>
           <StreamVideoContainer>
-            {/* {videos.map((video) => (
+            {videos.map((video) => (
               <VideoLink
                 key={video.id}
                 id={video.id}
@@ -184,8 +184,9 @@ const HomeScreen = () => {
                 channelTitle={video.channelTitle}
                 username={video.username}
               />
-            ))} */}
+            ))}
           </StreamVideoContainer>
+            <Button label="View Gallery" onClick={() => navigate("/media")} icon={<ArrowRight width={16} height={16} />} />
         </SectionContent>
       </SectionContainer>
     </>

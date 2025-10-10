@@ -1,7 +1,7 @@
 import HeroSection from "../../components/heroSection/heroSection"
 
 import { drivers } from "../../util/data/drivers/drivers";
-import DriversHero from "../../assets/hero/driversHero.jpg"
+import DriversHero from "../../assets/hero/DriversHero.jpg"
 import { HeroTextContainer, HeroTextContent, Title, Subtitle, DriversSection, DriversContent, RightList, LeftList, DriversList } from "./driversScreen.styles"
 import DriverCard from "../../components/cards/driverCard/driverCard";
 

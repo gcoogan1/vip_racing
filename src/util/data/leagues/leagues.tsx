@@ -34,7 +34,7 @@ export const leagues: League[] = [
     miniImg: "🏎️",
     image: F3500,
     imgAlt: "F3500 car on a racetrack",
-    buttonLabel: "Go to League",
+    buttonLabel: "Coming Soon",
     buttonIcon: <ArrowRight width={16} height={16} />,
     route: "/leagues/vip-formula1"
   },

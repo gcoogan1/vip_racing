@@ -36,6 +36,7 @@ export const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: ${theme.layout.space.large};
+  text-align: left;
   width: 100%;
   gap: ${theme.layout.space.xsmall};
   border-bottom: ${theme.border.width.regular} solid ${theme.colors.surface.line};

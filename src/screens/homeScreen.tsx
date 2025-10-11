@@ -79,11 +79,11 @@ const HomeScreen = () => {
                 onClick={() => scrollToSection()}
                 icon={<ArrowDown width={16} height={16} />}
               />
-              <Button
+              {/* <Button
                 label="THE 2026 vip f1 league"
                 onClick={() => navigate("/leagues/vip-formula1")}
                 icon={<ArrowRight width={16} height={16} />}
-              />
+              /> */}
             </ButtonsContainer>
           </HeroTextContent>
         </HeroTextContainer>
@@ -161,7 +161,7 @@ const HomeScreen = () => {
       <SectionContainer>
         <SectionContent>
           <TextContent>
-            <TextTitle>Sport Mode Table</TextTitle>
+            <TextTitle>GT7 Sprot Mode</TextTitle>
             <Parallelogram />
           </TextContent>
           <SportContainer>
@@ -179,7 +179,7 @@ const HomeScreen = () => {
       <SectionContainer>
         <SectionContent>
           <TextContent>
-            <TextTitle>Sport Mode Table</TextTitle>
+            <TextTitle>Latest Streams</TextTitle>
             <Parallelogram />
           </TextContent>
           <StreamVideoContainer>

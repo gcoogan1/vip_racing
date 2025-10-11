@@ -221,7 +221,7 @@ export const DriversList = styled.div`
   gap: 80px;
   align-items: flex-start;
 
-  @media (max-width: 703px) {
+  @media (max-width: 1024px) {
     flex-direction: column;
     gap: ${theme.layout.space.medium};
   }

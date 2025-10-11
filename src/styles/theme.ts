@@ -30,6 +30,7 @@ export type Theme = {
     title: Record<string, FontType>;
     subtitle: Record<string, FontType>;
     body: Record<string, FontType>;
+    link: Record<string, FontType>;
   };
   border: {
     width: Record<string, string>;
@@ -124,6 +125,14 @@ export const theme: Theme = {
         lineHeight: "24px",
       },
     },
+    link: {
+      regular: {
+        fontSize: "14px",
+        fontFamily: "'Rubik', sans-serif",
+        fontWeight: 500,
+        lineHeight: "20px",
+      }
+    }
   },
   border: {
     width: {

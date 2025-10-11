@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { fontCSS, theme } from "../../styles/theme";
 
 export const SocialLinkContainer = styled.a`
-  ${fontCSS(theme.typography.body.bold)};
+  ${fontCSS(theme.typography.link.regular)};
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -17,6 +17,6 @@ export const SocialLinkContainer = styled.a`
 
   &:hover {
     background-color: ${theme.colors.surface.text2};
-      border: ${theme.border.width.regular} solid ${theme.colors.surface.text2};
+    border: ${theme.border.width.regular} solid ${theme.colors.surface.text2};
   }
 `

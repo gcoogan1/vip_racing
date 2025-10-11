@@ -46,7 +46,7 @@ const MediaScreen = () => {
         <GalleryContent>
           <ContentSections>
             <Section>
-              <SectionTitle>Drivers Channels</SectionTitle>
+              <SectionTitle>Driver Channels</SectionTitle>
               <SectionList>
                 {drivers.map((driver) => {
                   if (driver.socials && driver.socials.youtube) {
@@ -67,7 +67,7 @@ const MediaScreen = () => {
               </SectionList>
             </Section>
             <Section>
-              <SectionTitle>Drivers Channels</SectionTitle>
+              <SectionTitle>Latest Streams</SectionTitle>
               <SectionList>
                 {videos.map((video) => (
                   <div style={{ width: "308px" }}>
@@ -83,7 +83,7 @@ const MediaScreen = () => {
               </SectionList>
             </Section>
             <Section>
-              <SectionTitle>Drivers Channels</SectionTitle>
+              <SectionTitle>Photos and Videos</SectionTitle>
               <SectionList>
                 {mediaPhotos.map((photo, index) => (
                   <Photo

@@ -74,6 +74,14 @@ export const DriversList = styled.div`
   }
 `;
 
+export const SingleList = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: ${theme.layout.space.medium};
+  align-items: center;
+`
+
 /* Split left/right driver columns */
 
 export const LeftList = styled.div`

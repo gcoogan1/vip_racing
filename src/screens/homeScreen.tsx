@@ -161,7 +161,7 @@ const HomeScreen = () => {
       <SectionContainer>
         <SectionContent>
           <TextContent>
-            <TextTitle>GT7 Sprot Mode</TextTitle>
+            <TextTitle>GT7 Sport Mode</TextTitle>
             <Parallelogram />
           </TextContent>
           <SportContainer>

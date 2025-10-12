@@ -1,7 +1,16 @@
+import { ButtonContainer, ButtonText } from "./tabSwitchLink.styles"
 
-const TabSwitchLink = () => {
+type TabSwitchProps = {
+  label?: string;
+  active?: boolean;
+  onClick?: () => void;
+};
+
+const TabSwitchLink = ({ label, active = false, onClick }: TabSwitchProps) => {
   return (
-    <div>tabSwitchLink</div>
+    <ButtonContainer $active={active} onClick={onClick}>
+      <ButtonText $active={active}>{label}</ButtonText>
+    </ButtonContainer>
   )
 }
 

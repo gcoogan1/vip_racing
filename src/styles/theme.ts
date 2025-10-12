@@ -112,6 +112,12 @@ export const theme: Theme = {
         fontWeight: 400,
         lineHeight: "20px",
       },
+      medium: {
+        fontSize: "18px",
+        fontFamily: "'Quantico', sans-serif", 
+        fontWeight: 400,
+        lineHeight: "24px",
+      },
       small: {
         fontSize: "12px",
         fontFamily: "'Quantico', sans-serif",

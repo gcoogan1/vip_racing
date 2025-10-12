@@ -4,7 +4,7 @@ const HomeScreen = lazy(() => import("../screens/homeScreen"));
 const DriversScreen = lazy(() => import("../screens/drivers/driversScreen"));
 const MediaScreen = lazy(() => import("../screens/media/mediaScreen"));
 const ShopScreen = lazy(() => import("../screens/shop/shopScreen"));
-import ComingSoonScreen from "../screens/comingHome/comeingSoonScreen";
+import ComingSoonScreen from "../screens/comingSoon/comeingSoonScreen";
 
 type Route = {
   path: string;

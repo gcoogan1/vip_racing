@@ -1,8 +1,17 @@
-import React from 'react'
+import TabSwitchLink from './tabSwitchLink/tabSwitchLink';
+import { SwitchContainer } from './tabSwitch.styles'
 
-const TabSwitch = () => {
+type TabSwitchProps = {
+  tabs?: Array<{ label: string; active: boolean; onClick: () => void }>;
+}
+
+const TabSwitch = ({ tabs }: TabSwitchProps) => {
   return (
-    <div>TabSwitch</div>
+    <SwitchContainer>
+      {tabs?.map((tab, index) => (
+        <TabSwitchLink key={index} label={tab.label} active={tab.active} onClick={tab.onClick} />
+      ))}
+    </SwitchContainer>
   )
 }
 

@@ -69,6 +69,12 @@ export const theme: Theme = {
         fontWeight: 400,
         lineHeight: "56px",
       },
+      regular: {
+        fontSize: "30px",
+        fontFamily: "'Zen Dots', sans-serif",
+        fontWeight: 400,
+        lineHeight: "38px",
+      },
       medium: {
         fontSize: "36px",
         fontFamily: "'Zen Dots', sans-serif",

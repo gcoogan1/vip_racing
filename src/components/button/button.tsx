@@ -6,11 +6,12 @@ type ButtonProps = {
   onClick: () => void;
   label?: string;
   icon?: React.ReactNode;
+  variant?: "primary" | "secondary" | "tertiary" | "CTA";
 };
 
-const Button = ({ label, onClick, icon }: ButtonProps) => {
+const Button = ({ label, onClick, icon, variant = "primary" }: ButtonProps) => {
   return (
-    <ButtonContainer onClick={onClick}>
+    <ButtonContainer onClick={onClick} $variant={variant}>
       {label}
       {icon}
     </ButtonContainer>

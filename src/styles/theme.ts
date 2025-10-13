@@ -83,6 +83,13 @@ export const theme: Theme = {
       },
     },
     subtitle: {
+      xLarge:{
+        fontSize: "24px",
+        fontFamily: "'Quantico', sans-serif",
+        fontWeight: 700,
+        lineHeight: "32px",
+        textTransform: "uppercase",
+      },
       large: {
         fontSize: "18px",
         fontFamily: "'Quantico', sans-serif",

@@ -1,7 +1,6 @@
 import MclarenDrifting from "../../../assets/card/McLarenDrifting.svg"
 import F3500 from "../../../assets/card/F3500Pits.svg"
 import CarsRacingHighlands from "../../../assets/card/CarsRacingHighlands.svg"
-import ArrowRight from "../../../assets/icon/ArrowRight.svg?react"
 
 
 type League = {

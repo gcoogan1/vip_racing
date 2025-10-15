@@ -1,4 +1,4 @@
-import { Description, InfoChipContainer, NumberContainer, Subtitle, Title } from './InfoChip.styles';
+import { Description, InfoChipContainer, NumberContainer, Subtitle, Title } from './infoChip.styles';
 
 type InfoChipProps = {
   rounds: number;

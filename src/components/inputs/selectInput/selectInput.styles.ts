@@ -103,7 +103,7 @@ export const SelectOption = styled.li<{ $selected: boolean }>`
 export const ArrowIcon = styled(ArrowDropDown)<{ $open: boolean }>`
   width: 20px;
   height: 20px;
-  color: ${theme.colors.surface.text1};
+  color: ${theme.colors.surface.text3};
   transition: transform 0.2s ease;
   transform: rotate(${({ $open }) => ($open ? "180deg" : "0deg")});
 `;

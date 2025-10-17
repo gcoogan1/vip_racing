@@ -62,8 +62,8 @@ export const ButtonContainer = styled.button<{ $variant?: Variant }>`
           color: ${theme.colors.surface.base};
 
           &:hover {
-            background-color: ${theme.colors.surface.line};
-            color: ${theme.colors.surface.text3};
+            border-color: ${theme.colors.surface.text1};
+            color: ${theme.colors.surface.base};
           }
         `;
     }

@@ -1,10 +1,11 @@
 import { lazy } from "react";
+import ComingSoonScreen from "../screens/comingSoon/comingSoonScreen";
 
 const HomeScreen = lazy(() => import("../screens/homeScreen"));
 const DriversScreen = lazy(() => import("../screens/drivers/driversScreen"));
 const MediaScreen = lazy(() => import("../screens/media/mediaScreen"));
 const ShopScreen = lazy(() => import("../screens/shop/shopScreen"));
-import ComingSoonScreen from "../screens/comingSoon/comingSoonScreen";
+const OverviewScreen = lazy(() => import("../screens/leagues/overview/overviewScreen"));
 
 type Route = {
   path: string;
@@ -30,7 +31,7 @@ export const ROUTES: Route[] = [
   },
   {
     path: '/leagues',
-    element: <ComingSoonScreen />
+    element: <OverviewScreen />
   },
   {
     path: '/leagues/vip-gt3',

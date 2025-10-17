@@ -23,6 +23,7 @@ export const TabButtonContainer = styled.button<{ $active: boolean }>`
       background-color: ${theme.colors.surface.text1};
       color: ${theme.colors.surface.base};
       box-shadow: 0px 0px 70px 0px #ffffff80;
+      z-index: 1;
     `}
 
   &:disabled {

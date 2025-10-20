@@ -63,3 +63,9 @@ export const ButtonsContainer = styled.div`
   display: flex;
   gap: ${theme.layout.space.medium};
 `;
+
+export const TabsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;

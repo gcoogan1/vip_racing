@@ -5,7 +5,7 @@ const HomeScreen = lazy(() => import("../screens/homeScreen"));
 const DriversScreen = lazy(() => import("../screens/drivers/driversScreen"));
 const MediaScreen = lazy(() => import("../screens/media/mediaScreen"));
 const ShopScreen = lazy(() => import("../screens/shop/shopScreen"));
-const OverviewScreen = lazy(() => import("../screens/leagues/overview/overviewScreen"));
+const OverviewScreen = lazy(() => import("../screens/leagues/vipChampionship/vipChampionship"));
 
 type Route = {
   path: string;

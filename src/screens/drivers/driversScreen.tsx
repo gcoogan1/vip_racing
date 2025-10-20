@@ -30,19 +30,19 @@ const DriversScreen = () => {
             {isMobile ? (
               <SingleList>
                 {drivers.map((driver) => (
-                  <DriverCard key={driver.name} id={0} name={driver.name} rank={driver.rank} gtTag={driver.gtTag} psnId={driver.psnId} favCar={driver.favCar} favTrack={driver.favTrack} hardware={driver.hardware} cardImg={driver.cardImg} socials={driver.socials} />
+                  <DriverCard key={driver.name} id={0} name={driver.name} rank={driver.rank} gtTag={driver.gtTag} psnId={driver.psnId} favCar={driver.favCar} favTrack={driver.favTrack} hardware={driver.hardware} cardImg={driver.cardImg} socials={driver.socials} flag={driver.flag} />
                 )) }
               </SingleList>
             ) : (
               <>
                 <LeftList>
                   {leftDrivers.map((driver, index) => (
-                    <DriverCard key={index} id={driver.id} name={driver.name} rank={driver.rank} gtTag={driver.gtTag} psnId={driver.psnId} favCar={driver.favCar} favTrack={driver.favTrack} hardware={driver.hardware} cardImg={driver.cardImg} socials={driver.socials} />
+                    <DriverCard key={index} id={driver.id} name={driver.name} rank={driver.rank} gtTag={driver.gtTag} psnId={driver.psnId} favCar={driver.favCar} favTrack={driver.favTrack} hardware={driver.hardware} cardImg={driver.cardImg} socials={driver.socials} flag={driver.flag} />
                   ))}
                 </LeftList>
                 <RightList>
                   {rightDrivers.map((driver, index) => (
-                    <DriverCard key={index} id={driver.id} name={driver.name} rank={driver.rank} gtTag={driver.gtTag} psnId={driver.psnId} favCar={driver.favCar} favTrack={driver.favTrack} hardware={driver.hardware} cardImg={driver.cardImg} socials={driver.socials} />
+                    <DriverCard key={index} id={driver.id} name={driver.name} rank={driver.rank} gtTag={driver.gtTag} psnId={driver.psnId} favCar={driver.favCar} favTrack={driver.favTrack} hardware={driver.hardware} cardImg={driver.cardImg} socials={driver.socials} flag={driver.flag} />
                   ))}
                 </RightList>
               </>

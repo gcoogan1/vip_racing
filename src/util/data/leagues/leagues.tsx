@@ -17,9 +17,9 @@ type League = {
 
 export const leagues: League[] = [
   {
-    name: "VIP GT3 Championship",
-    season: "8 rACE seASON. oNCE A yeAR.",
-    description: "Take part in the ultimate GT3 class league on Gran Turismo 7. Battle across 8 thrilling rounds with 30 competitive drivers in 10 teams of three to be crowned the champion and lead your team to victory.",
+    name: "VIP Championship",
+    season: "5 race season. 1 Grand finale.",
+    description: "Take part in the ultimate league on Gran Turismo 7. Battle across multiple thrilling rounds, which are introduced in a new format every year, with some of the most competitive drivers.",
     miniImg: "👑",
     image: MclarenDrifting,
     imgAlt: "McLaren car drifting on a racetrack",
@@ -28,8 +28,8 @@ export const leagues: League[] = [
   },
   {
     name: "VIP Formula 1 League",
-    season: "5 rACE seASON. Twice A yeAR.",
-    description: "Experience the intensity of open wheel racing in VIP’s official F1 style league. 16 drivers in teams of two, fight to win the Driver’s and Team’s Championship in 5 challenging races.",
+    season: "3 race season. once a year.",
+    description: "Experience the intensity of open wheel racing in VIP’s official F1 style league. 16 drivers in teams of two, fight to win the Driver’s and Team’s Championship in 3 challenging races.",
     miniImg: "🏎️",
     image: F3500,
     imgAlt: "F3500 car on a racetrack",
@@ -38,7 +38,7 @@ export const leagues: League[] = [
   },
   {
     name: "VIP Monthly Lobby",
-    season: "3 rACE Session. oNCE A month.",
+    season: "3 race session. once a month.",
     description: "Join VIP members in an evening of high-octane racing through multiple disciplines. The hosted lobby aims to provide a fun racing environment designed for drivers to compete with VIP members.",
     miniImg: "🏁",
     image: CarsRacingHighlands,

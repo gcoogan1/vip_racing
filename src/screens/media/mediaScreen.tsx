@@ -2,8 +2,8 @@ import HeroSection from "../../components/heroSection/heroSection";
 import Lamborghini from "../../assets/hero/Lamborghini.jpg";
 import ChannelCard from "../../components/cards/channelCard/channelCard";
 import { useYouTubeStreams } from "../../util/hooks/useYoutubeStreams";
-import { streamers } from "../../util/data/streamers/streamers";
-import { drivers } from "../../util/data/drivers/drivers";
+import { streamers, type Streamer } from "../../util/data/streamers/streamers";
+import { drivers, type Driver } from "../../util/data/drivers/drivers";
 import {
   HeroTextContainer,
   HeroTextContent,
@@ -22,6 +22,17 @@ import { mediaPhotos } from "../../util/data/mediaPhotos/mediaPhotos";
 
 const MediaScreen = () => {
   const { videos, error } = useYouTubeStreams(streamers);
+
+  const attachDriverInfo = (streamers: Streamer[], drivers: Driver[]) => {
+    const driverMap = new Map(drivers.map((driver) => [driver.id, driver]));
+
+    return streamers.map((streamer) => ({
+      ...streamer,
+      driver: streamer.id ? driverMap.get(streamer.id) : null,
+    }));
+  };
+
+  const streamersWithDrivers = attachDriverInfo(streamers, drivers);
 
   if (error) {
     console.error("Error fetching YouTube streams:", error);
@@ -48,21 +59,20 @@ const MediaScreen = () => {
             <Section>
               <SectionTitle>Driver Channels</SectionTitle>
               <SectionList>
-                {drivers.map((driver) => {
-                  if (driver.socials && driver.socials.youtube) {
+                {streamersWithDrivers.map((streamer) => {
+                  if (streamer.driver?.socials?.youtube && streamer.driver.cardImg) {
                     return (
                       <div style={{ width: "228px" }}>
                         <ChannelCard
-                        key={driver.name}
-                        name={driver.name}
-                        username={driver.socials.youtube.username}
-                        url={driver.socials.youtube.url}
-                        cardImg={driver.cardImg}
-                      />
+                          key={streamer.id}
+                          name={streamer.name}
+                          username={streamer.username}
+                          url={streamer.driver.socials.youtube.url}
+                          cardImg={streamer.driver.cardImg}
+                        />
                       </div>
                     );
                   }
-                  return null;
                 })}
               </SectionList>
             </Section>
@@ -72,12 +82,12 @@ const MediaScreen = () => {
                 {videos.map((video) => (
                   <div style={{ width: "308px" }}>
                     <VideoLink
-                    id={video.id}
-                    title={video.title}
-                    publishedAt={video.publishedAt}
-                    channelTitle={video.channelTitle}
-                    username={video.username}
-                  />
+                      id={video.id}
+                      title={video.title}
+                      publishedAt={video.publishedAt}
+                      channelTitle={video.channelTitle}
+                      username={video.username}
+                    />
                   </div>
                 ))}
               </SectionList>

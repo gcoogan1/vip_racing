@@ -3,6 +3,8 @@ import SocialLink from "../../socialLink/socialLink";
 import Youtube from "../../../assets/social/SocialYoutube.svg?react";
 import Twitch from "../../../assets/social/SocialTwitch.svg?react";
 import USFlag from "../../../assets/icon/USFlag.svg?react";
+import CAFlag from "../../../assets/icon/FlagCanada.svg?react";
+import PRFlag from "../../../assets/icon/FlagPuertoRico.svg?react";
 import {
   DriverCardContainer,
   DriverImage,
@@ -34,6 +36,7 @@ type DriverCardProps = {
   favTrack: string;
   hardware: string;
   cardImg: string;
+  flag: "us" | "ca" | "pr";
   socials?: {
     twitch?: SocialLink;
     youtube?: SocialLink;
@@ -50,8 +53,12 @@ const DriverCard = ({
   favTrack,
   hardware,
   cardImg,
+  flag,
   socials,
 }: DriverCardProps) => {
+
+  console.log(flag);
+
   return (
     <DriverCardContainer>
       <DriverImage src={cardImg} alt={name} loading="lazy" />
@@ -60,7 +67,9 @@ const DriverCard = ({
           <DriverTitleContainer>
             <DriverName>{name}</DriverName>
             <RankContainer>
-              <USFlag width={24} height={24} /> 
+              {flag === "us" && <USFlag width={24} height={24} />}
+              {flag === "ca" && <CAFlag width={24} height={24} />}
+              {flag === "pr" && <PRFlag width={24} height={24} />}
               <DriverRank>{rank}</DriverRank>
             </RankContainer>
           </DriverTitleContainer>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { teamData } from "../util/data/team/team";
 import { drivers } from "../util/data/drivers/drivers";
 import { leagues } from "../util/data/leagues/leagues";
-import { raceData } from "../util/data/race/race";
+// import { raceData } from "../util/data/race/race";
 import { streamers } from "../util/data/streamers/streamers";
 import { useYouTubeStreams } from "../util/hooks/useYoutubeStreams";
 import HeroSection from "../components/heroSection/heroSection";
@@ -14,27 +14,24 @@ import CarsRacingFinishLine from "../assets/hero/CarsRacingFinishLineLargeOp.jpg
 import Parallelogram from "../assets/icon/Parallelogram.svg?react";
 import ArrowDown from "../assets/icon/ArrowDown.svg?react";
 import ArrowRight from "../assets/icon/ArrowRight.svg?react";
-import iRacing from "../assets/game/iRacing.svg";
+// import iRacing from "../assets/game/iRacing.svg";
 import gt7 from "../assets/game/GT7.svg";
-import f1 from "../assets/game/F125.svg";
+// import f1 from "../assets/game/F125.svg";
 import {
   AboutCardContainer,
   ButtonsContainer,
   DriversContent,
   DriversList,
-  F1Logo,
   GamesContainer,
   GamesSection,
   GtLogo,
   HeroTextContainer,
   HeroTextContent,
-  IRacingLogo,
   LeagueCardContainer,
   LeftList,
   RightList,
   SectionContainer,
   SectionContent,
-  SportContainer,
   StreamVideoContainer,
   Subtitle,
   TextContent,
@@ -43,7 +40,7 @@ import {
   TitleContainer,
 } from "./homeScreen.styles";
 import VipLeaguesCard from "../components/sectionCards/vipLeaguesCard/vipLeaguesCard";
-import SportModeTable from "../components/tables/sportModeTable/sportModeTable";
+// import SportModeTable from "../components/tables/sportModeTable/sportModeTable";
 import VideoLink from "../components/videoLink/videoLink";
 
 
@@ -54,6 +51,7 @@ const HomeScreen = () => {
   const { videos, error } = useYouTubeStreams(
     streamers,
   );
+  const showVideos = videos.slice(0, 3);
   const navigate = useNavigate();
 
   if (error) {
@@ -90,9 +88,9 @@ const HomeScreen = () => {
       </HeroSection>
       <GamesSection>
         <GamesContainer>
-          <IRacingLogo loading="lazy" src={iRacing} alt="iRacing Logo" />
+          {/* <IRacingLogo loading="lazy" src={iRacing} alt="iRacing Logo" /> */}
           <GtLogo loading="lazy" src={gt7} alt="GT7 Logo" />
-          <F1Logo loading="lazy" src={f1} alt="F1 Logo" />
+          {/* <F1Logo loading="lazy" src={f1} alt="F1 Logo" /> */}
         </GamesContainer>
       </GamesSection>
       <SectionContainer ref={aboutRef}>
@@ -123,12 +121,12 @@ const HomeScreen = () => {
           </TextContent>
           <DriversList>
             <LeftList>
-              <DriverCard id={0} name={drivers[0].name} rank={drivers[0].rank} gtTag={drivers[0].gtTag} psnId={drivers[0].psnId} favCar={drivers[0].favCar} favTrack={drivers[0].favTrack} hardware={drivers[0].hardware} cardImg={drivers[0].cardImg} socials={drivers[0].socials} />
-              <DriverCard id={3} name={drivers[4].name} rank={drivers[4].rank} gtTag={drivers[4].gtTag} psnId={drivers[4].psnId} favCar={drivers[4].favCar} favTrack={drivers[4].favTrack} hardware={drivers[4].hardware} cardImg={drivers[4].cardImg} socials={drivers[4].socials} />
+              <DriverCard flag={drivers[0].flag} id={0} name={drivers[0].name} rank={drivers[0].rank} gtTag={drivers[0].gtTag} psnId={drivers[0].psnId} favCar={drivers[0].favCar} favTrack={drivers[0].favTrack} hardware={drivers[0].hardware} cardImg={drivers[0].cardImg} socials={drivers[0].socials} />
+              <DriverCard flag={drivers[3].flag} id={1} name={drivers[3].name} rank={drivers[3].rank} gtTag={drivers[3].gtTag} psnId={drivers[3].psnId} favCar={drivers[3].favCar} favTrack={drivers[3].favTrack} hardware={drivers[3].hardware} cardImg={drivers[3].cardImg} socials={drivers[3].socials} />
             </LeftList>
             <RightList>
-              <DriverCard id={1} name={drivers[1].name} rank={drivers[1].rank} gtTag={drivers[1].gtTag} psnId={drivers[1].psnId} favCar={drivers[1].favCar} favTrack={drivers[1].favTrack} hardware={drivers[1].hardware} cardImg={drivers[1].cardImg} socials={drivers[1].socials} />
-              <DriverCard id={2} name={drivers[2].name} rank={drivers[2].rank} gtTag={drivers[2].gtTag} psnId={drivers[2].psnId} favCar={drivers[2].favCar} favTrack={drivers[2].favTrack} hardware={drivers[2].hardware} cardImg={drivers[2].cardImg} socials={drivers[2].socials} />
+              <DriverCard flag={drivers[2].flag} id={3} name={drivers[2].name} rank={drivers[2].rank} gtTag={drivers[2].gtTag} psnId={drivers[2].psnId} favCar={drivers[2].favCar} favTrack={drivers[2].favTrack} hardware={drivers[2].hardware} cardImg={drivers[2].cardImg} socials={drivers[2].socials} />
+              <DriverCard flag={drivers[1].flag} id={2} name={drivers[1].name} rank={drivers[1].rank} gtTag={drivers[1].gtTag} psnId={drivers[1].psnId} favCar={drivers[1].favCar} favTrack={drivers[1].favTrack} hardware={drivers[1].hardware} cardImg={drivers[1].cardImg} socials={drivers[1].socials} />
             </RightList>
           </DriversList>
               <div style={{ zIndex: 4, position: "absolute", bottom: 0 }}><Button label="View All Drivers" onClick={() => navigate("/drivers")} icon={<ArrowRight width={16} height={16} />} /></div>
@@ -158,7 +156,7 @@ const HomeScreen = () => {
           </LeagueCardContainer>
         </SectionContent>
       </SectionContainer>
-      <SectionContainer>
+      {/* <SectionContainer>
         <SectionContent>
           <TextContent>
             <TextTitle>GT7 Sport Mode</TextTitle>
@@ -175,7 +173,7 @@ const HomeScreen = () => {
             ))}
           </SportContainer>
         </SectionContent>
-      </SectionContainer>
+      </SectionContainer> */}
       <SectionContainer>
         <SectionContent>
           <TextContent>
@@ -183,7 +181,7 @@ const HomeScreen = () => {
             <Parallelogram />
           </TextContent>
           <StreamVideoContainer>
-            {videos.map((video) => (
+            {showVideos.map((video) => (
               <VideoLink
                 key={video.id}
                 id={video.id}

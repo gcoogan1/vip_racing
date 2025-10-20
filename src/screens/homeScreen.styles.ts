@@ -122,7 +122,8 @@ export const GamesContainer = styled.div`
   max-width: 960px;
   padding: ${theme.layout.space.xlarge} 0px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  /* justify-content: space-between; */
   gap: ${theme.layout.space.large};
 
   @media (max-width: 703px) {
@@ -251,7 +252,7 @@ export const RightList = styled.div`
   align-items: center;
 
   @media (max-width: 703px) {
-    flex-direction: column;
+    flex-direction: column-reverse;
     margin-top: 0px;
     gap: ${theme.layout.space.medium};
   }

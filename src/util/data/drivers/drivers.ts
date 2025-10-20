@@ -24,7 +24,8 @@ type YoutubeSocialLink = SocialLink & {
   channelId: string;
 };
 
-type Driver = {
+
+export type Driver = {
   id: number;
   name: string;
   rank: string
@@ -33,6 +34,7 @@ type Driver = {
   favCar: string;
   favTrack: string;
   hardware: string;
+  flag: "us" | "ca" | "pr";
   cardImg: string;
   socials?: {
     twitch?: SocialLink;
@@ -48,12 +50,12 @@ export const drivers: Driver[] = [
     rank: "Team Leader",
     gtTag: "VIP_CyrusNikiGT",
     psnId: "CyrusNiki-GT",
-    favCar: "Ferrari 458 Italia",
-    favTrack: "Watkins Glen",
-    hardware: "Fanatec DD Pro",
+    favCar: "Mazda RX-VISION GT3 CONCEPT",
+    favTrack: "Nürburgring Nordschleife",
+    hardware: "Logitech G PRO Racing Wheel",
     cardImg: CyrusNiki,
+    flag: "ca",
     socials: {
-      twitch: { username: "@username", url: "https://twitch.tv/username" },
       youtube: { username: "@CyrusNiki-GT", url: "https://www.youtube.com/@CyrusNiki-GT", channelId: "UCj2rFlSoPUPqmCzRsTpeGEg" },
     }
   },
@@ -63,59 +65,60 @@ export const drivers: Driver[] = [
     rank: "Team Leader",
     gtTag: "VIP_AlmostPodium",
     psnId: "Kia10",
-    favCar: "Ferrari 458 Italia",
-    favTrack: "Watkins Glen",
-    hardware: "Fanatec DD Pro",
+    favCar: "McLaren 650S GT3 ‘15",
+    favTrack: "Deep Forest Raceway",
+    hardware: "Fanatec ClubSport DD+",
     cardImg: AlmostPodium,
-    // socials: {
-    //   twitch: { username: "@username", url: "https://twitch.tv/username" },
-    //   youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
-    // }
+    flag: "us",
+    socials: {
+      // twitch: { username: "@AlmostPodium", url: "https://twitch.tv/username" },
+      youtube: { username: "@AlmostPodium", url: "https://youtube.com/@AlmostPodium", channelId: "UCDK8ChKjGqcIFLGyCbF7xSA" },
+    }
   },
   {
     id: 3,
-    name: "K. Forman",
-    rank: "pro GT4 driver",
+    name: "Karl Forman",
+    rank: "GR CUP PRO DRIVER",
     gtTag: "K.Forman",
     psnId: "DK03_GT",
-    favCar: "Ferrari 458 Italia",
-    favTrack: "Watkins Glen",
-    hardware: "Fanatec DD Pro",
+    favCar: "Renault R.S.01 GT3 ‘16",
+    favTrack: "Nürburgring Nordschleife",
+    hardware: "Fanatec Gran Turismo DD Pro",
     cardImg: KForman,
-    // socials: {
-    //   twitch: { username: "@username", url: "https://twitch.tv/username" },
-    //   youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
-    // }
+    flag: "us",
+    socials: {
+      youtube: { username: "@DK03GT", url: "https://youtube.com/@DK03GT", channelId: "UC_sbK9bM9LpiFlon_KoSFuw" },
+    }
   },
   {
     id: 7,
-    name: "Da_Crawl3r",
-    rank: "Team Enforcer",
+    name: "Da Crawl3r",
+    rank: "The Enforcer",
     gtTag: "VIP_NotCrawl3r",
     psnId: "Da_Crawl3r",
     favCar: "VW Beetle Gr.3",
-    favTrack: "Watkins Glen",
-    hardware: "Fanatec DD Pro",
+    favTrack: "Trial Mountain Circuit",
+    hardware: "Logitech G PRO Racing Wheel",
     cardImg: NotCrawl3r,
+    flag: "us",
     socials: {
-      twitch: { username: "@username", url: "https://twitch.tv/username" },
       youtube: { username: "@Da_Crawl3r", url: "https://youtube.com/@Da_Crawl3r", channelId: "UChhn-Ho72-weSlgGyKqqIog" },
     }
   },
   {
     id: 24,
     name: "LC Broker",
-    rank: "gt3 sim racer",
-    gtTag: "LC Broker_VR",
+    rank: "The paCE sETTER",
+    gtTag: "VIP_NotBroker",
     psnId: "LcBroker",
-    favCar: "Ferrari 458 Italia",
-    favTrack: "Watkins Glen",
-    hardware: "Fanatec DD Pro",
+    favCar: "Ferrari F40 ‘92",
+    favTrack: "Nürburgring Nordschleife",
+    hardware: "Logitech G PRO Racing Wheel",
     cardImg: LCBroker,
-    // socials: {
-    //   twitch: { username: "@username", url: "https://twitch.tv/username" },
-    //   youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
-    // }
+    flag: "us",
+    socials: {
+      youtube: { username: "@LC_Broker", url: "https://youtube.com/@LC_Broker", channelId: "UC_4ZHG_VEPZzSAtgxPvEc4g" },
+    }
   },
   {
     id: 316,
@@ -123,163 +126,148 @@ export const drivers: Driver[] = [
     rank: "gt3 sim racer",
     gtTag: "ThrottleGeist",
     psnId: "ThrottleGeist",
-    favCar: "Ferrari 458 Italia",
-    favTrack: "Watkins Glen",
-    hardware: "Fanatec DD Pro",
+    favCar: "BMW M6 GT3 ‘16",
+    favTrack: "Nürburgring Nordschleife",
+    hardware: "Fanatec Gran Turismo DD Pro",
     cardImg: ThrottleGeist,
-    socials: {
-      twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
-    }
+    flag: "us",
   },
   {
-    id: 236,
+    id: 23,
     name: "The Cap",
-    rank: "gt3 sim racer",
+    rank: "The Scout",
     gtTag: "VIP_TheCap",
     psnId: "Gemini-Titan",
-    favCar: "Ferrari 458 Italia",
-    favTrack: "Watkins Glen",
-    hardware: "Fanatec DD Pro",
+    favCar: "Nissan GT-R NISMO ‘17",
+    favTrack: "Deep Forest Raceway",
+    hardware: "Logitech G PRO Racing Wheel",
     cardImg: TheCap,
-    // socials: {
-    //   twitch: { username: "@username", url: "https://twitch.tv/username" },
-    //   youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw"},
-    // }
+    flag: "us",
+    socials: {
+      youtube: { username: "@EJCR_Cap", url: "https://youtube.com/@EJCR_Cap", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw"},
+    }
   },
   {
     id: 36,
     name: "Scarlxrd",
-    rank: "gt3 sim racer",
+    rank: "Controller Specialist",
     gtTag: "VIP_Scarlxrd",
     psnId: "HypnotizeMinds36",
-    favCar: "Ferrari 458 Italia",
-    favTrack: "Watkins Glen",
-    hardware: "Fanatec DD Pro",
+    favCar: "Lamborghini Huracan GT3 ‘15",
+    favTrack: "Circuit de Barcelona-Catalunya",
+    hardware: "DualSense Controller",
     cardImg: Scarlxrd,
-    socials: {
-      twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
-    }
+    flag: "ca",
   },
   {
     id: 47,
     name: "Player",
-    rank: "gt3 sim racer",
+    rank: "Shadow Specialist",
     gtTag: "VIP_PLAYER",
     psnId: "sup_player_1",
-    favCar: "Ferrari 458 Italia",
-    favTrack: "Watkins Glen",
-    hardware: "Fanatec DD Pro",
+    favCar: "Genesis G70 GR4",
+    favTrack: "Deep Forest Raceway",
+    hardware: "Logitech G29",
     cardImg: Player,
+    flag: "us",
     socials: {
-      twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
+      youtube: { username: "@Workman_racing", url: "https://youtube.com/@Workman_racing", channelId: "UC3Ne0FfVTPFL2893gihFaOA" },
     }
   },
   {
     id: 78,
     name: "Ace GT",
-    rank: "gt3 sim racer",
+    rank: "tHE wiNGMAN",
     gtTag: "VIP_ACE_GT",
     psnId: "VIP_ACE_GT",
     favCar: "Ferrari 458 Italia",
-    favTrack: "Watkins Glen",
-    hardware: "Fanatec DD Pro",
+    favTrack: "Sardegna - Road Track - A Reverse",
+    hardware: "MOZA R12 V2",
     cardImg: AceGT,
-    // socials: {
-    //   twitch: { username: "@username", url: "https://twitch.tv/username" },
-    //   youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
-    // }
+    flag: "us",
   },
   {
     id: 88,
     name: "StrokerAce",
-    rank: "gt3 sim racer",
+    rank: "tHE pILOT",
     gtTag: "VIP_StrokerAce",
     psnId: "EJCR_StrokerAce",
-    favCar: "Ferrari 458 Italia",
-    favTrack: "Watkins Glen",
-    hardware: "Fanatec DD Pro",
+    favCar: "Porsche 911 RSR (911) ‘17",
+    favTrack: "Circuit de Spa-Francorchamps",
+    hardware: "Logitech G PRO Racing Wheel",
     cardImg: StrokerAce,
-    // socials: {
-    //   twitch: { username: "@username", url: "https://twitch.tv/username" },
-    //   youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
-    // }
+    flag: "us",
+    socials: {
+      youtube: { username: "@VIP_StrokerAce", url: "https://youtube.com/@VIP_StrokerAce", channelId: "UC5Q2J_v76zwxbOM-vJmMdIA" },
+    }
   },
   {
     id: 66,
     name: "DewayneT",
-    rank: "gt3 sim racer",
+    rank: "gt4 sim racer",
     gtTag: "VIP_DewayneT",
     psnId: "resigned_staff3",
-    favCar: "Ferrari 458 Italia",
-    favTrack: "Watkins Glen",
-    hardware: "Fanatec DD Pro",
+    favCar: "Genesis G70 GR4",
+    favTrack: "Nürburgring Nordschleife",
+    hardware: "Fanatec Gran Turismo DD Pro",
     cardImg: DewayneT,
-    socials: {
-      twitch: { username: "@username", url: "https://twitch.tv/username" },
-      youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
-    }
+    flag: "us"
   },
   {
     id: 112,
     name: "Prince Plaka",
-    rank: "gt3 sim racer",
+    rank: "Muscle car Specialist",
     gtTag: "VIP Prince Plaka",
     psnId: "VIP_Prince_Plaka",
-    favCar: "Ferrari 458 Italia",
-    favTrack: "Watkins Glen",
-    hardware: "Fanatec DD Pro",
+    favCar: "Ford GT Race Car ‘18",
+    favTrack: "Nürburgring Nordschleife",
+    hardware: "Thrustmaster T248",
     cardImg: PrincePlaka,
+    flag: "pr",
     socials: {
-      twitch: { username: "@username", url: "https://twitch.tv/username" },
       youtube: { username: "@plakaplumtv3831", url: "https://youtube.com/@plakaplumtv3831", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
     }
   },
   {
     id: 333,
     name: "Left2PassU",
-    rank: "gt3 sim racer",
+    rank: "thE fuEL wHISPERER",
     gtTag: "VIP_Left2PassU",
     psnId: "RKL-333",
     favCar: "Ferrari 458 Italia",
-    favTrack: "Watkins Glen",
-    hardware: "Fanatec DD Pro",
+    favTrack: "Watkins Glen Long Course",
+    hardware: "Fanatec Gran Turismo DD Pro",
     cardImg: Left2PassU,
-    // socials: {
-    //   twitch: { username: "@username", url: "https://twitch.tv/username" },
-    //   youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
-    // }
+    flag: "us",
   },
   {
     id: 14,
     name: "JP Scale",
-    rank: "gt3 sim racer",
+    rank: "tHE technician",
     gtTag: "VIP_JP_scale",
     psnId: "JP_SCALE",
-    favCar: "Ferrari 458 Italia",
-    favTrack: "Watkins Glen",
-    hardware: "Fanatec DD Pro",
+    favCar: "Lamborghini GT3 ‘15",
+    favTrack: "Deep Forest Raceway",
+    hardware: "Logitech G PRO Racing Wheel",
     cardImg: JPScale,
-    // socials: {
-    //   twitch: { username: "@username", url: "https://twitch.tv/username" },
-    //   youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
-    // }
+    flag: "ca",
+    socials: {
+      youtube: { username: "@Jp_scale", url: "https://youtube.com/@Jp_scale", channelId: "UCx9ty0Xxxb-rTRoKN3kVGWQ" },
+    }
   },
   {
-    id: 23,
+    id: 323,
     name: "Rowdy Burns",
-    rank: "gt3 sim racer",
+    rank: "The wildcard",
     gtTag: "VIP_Rowdy Burns",
-    psnId: "JLAY-ZEE",
-    favCar: "Ferrari 458 Italia",
-    favTrack: "Watkins Glen",
-    hardware: "Fanatec DD Pro",
+    psnId: "LAY-ZEE",
+    favCar: "Porsche 911 RSR (911) ‘17",
+    favTrack: "Mount Panorama Circuit",
+    hardware: "Logitech G PRO Racing Wheel",
     cardImg: RowdyBurns,
-    // socials: {
-    //   twitch: { username: "@username", url: "https://twitch.tv/username" },
-    //   youtube: { username: "@username", url: "https://youtube.com/username", channelId: "UC1Bn8HomwnhOmtukIA5Bkzw" },
-    // }
+    flag: "ca",
+    socials: {
+      youtube: { username: "@Jp_scale", url: "https://youtube.com/@Jp_scale", channelId: "UCx9ty0Xxxb-rTRoKN3kVGWQ" },
+    }
   },
 ]

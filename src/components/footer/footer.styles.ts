@@ -59,9 +59,11 @@ export const LinksContainer = styled.div`
   display: flex;
   gap: ${theme.layout.space.xlarge};
   flex-wrap: wrap;
+  justify-content: right;
 
   @media (max-width: 703px) {
     padding: 0px ${theme.layout.space.medLarge};
+    justify-content: center;
   }
 `;
 

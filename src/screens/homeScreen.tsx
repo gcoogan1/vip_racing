@@ -122,11 +122,11 @@ const HomeScreen = () => {
           <DriversList>
             <LeftList>
               <DriverCard flag={drivers[0].flag} id={0} name={drivers[0].name} rank={drivers[0].rank} gtTag={drivers[0].gtTag} psnId={drivers[0].psnId} favCar={drivers[0].favCar} favTrack={drivers[0].favTrack} hardware={drivers[0].hardware} cardImg={drivers[0].cardImg} socials={drivers[0].socials} />
-              <DriverCard flag={drivers[3].flag} id={1} name={drivers[3].name} rank={drivers[3].rank} gtTag={drivers[3].gtTag} psnId={drivers[3].psnId} favCar={drivers[3].favCar} favTrack={drivers[3].favTrack} hardware={drivers[3].hardware} cardImg={drivers[3].cardImg} socials={drivers[3].socials} />
+              <DriverCard flag={drivers[2].flag} id={3} name={drivers[2].name} rank={drivers[2].rank} gtTag={drivers[2].gtTag} psnId={drivers[2].psnId} favCar={drivers[2].favCar} favTrack={drivers[2].favTrack} hardware={drivers[2].hardware} cardImg={drivers[2].cardImg} socials={drivers[2].socials} />
             </LeftList>
             <RightList>
-              <DriverCard flag={drivers[2].flag} id={3} name={drivers[2].name} rank={drivers[2].rank} gtTag={drivers[2].gtTag} psnId={drivers[2].psnId} favCar={drivers[2].favCar} favTrack={drivers[2].favTrack} hardware={drivers[2].hardware} cardImg={drivers[2].cardImg} socials={drivers[2].socials} />
               <DriverCard flag={drivers[1].flag} id={2} name={drivers[1].name} rank={drivers[1].rank} gtTag={drivers[1].gtTag} psnId={drivers[1].psnId} favCar={drivers[1].favCar} favTrack={drivers[1].favTrack} hardware={drivers[1].hardware} cardImg={drivers[1].cardImg} socials={drivers[1].socials} />
+              <DriverCard flag={drivers[3].flag} id={1} name={drivers[3].name} rank={drivers[3].rank} gtTag={drivers[3].gtTag} psnId={drivers[3].psnId} favCar={drivers[3].favCar} favTrack={drivers[3].favTrack} hardware={drivers[3].hardware} cardImg={drivers[3].cardImg} socials={drivers[3].socials} />
             </RightList>
           </DriversList>
               <div style={{ zIndex: 4, position: "absolute", bottom: 0 }}><Button label="View All Drivers" onClick={() => navigate("/drivers")} icon={<ArrowRight width={16} height={16} />} /></div>

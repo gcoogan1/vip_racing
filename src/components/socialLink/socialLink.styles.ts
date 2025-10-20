@@ -9,8 +9,8 @@ export const SocialLinkContainer = styled.a`
   justify-content: center;
   cursor: pointer;
   border-radius: ${theme.border.radius.round};
-  border: ${theme.border.width.regular} solid ${theme.colors.surface.text1};
-  background-color: ${theme.colors.surface.text1};
+  border: ${theme.border.width.regular} solid transparent;
+  background: rgba(255, 255, 255, 0.7);
   color: ${theme.colors.surface.base};
   padding: ${theme.layout.space.small} ${theme.layout.space.medSmall};
   gap: ${theme.layout.space.xsmall};

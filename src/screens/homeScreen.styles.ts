@@ -252,7 +252,7 @@ export const RightList = styled.div`
   align-items: center;
 
   @media (max-width: 703px) {
-    flex-direction: column-reverse;
+    flex-direction: column;
     margin-top: 0px;
     gap: ${theme.layout.space.medium};
   }

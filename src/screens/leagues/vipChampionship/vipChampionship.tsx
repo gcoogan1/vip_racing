@@ -16,9 +16,10 @@ import {
   SectionContainer,
   SectionContent,
   Subtitle,
+  TabContents,
   TabsContainer,
   Title,
-} from "./vipChampionship.styles";
+} from "../league.styles";
 
 const tabs = [
   { id: "overview", label: "Overview" },
@@ -69,7 +70,9 @@ const VipChampionship = () => {
           <Registration />
           <TabsContainer>
             <TabMenu tabs={tabs} activeTab={activeTab} onTabChange={handleTabChange} />
-            {tabContentMap[activeTab as keyof typeof tabContentMap]}
+            <TabContents>
+              {tabContentMap[activeTab as keyof typeof tabContentMap]}
+            </TabContents>
           </TabsContainer>
         </SectionContent>
       </SectionContainer>

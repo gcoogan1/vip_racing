@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme, fontCSS } from "../../../styles/theme";
+import { theme, fontCSS } from "../../styles/theme";
 
 export const HeroTextContainer = styled.div`
   display: flex;
@@ -68,4 +68,11 @@ export const TabsContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+`;
+
+export const TabContents = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: ${theme.layout.space.xlarge} 0px;
+  gap: ${theme.layout.space.xlarge};
 `;

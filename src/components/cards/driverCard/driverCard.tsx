@@ -102,14 +102,14 @@ const DriverCard = ({
               <SocialLink
                 href={socials.youtube.url}
                 label={socials.youtube.username}
-                icon={<Youtube width={20} height={20} />}
+                icon={<Youtube width={16} height={16} />}
               />
             )}
             {socials.twitch && (
               <SocialLink
                 href={socials.twitch.url}
                 label={socials.twitch.username}
-                icon={<Twitch width={20} height={20} />}
+                icon={<Twitch width={16} height={16} />}
               />
             )}
           </DriverSocialContainer>

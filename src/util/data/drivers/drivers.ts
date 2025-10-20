@@ -69,9 +69,9 @@ export const drivers: Driver[] = [
     favTrack: "Deep Forest Raceway",
     hardware: "Fanatec ClubSport DD+",
     cardImg: AlmostPodium,
-    flag: "us",
+    flag: "ca",
     socials: {
-      // twitch: { username: "@AlmostPodium", url: "https://twitch.tv/username" },
+      twitch: { username: "@AlmostPodium", url: "https://www.twitch.tv/AlmostPodium" },
       youtube: { username: "@AlmostPodium", url: "https://youtube.com/@AlmostPodium", channelId: "UCDK8ChKjGqcIFLGyCbF7xSA" },
     }
   },
@@ -128,9 +128,13 @@ export const drivers: Driver[] = [
     psnId: "ThrottleGeist",
     favCar: "BMW M6 GT3 ‘16",
     favTrack: "Nürburgring Nordschleife",
-    hardware: "Fanatec Gran Turismo DD Pro",
+    hardware: "Logitech G PRO Racing Wheel",
     cardImg: ThrottleGeist,
-    flag: "us",
+    flag: "ca",
+    socials: {
+      youtube: { username: "@ThrottleGeistRacing", url: "https://youtube.com/@ThrottleGeistRacing", channelId: "UCdASAeIprWZxK_P1xaO3Ong" },
+      twitch: { username: "@ThrottleGeist", url: "https://www.twitch.tv/throttlegeist" },
+    }
   },
   {
     id: 23,

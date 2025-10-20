@@ -146,7 +146,7 @@ export const theme: Theme = {
     },
     link: {
       regular: {
-        fontSize: "14px",
+        fontSize: "12px",
         fontFamily: "'Rubik', sans-serif",
         fontWeight: 500,
         lineHeight: "20px",

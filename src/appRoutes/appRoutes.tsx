@@ -5,7 +5,7 @@ const HomeScreen = lazy(() => import("../screens/homeScreen"));
 const DriversScreen = lazy(() => import("../screens/drivers/driversScreen"));
 const MediaScreen = lazy(() => import("../screens/media/mediaScreen"));
 const ShopScreen = lazy(() => import("../screens/shop/shopScreen"));
-const OverviewScreen = lazy(() => import("../screens/leagues/vipChampionship/vipChampionship"));
+const VipChampionshipScreen = lazy(() => import("../screens/leagues/vipChampionship/vipChampionship"));
 
 type Route = {
   path: string;
@@ -29,13 +29,13 @@ export const ROUTES: Route[] = [
     path: '/shop',
     element: <ShopScreen />
   },
-  {
-    path: '/leagues',
-    element: <OverviewScreen />
-  },
+  // {
+  //   path: '/leagues',
+  //   element: <VipChampionshipScreen />
+  // },
   {
     path: '/leagues/vip-gt3',
-    element: <ComingSoonScreen />
+    element: <VipChampionshipScreen />
   },
   {
     path: '/leagues/vip-formula1',

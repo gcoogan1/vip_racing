@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HeroSection from "../../../components/heroSection/heroSection";
 import MclarenDrifting from "../../../assets/hero/MclarenDrifting.jpg";
 import TabButton from "../../../components/tabs/tabButton/tabButton";
@@ -20,6 +20,10 @@ import {
   TabsContainer,
   Title,
 } from "../league.styles";
+import { fetchAllLeagueData } from "../../../store/fetchAllLeagueDataThunk";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch } from "../../../store";
+import { selectFullLeagueData } from "../../../store/fullLeagueDataSelector";
 
 const tabs = [
   { id: "overview", label: "Overview" },
@@ -35,16 +39,45 @@ const tabContentMap = {
   schedule: <ScheduleTab />,
   standings: <StandingsTab />,
   rules: <RulesTab />,
-}
+};
 
 const VipChampionship = () => {
   const [activeTab, setActiveTab] = useState<string>("overview");
-
+  
   const handleTabChange = (tabId: string) => {
     if (tabId in tabContentMap) {
       setActiveTab(tabId);
     }
   };
+  
+  const dispatch = useDispatch<AppDispatch>();
+  const leagueId = 1;
+  const fullLeagueData = useSelector(selectFullLeagueData(leagueId));
+  
+  useEffect(() => {
+    // Only fetch once when homepage mounts
+    if (!fullLeagueData) {
+      dispatch(fetchAllLeagueData(leagueId));
+    }
+  }, [dispatch, leagueId, fullLeagueData]);
+
+  if (!fullLeagueData) {
+    return <div>Loading...</div>;
+  }
+
+  const { league, 
+    rounds, 
+    drivers, 
+    splits, 
+    driverStandings } = fullLeagueData;
+
+  console.log("League Data:", {
+    league,
+    rounds,
+    drivers,
+    splits,
+    driverStandings
+  });
 
   return (
     <>
@@ -69,7 +102,11 @@ const VipChampionship = () => {
           </ButtonsContainer>
           <Registration />
           <TabsContainer>
-            <TabMenu tabs={tabs} activeTab={activeTab} onTabChange={handleTabChange} />
+            <TabMenu
+              tabs={tabs}
+              activeTab={activeTab}
+              onTabChange={handleTabChange}
+            />
             <TabContents>
               {tabContentMap[activeTab as keyof typeof tabContentMap]}
             </TabContents>

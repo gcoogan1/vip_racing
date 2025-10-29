@@ -33,22 +33,9 @@ const tabs = [
   { id: "rules", label: "Rules" },
 ];
 
-const tabContentMap = {
-  overview: <OverviewTab />,
-  lineup: <LineupTab />,
-  schedule: <ScheduleTab />,
-  standings: <StandingsTab />,
-  rules: <RulesTab />,
-};
-
 const VipChampionship = () => {
-  const [activeTab, setActiveTab] = useState<string>("overview");
+  const [activeTab, setActiveTab] = useState<string>("schedule");
   
-  const handleTabChange = (tabId: string) => {
-    if (tabId in tabContentMap) {
-      setActiveTab(tabId);
-    }
-  };
   
   const dispatch = useDispatch<AppDispatch>();
   const leagueId = 1;
@@ -60,35 +47,52 @@ const VipChampionship = () => {
       dispatch(fetchAllLeagueData(leagueId));
     }
   }, [dispatch, leagueId, fullLeagueData]);
-
+  
   if (!fullLeagueData) {
     return <div>Loading...</div>;
   }
-
+  
   const { league, 
     rounds, 
     drivers, 
     splits, 
-    driverStandings } = fullLeagueData;
+    teamLineups,
+    driverLineups,
+    raceDays,
+    teams,
+    sessions,
+    sessionSettings
+  } = fullLeagueData;
+    
+    console.log("League Data:", {
+      league,
+      rounds,
+      drivers,
+      splits,
+    });
 
-  console.log("League Data:", {
-    league,
-    rounds,
-    drivers,
-    splits,
-    driverStandings
-  });
+    const tabContentMap = {
+      overview: <OverviewTab />,
+      lineup: <LineupTab raceDays={raceDays} teamLineups={teamLineups} driverLineups={driverLineups} teams={teams} drivers={drivers} splits={splits} sessions={sessions} />,
+      schedule: <ScheduleTab rounds={rounds} raceDays={raceDays} sessions={sessions} sessionSettings={sessionSettings} />,
+      standings: <StandingsTab />,
+      rules: <RulesTab />,
+    };
 
-  return (
-    <>
+    const handleTabChange = (tabId: string) => {
+      if (tabId in tabContentMap) {
+        setActiveTab(tabId);
+      }
+    };
+    
+    return (
+      <>
       <HeroSection backgroundImage={MclarenDrifting}>
         <HeroTextContainer>
           <HeroTextContent>
-            <Title>VIP Championship</Title>
+            <Title>{league.name}</Title>
             <Subtitle>
-              Experience the ultimate racing league for Gran Turismo 7 featuring
-              over 60 drivers partaking in an epic season with 8 thrilling races
-              in GT3 cars.
+              {league.description}
             </Subtitle>
           </HeroTextContent>
         </HeroTextContainer>

@@ -38,6 +38,9 @@ export const selectFullLeagueData = (leagueId: number) =>
       const teamStandings = state.teamStandings.allIds.map((id) => state.teamStandings.byId[id])
         .filter((ts) => sessions.some((s) => s.id === ts.session_id));
 
+      const sessionSettings = state.sessionSettings.allIds.map((id) => state.sessionSettings.byId[id])
+        .filter((ss) => sessions.some((s) => s.id === ss.session_id));
+
       return {
         league,
         rounds,
@@ -50,6 +53,7 @@ export const selectFullLeagueData = (leagueId: number) =>
         driverLineups,
         driverStandings,
         teamStandings,
+        sessionSettings,
       };
     }
   );

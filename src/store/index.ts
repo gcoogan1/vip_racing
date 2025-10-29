@@ -4,6 +4,7 @@ import roundReducer from "./features/rounds/roundsSlice";
 import raceDayReducer from "./features/raceDays/raceDaySlice";
 import splitReducer from "./features/splits/splitSlice";
 import sessionReducer from "./features/sessions/sessionSlice";
+import sessionSettingsReducer from "./features/sessionSettings/sessionSettingsSlice";
 import driversReducer from "./features/drivers/driversSlice";
 import driversLineupsReducer from "./features/lineups/driversLineupSlice";
 import driverStandingsReducer from "./features/standings/driverStandingsSlice";
@@ -18,13 +19,13 @@ export const store = configureStore({
     raceDays: raceDayReducer,
     splits: splitReducer,
     sessions: sessionReducer,
+    sessionSettings: sessionSettingsReducer,
     drivers: driversReducer,
     driverLineups: driversLineupsReducer,
     driverStandings: driverStandingsReducer,
     teams: teamReducer,
     teamLineups: teamLineupsReducer,
     teamStandings: teamStandingsReducer,
-
   },
 });
 

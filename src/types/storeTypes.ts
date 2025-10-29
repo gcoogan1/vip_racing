@@ -38,6 +38,13 @@ export interface Session {
   race_day_id: number;
 }
 
+export interface SessionSettings {
+  id: number;
+  session_id: number;
+  track: string;
+  car: string;
+}
+
 export interface Driver {
   id: number;
   name: string;

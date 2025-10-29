@@ -15,6 +15,7 @@ import { fetchTeamLineupsByLeagueData } from './features/lineups/teamLineupSlice
 import { fetchDriverLineupsBySplitData } from './features/lineups/driversLineupSlice';
 import { fetchDriverStandingsBySessionData } from './features/standings/driverStandingsSlice';
 import { fetchTeamStandingsBySessionData } from './features/standings/teamStandingsSlice';
+import { fetchSessionsBySessionData } from './features/sessionSettings/sessionSettingsSlice';
 
 export const fetchAllLeagueData = createAsyncThunk(
   "league/fetchAllData",
@@ -80,7 +81,7 @@ export const fetchAllLeagueData = createAsyncThunk(
     ]);
 
     // --- 5️⃣ Fetch standings for all sessions concurrently ---
-    const [driverStandings, teamStandings] = await Promise.all([
+    const [driverStandings, teamStandings, sessionSettings] = await Promise.all([
       Promise.all(
         sessions.map((s) =>
           fetchDriverStandingsBySessionData(s.id)
@@ -92,6 +93,10 @@ export const fetchAllLeagueData = createAsyncThunk(
           fetchTeamStandingsBySessionData(s.id)
         )
       ).then((res) => res.flat()),
+
+      Promise.all(
+        sessions.map((s) => fetchSessionsBySessionData(s.id))
+      ).then((res) => res.flat()),
     ]);
 
     // 🏆 FINAL PAYLOAD: The single result returned by this thunk.
@@ -102,6 +107,7 @@ export const fetchAllLeagueData = createAsyncThunk(
       raceDays,
       splits,
       sessions,
+      sessionSettings,
       drivers,
       teams,
       teamLineups,

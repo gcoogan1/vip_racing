@@ -3,7 +3,7 @@ import { fontCSS, theme } from "../../../styles/theme";
 
 export const RaceCardContainer = styled.div`
   display: flex;
-  width: 960px;
+  width: 100%;
   min-width: 512px;
   max-width: 960px;
   gap: ${theme.layout.space.medium};

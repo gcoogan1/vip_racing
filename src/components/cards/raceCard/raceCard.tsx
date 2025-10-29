@@ -13,7 +13,7 @@ import {
 } from "./raceCard.styles";
 
 type RaceCardProps = {
-  raceNumber: number;
+  raceNumber: string;
   raceDate: string;
   raceTrack: string;
   raceImage: string;
@@ -34,7 +34,7 @@ const RaceCard = ({
       <RaceCardContent>
         <RaceCardDetails>
           <RaceInfo>
-            <RaceNumber>Race {raceNumber}</RaceNumber>
+            <RaceNumber>{raceNumber}</RaceNumber>
             <RaceDate>{raceDate}</RaceDate>
           </RaceInfo>
           <RaceTrack>{raceTrack}</RaceTrack>

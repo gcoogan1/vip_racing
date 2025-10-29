@@ -20,6 +20,10 @@ export const ButtonContainer = styled.button<{ $variant?: Variant }>`
     fill: currentColor;
   }
 
+  &:disabled {
+    cursor: not-allowed;
+  }
+
   ${({ $variant }) => {
     switch ($variant) {
       case "primary":

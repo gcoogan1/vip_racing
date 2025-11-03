@@ -34,7 +34,7 @@ const tabs = [
 ];
 
 const VipChampionship = () => {
-  const [activeTab, setActiveTab] = useState<string>("standings");
+  const [activeTab, setActiveTab] = useState<string>("rules");
   
   
   const dispatch = useDispatch<AppDispatch>();

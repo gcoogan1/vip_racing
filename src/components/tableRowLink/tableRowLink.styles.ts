@@ -5,7 +5,7 @@ import { fontCSS, theme } from "../../styles/theme";
 export const LinkContainer = styled(NavLink)`
   text-decoration: none;
   display: flex;
-  width: 656px;
+  /* width: 656px; */
   border-radius: ${theme.border.radius.small};
   padding: ${theme.layout.space.small};
   gap: ${theme.layout.space.medium};
@@ -29,13 +29,13 @@ export const UsernameCell = styled.div`
   ${fontCSS(theme.typography.body.bold)}
 `;
 
-export const TeamCell = styled.div`
+export const CrewCell = styled.div`
   ${fontCSS(theme.typography.body.small)}
   color: ${theme.colors.surface.text3};
   text-align: left;
 `;
 
-export const RacingCarCell = styled.div`
+export const DriverTeamCell = styled.div`
   ${fontCSS(theme.typography.body.bold)}
   min-width: 80px;
   max-width: 140px;

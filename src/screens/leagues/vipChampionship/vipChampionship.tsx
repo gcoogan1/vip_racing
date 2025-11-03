@@ -34,7 +34,7 @@ const tabs = [
 ];
 
 const VipChampionship = () => {
-  const [activeTab, setActiveTab] = useState<string>("schedule");
+  const [activeTab, setActiveTab] = useState<string>("standings");
   
   
   const dispatch = useDispatch<AppDispatch>();
@@ -58,24 +58,19 @@ const VipChampionship = () => {
     splits, 
     teamLineups,
     driverLineups,
+    teamStandings,
+    driverStandings,
     raceDays,
     teams,
     sessions,
     sessionSettings
   } = fullLeagueData;
-    
-    console.log("League Data:", {
-      league,
-      rounds,
-      drivers,
-      splits,
-    });
 
     const tabContentMap = {
       overview: <OverviewTab />,
       lineup: <LineupTab raceDays={raceDays} teamLineups={teamLineups} driverLineups={driverLineups} teams={teams} drivers={drivers} splits={splits} sessions={sessions} />,
       schedule: <ScheduleTab rounds={rounds} raceDays={raceDays} sessions={sessions} sessionSettings={sessionSettings} />,
-      standings: <StandingsTab />,
+      standings: <StandingsTab teams={teams} drivers={drivers} allTeamStandings={teamStandings} allDriverStandings={driverStandings} />,
       rules: <RulesTab />,
     };
 

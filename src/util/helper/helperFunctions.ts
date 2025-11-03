@@ -1,3 +1,5 @@
+import type { DriverStandings, TeamStandings } from "../../types/storeTypes";
+
 export const toCamelCase = (obj: any) => {
   if (!obj || typeof obj !== "object") return obj;
   return Object.fromEntries(
@@ -56,3 +58,30 @@ export const formatRaceDate = (dateString: string) => {
 
   return `${weekday}, ${day} ${month} ${year} · ${hour}:${minute}${dayPeriod?.toUpperCase()} ${timeZone}`;
 }
+
+// Calculate total points for a driver or team from ALL session results for the league
+export const getTotalPoints = (
+  id: number,
+  type: "driver" | "team",
+  allSessionResults: (TeamStandings | DriverStandings)[]
+): number => {
+  let totalPoints = 0;
+
+  allSessionResults.forEach((result) => {
+    const isTeamMatch =
+      type === "team" &&
+      "team_id" in result &&
+      result.team_id === id;
+
+    const isDriverMatch =
+      type === "driver" &&
+      "driver_id" in result &&
+      result.driver_id === id;
+
+    if (isTeamMatch || isDriverMatch) {
+      totalPoints += result.points || 0;
+    }
+  });
+
+  return totalPoints;
+};

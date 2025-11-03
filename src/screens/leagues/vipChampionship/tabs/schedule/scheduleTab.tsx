@@ -34,7 +34,6 @@ const ScheduleTab = ({
     <RoundsList>
       {rounds.map((round) => {
         const roundRaceDays = raceDays.filter((rd) => rd.round_id === round.id);
-        console.log(`Race Days for Round ${round.id}:`, roundRaceDays);
         return (
           <RoundSection key={round.id}>
             <RoundHeader isHidden={roundRaceDays.length === 0}>

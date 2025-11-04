@@ -271,7 +271,7 @@ export const drivers: Driver[] = [
     cardImg: RowdyBurns,
     flag: "ca",
     socials: {
-      youtube: { username: "@Jp_scale", url: "https://youtube.com/@Jp_scale", channelId: "UCx9ty0Xxxb-rTRoKN3kVGWQ" },
+      youtube: { username: "@VIP_rowdyburns", url: "https://youtube.com/@VIP_rowdyburns", channelId: "UC_PAOT7sqREVJYUE1YRr78Q" },
     }
   },
 ]

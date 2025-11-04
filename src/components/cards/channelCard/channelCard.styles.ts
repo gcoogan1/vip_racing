@@ -53,4 +53,9 @@ export const DriverInfo = styled.div`
 export const DriverName = styled.h3`
   ${fontCSS(theme.typography.title.small)};
   color: ${theme.colors.surface.text1};
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
 `;

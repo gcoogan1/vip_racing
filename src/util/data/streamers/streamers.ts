@@ -42,7 +42,7 @@ export const streamers: Streamer[] = [
     name: "Rowdy Burns",
     username: "@VIP_rowdyburns",
     channelId: "UC_PAOT7sqREVJYUE1YRr78Q",
-    id: 14
+    id: 323
   },
   {
     name: "Karl Forman",

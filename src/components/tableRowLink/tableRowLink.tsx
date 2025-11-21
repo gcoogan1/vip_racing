@@ -7,12 +7,21 @@ type TableRowLinkProps = {
   participantCrew?: string,
   driverTeam?: string,
   time?: string,
-  points: number
+  points: number,
+  onClick?: () => void,
 }
 
-const TableRowLink = ({ rank, participant, participantCrew, driverTeam, time, points }: TableRowLinkProps) => {
+const TableRowLink = ({ rank, participant, participantCrew, driverTeam, time, points, onClick }: TableRowLinkProps) => {
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onClick) {
+      onClick();
+    }
+  };
+
   return (
-    <LinkContainer to={`/${participant}`}>
+    <LinkContainer to="" onClick={handleClick}>
       {rank && <Rank rank={rank} />}
       <PlayerCell>
         <UsernameCell>{participant}</UsernameCell>

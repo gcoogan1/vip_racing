@@ -1,4 +1,11 @@
-import type { DriverStandings, TeamStandings } from "../../types/storeTypes";
+import type {
+  DriverStandings,
+  RaceDay,
+  Round,
+  Session,
+  SessionSettings,
+  TeamStandings,
+} from "../../types/storeTypes";
 
 export const toCamelCase = (obj: any) => {
   if (!obj || typeof obj !== "object") return obj;
@@ -23,8 +30,7 @@ export const toLocalTime = (time?: string) => {
   });
 };
 
-
-export const formatRaceDate = (dateString: string) => {
+export const formatRaceDate = (dateString: string, isMini?: boolean) => {
   const date = new Date(dateString);
 
   // Convert to EST
@@ -56,8 +62,13 @@ export const formatRaceDate = (dateString: string) => {
   const dayPeriod = formattedParts.dayPeriod;
   const timeZone = formattedParts.timeZoneName?.replace(/\s/g, "");
 
+  const miniDate = `${day} ${month}`;
+  if (isMini) {
+    return miniDate;
+  }
+
   return `${weekday}, ${day} ${month} ${year} · ${hour}:${minute}${dayPeriod?.toUpperCase()} ${timeZone}`;
-}
+};
 
 // Calculate total points for a driver or team from ALL session results for the league
 export const getTotalPoints = (
@@ -69,14 +80,10 @@ export const getTotalPoints = (
 
   allSessionResults.forEach((result) => {
     const isTeamMatch =
-      type === "team" &&
-      "team_id" in result &&
-      result.team_id === id;
+      type === "team" && "team_id" in result && result.team_id === id;
 
     const isDriverMatch =
-      type === "driver" &&
-      "driver_id" in result &&
-      result.driver_id === id;
+      type === "driver" && "driver_id" in result && result.driver_id === id;
 
     if (isTeamMatch || isDriverMatch) {
       totalPoints += result.points || 0;
@@ -84,4 +91,94 @@ export const getTotalPoints = (
   });
 
   return totalPoints;
+};
+
+// Get all session results for a driver across all sessions
+export const getAllDriverSessionPoints = (
+  id: number,
+  type: "driver",
+  allSessionResults: DriverStandings[]
+): DriverStandings[] => {
+  const driverPoints: DriverStandings[] = [];
+
+  allSessionResults.forEach((result) => {
+    const isDriverMatch =
+      type === "driver" && "driver_id" in result && result.driver_id === id;
+    if (isDriverMatch) {
+      driverPoints.push(result);
+    }
+  });
+
+  return driverPoints;
+};
+
+// Get all session results for a team across all sessions
+export const getAllTeamSessionPoints = (
+  id: number,
+  type: "team",
+  allSessionResults: TeamStandings[]
+): TeamStandings[] => {
+  const teamPoints: TeamStandings[] = [];
+
+  allSessionResults.forEach((result) => {
+    const isTeamMatch =
+      type === "team" && "team_id" in result && result.team_id === id;
+
+    if (isTeamMatch) {
+      teamPoints.push(result);
+    }
+  });
+
+  return teamPoints;
+};
+
+
+export const getParticipantStandingInfo = (
+  totalPoints: DriverStandings[] |TeamStandings[],
+  sessions: Session[],
+  sessionSettings: SessionSettings[],
+  raceDays: RaceDay[],
+  rounds: Round[]
+) => {
+  const sessionResults = totalPoints
+    .map((entry) => {
+      // 1. Find the session
+      const session = sessions.find((s) => s.id === entry.session_id);
+      if (!session) return null;
+
+      // 1a. Find the session settings for the session
+      const sessionSetting = sessionSettings.find(
+        (ss) => ss.session_id === session.id
+      );
+      if (!sessionSetting) return null;
+
+      // 2. Find the race day for the session
+      const raceDay = raceDays.find((r) => r.id === session.race_day_id);
+      if (!raceDay) return null;
+
+      // 3. Find the round for the race day
+      const round = rounds.find((r) => r.id === raceDay.round_id);
+      if (!round) return null;
+
+      return {
+        roundNum: round.round_num,
+        roundName: round.round_name,
+        raceDate: formatRaceDate(raceDay.race_date, true),
+        points: entry.points,
+        raceTrack: sessionSetting.track,
+      };
+    })
+    // Remove nulls
+    .filter(
+      (
+        result
+      ): result is {
+        roundNum: number;
+        roundName: string;
+        raceDate: string;
+        points: number;
+        raceTrack: string;
+      } => result !== null
+    );
+  return sessionResults;
 };

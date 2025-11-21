@@ -3,6 +3,10 @@ import TabSwitch from "../../../../../components/tabs/tabSwitch/tabSwitch";
 import type {
   Driver,
   DriverStandings,
+  RaceDay,
+  Round,
+  Session,
+  SessionSettings,
   Team,
   TeamStandings,
 } from "../../../../../types/storeTypes";
@@ -22,12 +26,19 @@ import {
   TeamCell,
 } from "./standingsTab.styles";
 import TableRowLink from "../../../../../components/tableRowLink/tableRowLink";
+import Modal from "../../../../../components/modal/modal";
+import StandingsModal from "./standingsModal/standingsModal";
 
 type StandingsTabProps = {
   allTeamStandings: TeamStandings[];
   allDriverStandings: DriverStandings[];
   teams: Team[];
   drivers: Driver[];
+  rounds: Round[];
+  raceDays: RaceDay[];
+  sessions: Session[];
+  sessionSettings: SessionSettings[];
+  leagueName: string;
 };
 
 const StandingsTab = ({
@@ -35,8 +46,16 @@ const StandingsTab = ({
   allDriverStandings,
   teams,
   drivers,
+  rounds,
+  raceDays,
+  sessions,
+  sessionSettings,
+  leagueName
 }: StandingsTabProps) => {
   const [isTeam, setIsTeam] = useState(true);
+  const [selectedModal, setSelectedModal] = useState<Driver | Team | null>(
+    null
+  );
 
   const teamTotals = teams.map((team) => {
     const totalPoints = getTotalPoints(team.id, "team", allTeamStandings);
@@ -97,6 +116,15 @@ const StandingsTab = ({
                     rank={index + 1}
                     participant={teamTotal.teamName}
                     points={teamTotal.totalPoints}
+                    onClick={() => {
+                      const selectedTeam = teams.find(
+                        (team) => team.id === teamTotal.teamId
+                      );
+                      if (selectedTeam) {
+                        console.log("selectedTeam: ", selectedTeam);
+                        setSelectedModal(selectedTeam);
+                      }
+                    }}
                   />
                   <RowDivider />
                 </div>
@@ -135,12 +163,34 @@ const StandingsTab = ({
                     participantCrew={driverTotal.driverCrew}
                     driverTeam={driverTotal.driverTeam}
                     points={driverTotal.totalPoints}
+                    onClick={() => {
+                      const selectedDriver = drivers.find(
+                        (driver) => driver.id === driverTotal.driverId
+                      );
+                      if (selectedDriver) {
+                        setSelectedModal(selectedDriver);
+                      }
+                    }}
                   />
                   <RowDivider />
                 </div>
               ))}
           </StandingsTableContent>
         </StandingsTableContainer>
+      )}
+      {selectedModal && (
+        <Modal onClose={() => setSelectedModal(null)}>
+          <StandingsModal
+            leagueName={leagueName}
+            selectedModal={selectedModal}
+            rounds={rounds}
+            raceDays={raceDays}
+            sessions={sessions}
+            sessionSettings={sessionSettings}
+            allTeamStandings={allTeamStandings}
+            allDriverStandings={allDriverStandings}
+          />
+        </Modal>
       )}
     </>
   );

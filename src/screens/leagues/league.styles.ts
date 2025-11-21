@@ -75,4 +75,5 @@ export const TabContents = styled.div`
   flex-direction: column;
   padding: ${theme.layout.space.xlarge} 0px;
   gap: ${theme.layout.space.xlarge};
+  position: relative;
 `;

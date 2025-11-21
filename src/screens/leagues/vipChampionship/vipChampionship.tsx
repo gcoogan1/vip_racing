@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type SetStateAction } from "react";
 import HeroSection from "../../../components/heroSection/heroSection";
 import MclarenDrifting from "../../../assets/hero/MclarenDrifting.jpg";
 import TabButton from "../../../components/tabs/tabButton/tabButton";
@@ -24,6 +24,7 @@ import { fetchAllLeagueData } from "../../../store/fetchAllLeagueDataThunk";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch } from "../../../store";
 import { selectFullLeagueData } from "../../../store/fullLeagueDataSelector";
+import LoadingScreen from "../../loading/loadingScreen";
 
 const tabs = [
   { id: "overview", label: "Overview" },
@@ -34,28 +35,29 @@ const tabs = [
 ];
 
 const VipChampionship = () => {
-  const [activeTab, setActiveTab] = useState<string>("rules");
-  
-  
+  const [activeTab, setActiveTab] = useState<string>("standings");
+
+
   const dispatch = useDispatch<AppDispatch>();
   const leagueId = 1;
   const fullLeagueData = useSelector(selectFullLeagueData(leagueId));
-  
+
   useEffect(() => {
     // Only fetch once when homepage mounts
     if (!fullLeagueData) {
       dispatch(fetchAllLeagueData(leagueId));
     }
   }, [dispatch, leagueId, fullLeagueData]);
-  
+
   if (!fullLeagueData) {
-    return <div>Loading...</div>;
+    return <LoadingScreen />;
   }
-  
-  const { league, 
-    rounds, 
-    drivers, 
-    splits, 
+
+  const {
+    league,
+    rounds,
+    drivers,
+    splits,
     teamLineups,
     driverLineups,
     teamStandings,
@@ -63,32 +65,59 @@ const VipChampionship = () => {
     raceDays,
     teams,
     sessions,
-    sessionSettings
+    sessionSettings,
   } = fullLeagueData;
 
-    const tabContentMap = {
-      overview: <OverviewTab />,
-      lineup: <LineupTab raceDays={raceDays} teamLineups={teamLineups} driverLineups={driverLineups} teams={teams} drivers={drivers} splits={splits} sessions={sessions} />,
-      schedule: <ScheduleTab rounds={rounds} raceDays={raceDays} sessions={sessions} sessionSettings={sessionSettings} />,
-      standings: <StandingsTab teams={teams} drivers={drivers} allTeamStandings={teamStandings} allDriverStandings={driverStandings} />,
-      rules: <RulesTab />,
-    };
+  const tabContentMap = {
+    overview: <OverviewTab />,
+    lineup: (
+      <LineupTab
+        raceDays={raceDays}
+        teamLineups={teamLineups}
+        driverLineups={driverLineups}
+        teams={teams}
+        drivers={drivers}
+        splits={splits}
+        sessions={sessions}
+      />
+    ),
+    schedule: (
+      <ScheduleTab
+        rounds={rounds}
+        raceDays={raceDays}
+        sessions={sessions}
+        sessionSettings={sessionSettings}
+      />
+    ),
+    standings: (
+      <StandingsTab
+        teams={teams}
+        drivers={drivers}
+        allTeamStandings={teamStandings}
+        allDriverStandings={driverStandings}
+        rounds={rounds}
+        raceDays={raceDays}
+        sessions={sessions}
+        sessionSettings={sessionSettings}
+        leagueName={league.name || ""}
+      />
+    ),
+    rules: <RulesTab />,
+  };
 
-    const handleTabChange = (tabId: string) => {
-      if (tabId in tabContentMap) {
-        setActiveTab(tabId);
-      }
-    };
-    
-    return (
-      <>
+  const handleTabChange = (tabId: string) => {
+    if (tabId in tabContentMap) {
+      setActiveTab(tabId);
+    }
+  };
+
+  return (
+    <>
       <HeroSection backgroundImage={MclarenDrifting}>
         <HeroTextContainer>
           <HeroTextContent>
             <Title>{league.name}</Title>
-            <Subtitle>
-              {league.description}
-            </Subtitle>
+            <Subtitle>{league.description}</Subtitle>
           </HeroTextContent>
         </HeroTextContainer>
       </HeroSection>

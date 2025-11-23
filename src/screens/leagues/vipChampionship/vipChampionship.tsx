@@ -35,7 +35,7 @@ const tabs = [
 ];
 
 const VipChampionship = () => {
-  const [activeTab, setActiveTab] = useState<string>("standings");
+  const [activeTab, setActiveTab] = useState<string>("schedule");
 
 
   const dispatch = useDispatch<AppDispatch>();
@@ -87,6 +87,9 @@ const VipChampionship = () => {
         raceDays={raceDays}
         sessions={sessions}
         sessionSettings={sessionSettings}
+        drivers={drivers}
+        teams={teams}
+        allDriverStandings={driverStandings}
       />
     ),
     standings: (

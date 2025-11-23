@@ -1,9 +1,11 @@
 import type {
+  Driver,
   DriverStandings,
   RaceDay,
   Round,
   Session,
   SessionSettings,
+  Team,
   TeamStandings,
 } from "../../types/storeTypes";
 
@@ -109,6 +111,9 @@ export const getAllDriverSessionPoints = (
     }
   });
 
+  // Sort results by points descending
+  driverPoints.sort((a, b) => (b.points || 0) - (a.points || 0));
+
   return driverPoints;
 };
 
@@ -128,6 +133,9 @@ export const getAllTeamSessionPoints = (
       teamPoints.push(result);
     }
   });
+
+  // Sort results by points descending
+  teamPoints.sort((a, b) => (b.points || 0) - (a.points || 0));
 
   return teamPoints;
 };
@@ -182,3 +190,34 @@ export const getParticipantStandingInfo = (
     );
   return sessionResults;
 };
+
+
+export const getDriverInfo = (driverId: number, drivers: Driver[], team: Team[]) => {
+  const driver = drivers.find(d => d.id === driverId);
+  const driverTeam = driver ? team.find(t => t.id === driver.team_id) : null;
+
+  return {
+    ...driver,
+    teamName: driverTeam ? driverTeam.team_name : undefined
+  };
+}
+
+// Get detailed race results for a session with driver info (for ScheduleTab race results modal)
+export const getRaceResults = (sessionId: number, driverStandings: DriverStandings[], drivers: Driver[], teams: Team[]) => {
+  const results = driverStandings.filter(d => d.session_id === sessionId);
+  const sortedResults = results.sort((a, b) => (b.points || 0) - (a.points || 0));
+
+  const detailedResults = sortedResults.map(result => {
+    const driverInfo = getDriverInfo(result.driver_id, drivers, teams);
+    return {
+      time: result.time,
+      points: result.points,
+      driverName: driverInfo.name,
+      teamName: driverInfo.teamName,
+      driverCrew: driverInfo?.crew,
+    };
+  }
+)
+
+  return detailedResults;
+}

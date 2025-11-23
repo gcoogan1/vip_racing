@@ -7,7 +7,7 @@ export const ModalOverlay = styled.div`
   background: #160e0b;
   z-index: 50;
   height: 100%;
-  border-radius: ${theme.border.radius.large};
+  border-radius: ${theme.border.radius.medium};
   margin-top: ${theme.layout.space.xlarge};
 `;
 

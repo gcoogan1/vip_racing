@@ -123,7 +123,7 @@ export const drivers: Driver[] = [
   {
     id: 316,
     name: "ThrottleGeist",
-    rank: "gt3 sim racer",
+    rank: "The nerd",
     gtTag: "ThrottleGeist",
     psnId: "ThrottleGeist",
     favCar: "BMW M6 GT3 ‘16",

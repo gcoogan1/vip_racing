@@ -1,16 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
-import leagueReducer from "./features/leagues/leaguesSlice";
-import roundReducer from "./features/rounds/roundsSlice";
-import raceDayReducer from "./features/raceDays/raceDaySlice";
-import splitReducer from "./features/splits/splitSlice";
-import sessionReducer from "./features/sessions/sessionSlice";
-import sessionSettingsReducer from "./features/sessionSettings/sessionSettingsSlice";
-import driversReducer from "./features/drivers/driversSlice";
-import driversLineupsReducer from "./features/lineups/driversLineupSlice";
-import driverStandingsReducer from "./features/standings/driverStandingsSlice";
-import teamReducer from "./features/teams/teamSlice";
-import teamLineupsReducer from "./features/lineups/teamLineupSlice";
-import teamStandingsReducer from "./features/standings/teamStandingsSlice";
+import leagueReducer from "./slices/leagues/leaguesSlice";
+import roundReducer from "./slices/rounds/roundsSlice";
+import raceDayReducer from "./slices/raceDays/raceDaySlice";
+import splitReducer from "./slices/splits/splitSlice";
+import sessionReducer from "./slices/sessions/sessionSlice";
+import sessionSettingsReducer from "./slices/sessionSettings/sessionSettingsSlice";
+import sessionDetailsReducer from "./slices/sessionDetails/sessionDetailsSlice";
+import driversReducer from "./slices/drivers/driversSlice";
+import driversLineupsReducer from "./slices/lineups/driversLineupSlice";
+import driverStandingsReducer from "./slices/standings/driverStandingsSlice";
+import teamReducer from "./slices/teams/teamSlice";
+import teamLineupsReducer from "./slices/lineups/teamLineupSlice";
+import teamStandingsReducer from "./slices/standings/teamStandingsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ export const store = configureStore({
     splits: splitReducer,
     sessions: sessionReducer,
     sessionSettings: sessionSettingsReducer,
+    sessionDetails: sessionDetailsReducer,
     drivers: driversReducer,
     driverLineups: driversLineupsReducer,
     driverStandings: driverStandingsReducer,

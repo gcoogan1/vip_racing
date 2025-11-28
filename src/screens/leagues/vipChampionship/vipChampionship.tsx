@@ -1,4 +1,4 @@
-import { useEffect, useState, type SetStateAction } from "react";
+import { useEffect, useState } from "react";
 import HeroSection from "../../../components/heroSection/heroSection";
 import MclarenDrifting from "../../../assets/hero/MclarenDrifting.jpg";
 import TabButton from "../../../components/tabs/tabButton/tabButton";
@@ -23,7 +23,7 @@ import {
 import { fetchAllLeagueData } from "../../../store/fetchAllLeagueDataThunk";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch } from "../../../store";
-import { selectFullLeagueData } from "../../../store/fullLeagueDataSelector";
+import { selectFullLeagueData } from "../../../store/selectors/fullLeagueDataSelector";
 import LoadingScreen from "../../loading/loadingScreen";
 
 const tabs = [
@@ -52,56 +52,25 @@ const VipChampionship = () => {
   if (!fullLeagueData) {
     return <LoadingScreen />;
   }
-
+  
   const {
     league,
-    rounds,
     drivers,
-    splits,
-    teamLineups,
-    driverLineups,
-    teamStandings,
-    driverStandings,
-    raceDays,
     teams,
-    sessions,
-    sessionSettings,
   } = fullLeagueData;
 
   const tabContentMap = {
     overview: <OverviewTab />,
     lineup: (
-      <LineupTab
-        raceDays={raceDays}
-        teamLineups={teamLineups}
-        driverLineups={driverLineups}
-        teams={teams}
-        drivers={drivers}
-        splits={splits}
-        sessions={sessions}
-      />
+      <LineupTab />
     ),
     schedule: (
-      <ScheduleTab
-        rounds={rounds}
-        raceDays={raceDays}
-        sessions={sessions}
-        sessionSettings={sessionSettings}
-        drivers={drivers}
-        teams={teams}
-        allDriverStandings={driverStandings}
-      />
+      <ScheduleTab />
     ),
     standings: (
       <StandingsTab
         teams={teams}
         drivers={drivers}
-        allTeamStandings={teamStandings}
-        allDriverStandings={driverStandings}
-        rounds={rounds}
-        raceDays={raceDays}
-        sessions={sessions}
-        sessionSettings={sessionSettings}
         leagueName={league.name || ""}
       />
     ),

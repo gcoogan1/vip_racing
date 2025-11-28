@@ -1,14 +1,11 @@
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { formatRaceDate } from "../../../../../util/helper/helperFunctions";
+import { selectRaceDaysGroupedByRound } from "../../../../../store/selectors/raceDaySelectors";
+import Modal from "../../../../../components/modal/modal";
+import RaceResultModal from "./modals/raceResultModal/raceResultModal";
 import RaceCard from "../../../../../components/cards/raceCard/raceCard";
 import NissanGT3 from "../../../../../assets/car-teams/Nissan-GT-R-NISMO-GT3-18.svg";
-import type {
-  RaceDay,
-  Session,
-  SessionSettings,
-  Round,
-  DriverStandings,
-  Driver,
-  Team,
-} from "../../../../../types/storeTypes";
 import {
   Races,
   RoundSection,
@@ -17,110 +14,54 @@ import {
   RoundTitle,
   RacesContainer,
 } from "./scheduleTab.styles";
-import {
-  formatRaceDate,
-  getRaceResults,
-} from "../../../../../util/helper/helperFunctions";
-import { useState } from "react";
-import Modal from "../../../../../components/modal/modal";
-
-
-type ScheduleTabProps = {
-  rounds: Round[];
-  raceDays: RaceDay[];
-  sessions: Session[];
-  drivers: Driver[];
-  teams: Team[];
-  allDriverStandings: DriverStandings[];
-  sessionSettings: SessionSettings[];
-};
-
-type RaceResultItem = {
-  points: number;
-  time: string;
-  driverName: string;
-  driverTeamName: string;
-  driverTeamLogo: string;
-  driverCrew?: string;
-};
 
 type RaceResultsModal = {
-  raceResults: RaceResultItem[];
+  sessionId: number;
   onClose: () => void;
-  raceNumber: string;
-  raceDate: string;
-  raceTrack: string;
 };
 
-const ScheduleTab = ({
-  rounds,
-  raceDays,
-  sessions,
-  drivers,
-  teams,
-  allDriverStandings,
-  sessionSettings,
-}: ScheduleTabProps) => {
+const ScheduleTab = () => {
   const [showRaceResults, setShowRaceResults] = useState(false);
   const [showRaceSettings, setShowRaceSettings] = useState(false);
-  const [selectedRaceResults, setSelectedRaceResults] = useState<RaceResultsModal>({} as RaceResultsModal);
+  const [selectedRaceResults, setSelectedRaceResults] =
+    useState<RaceResultsModal | null>(null);
 
-
+  const raceDaysByRound = useSelector(selectRaceDaysGroupedByRound);
 
   return (
     <RoundsList>
-      {rounds.map((round) => {
-        const roundRaceDays = raceDays.filter((rd) => rd.round_id === round.id);
+      {raceDaysByRound.map((raceDayGroup) => {
         return (
-          <RoundSection key={round.id}>
-            <RoundHeader isHidden={roundRaceDays.length === 0}>
-              <RoundTitle>{round.round_name}</RoundTitle>
+          <RoundSection key={raceDayGroup.id}>
+            <RoundHeader isHidden={raceDayGroup.raceDays.length === 0}>
+              <RoundTitle>{raceDayGroup.round_name}</RoundTitle>
             </RoundHeader>
-            {roundRaceDays.length > 0 && (
+            {raceDayGroup.raceDays.length > 0 && (
               <RacesContainer>
-                {roundRaceDays.map((raceDay) => {
-                  const raceDaySessions = sessions.filter(
-                    (s) => s.race_day_id === raceDay.id
-                  );
-                  const raceDaySessionSettings = sessionSettings.filter((ss) =>
-                    raceDaySessions.some((s) => s.id === ss.session_id)
-                  );
-
+                {raceDayGroup.raceDays.map((raceDay) => {
                   return (
                     <Races key={raceDay.id}>
-                      {raceDaySessions.map((session) => {
-                        const sessionSetting = raceDaySessionSettings.find(
+                      {raceDay.sessions.map((session) => {
+                        const sessionSetting = raceDay.sessionSettings.find(
                           (ss) => ss.session_id === session.id
                         );
 
-                        const raceResults = getRaceResults(
-                          session.id,
-                          allDriverStandings,
-                          drivers,
-                          teams
-                        );
-                        
+                        const startTime =
+                          session.start_time &&
+                          formatRaceDate(session.start_time);
 
-                        console.log("raceResults", raceResults);
-                        console.log("race day", raceDay);
-                        console.log("sessionSetting", sessionSetting);
-                        console.log("session", session);
                         return (
                           <RaceCard
                             key={session.id}
                             raceNumber={raceDay.race_day_name}
-                            raceDate={formatRaceDate(raceDay.race_date)}
+                            raceDate={startTime || "TBD"}
                             raceTrack={sessionSetting?.track || "TBD"}
                             raceImage={NissanGT3}
                             settingsOnClick={() => setShowRaceSettings(true)}
                             resultsOnClick={() => {
                               setSelectedRaceResults({
-                                ...raceResults,
-                                raceNumber: raceDay.race_day_name,
-                                raceDate: formatRaceDate(raceDay.race_date),
-                                raceTrack: sessionSetting?.track || "TBD",
-                                raceResults: [],
-                                onClose: () => setShowRaceResults(false)
+                                sessionId: session.id,
+                                onClose: () => setShowRaceResults(false),
                               });
                               setShowRaceResults(true);
                             }}
@@ -137,7 +78,10 @@ const ScheduleTab = ({
       })}
       {showRaceResults && (
         <Modal onClose={() => setShowRaceResults(false)}>
-          <h1>{selectedRaceResults?.raceNumber}</h1>
+          <RaceResultModal
+            sessionId={selectedRaceResults?.sessionId || 0}
+            onClose={() => setShowRaceResults(false)}
+          />
         </Modal>
       )}
       {showRaceSettings && (

@@ -1,14 +1,9 @@
-import type {
-  Driver,
-  DriverStandings,
-  RaceDay,
-  Round,
-  Session,
-  SessionSettings,
-  Team,
-  TeamStandings,
-} from "../../types/storeTypes";
+// Utility functions for various helper tasks
 
+import type { Team, DriverStandings } from "../../types/storeTypes";
+import type { Driver } from "../data/drivers/drivers";
+
+// Convert object keys from snake_case to camelCase
 export const toCamelCase = (obj: any) => {
   if (!obj || typeof obj !== "object") return obj;
   return Object.fromEntries(
@@ -22,6 +17,7 @@ export const toCamelCase = (obj: any) => {
   );
 };
 
+// Convert a time string to local time format
 export const toLocalTime = (time?: string) => {
   if (!time) return "";
   return new Date(time).toLocaleString("en-US", {
@@ -32,6 +28,7 @@ export const toLocalTime = (time?: string) => {
   });
 };
 
+// Format a race date string with optional mini format
 export const formatRaceDate = (dateString: string, isMini?: boolean) => {
   const date = new Date(dateString);
 
@@ -73,151 +70,151 @@ export const formatRaceDate = (dateString: string, isMini?: boolean) => {
 };
 
 // Calculate total points for a driver or team from ALL session results for the league
-export const getTotalPoints = (
-  id: number,
-  type: "driver" | "team",
-  allSessionResults: (TeamStandings | DriverStandings)[]
-): number => {
-  let totalPoints = 0;
+// export const getTotalPoints = (
+//   id: number,
+//   type: "driver" | "team",
+//   allSessionResults: (TeamStandings | DriverStandings)[]
+// ): number => {
+//   let totalPoints = 0;
 
-  allSessionResults.forEach((result) => {
-    const isTeamMatch =
-      type === "team" && "team_id" in result && result.team_id === id;
+//   allSessionResults.forEach((result) => {
+//     const isTeamMatch =
+//       type === "team" && "team_id" in result && result.team_id === id;
 
-    const isDriverMatch =
-      type === "driver" && "driver_id" in result && result.driver_id === id;
+//     const isDriverMatch =
+//       type === "driver" && "driver_id" in result && result.driver_id === id;
 
-    if (isTeamMatch || isDriverMatch) {
-      totalPoints += result.points || 0;
-    }
-  });
+//     if (isTeamMatch || isDriverMatch) {
+//       totalPoints += result.points || 0;
+//     }
+//   });
 
-  return totalPoints;
-};
+//   return totalPoints;
+// };
 
-// Get all session results for a driver across all sessions
-export const getAllDriverSessionPoints = (
-  id: number,
-  type: "driver",
-  allSessionResults: DriverStandings[]
-): DriverStandings[] => {
-  const driverPoints: DriverStandings[] = [];
+// // // Get all session results for a driver across all sessions
+// export const getAllDriverSessionPoints = (
+//   id: number,
+//   type: "driver",
+//   allSessionResults: DriverStandings[]
+// ): DriverStandings[] => {
+//   const driverPoints: DriverStandings[] = [];
 
-  allSessionResults.forEach((result) => {
-    const isDriverMatch =
-      type === "driver" && "driver_id" in result && result.driver_id === id;
-    if (isDriverMatch) {
-      driverPoints.push(result);
-    }
-  });
+//   allSessionResults.forEach((result) => {
+//     const isDriverMatch =
+//       type === "driver" && "driver_id" in result && result.driver_id === id;
+//     if (isDriverMatch) {
+//       driverPoints.push(result);
+//     }
+//   });
 
-  // Sort results by points descending
-  driverPoints.sort((a, b) => (b.points || 0) - (a.points || 0));
+//   // Sort results by points descending
+//   driverPoints.sort((a, b) => (b.points || 0) - (a.points || 0));
 
-  return driverPoints;
-};
+//   return driverPoints;
+// };
 
-// Get all session results for a team across all sessions
-export const getAllTeamSessionPoints = (
-  id: number,
-  type: "team",
-  allSessionResults: TeamStandings[]
-): TeamStandings[] => {
-  const teamPoints: TeamStandings[] = [];
+// // Get all session results for a team across all sessions
+// export const getAllTeamSessionPoints = (
+//   id: number,
+//   type: "team",
+//   allSessionResults: TeamStandings[]
+// ): TeamStandings[] => {
+//   const teamPoints: TeamStandings[] = [];
 
-  allSessionResults.forEach((result) => {
-    const isTeamMatch =
-      type === "team" && "team_id" in result && result.team_id === id;
+//   allSessionResults.forEach((result) => {
+//     const isTeamMatch =
+//       type === "team" && "team_id" in result && result.team_id === id;
 
-    if (isTeamMatch) {
-      teamPoints.push(result);
-    }
-  });
+//     if (isTeamMatch) {
+//       teamPoints.push(result);
+//     }
+//   });
 
-  // Sort results by points descending
-  teamPoints.sort((a, b) => (b.points || 0) - (a.points || 0));
+//   // Sort results by points descending
+//   teamPoints.sort((a, b) => (b.points || 0) - (a.points || 0));
 
-  return teamPoints;
-};
-
-
-export const getParticipantStandingInfo = (
-  totalPoints: DriverStandings[] |TeamStandings[],
-  sessions: Session[],
-  sessionSettings: SessionSettings[],
-  raceDays: RaceDay[],
-  rounds: Round[]
-) => {
-  const sessionResults = totalPoints
-    .map((entry) => {
-      // 1. Find the session
-      const session = sessions.find((s) => s.id === entry.session_id);
-      if (!session) return null;
-
-      // 1a. Find the session settings for the session
-      const sessionSetting = sessionSettings.find(
-        (ss) => ss.session_id === session.id
-      );
-      if (!sessionSetting) return null;
-
-      // 2. Find the race day for the session
-      const raceDay = raceDays.find((r) => r.id === session.race_day_id);
-      if (!raceDay) return null;
-
-      // 3. Find the round for the race day
-      const round = rounds.find((r) => r.id === raceDay.round_id);
-      if (!round) return null;
-
-      return {
-        roundNum: round.round_num,
-        roundName: round.round_name,
-        raceDate: formatRaceDate(raceDay.race_date, true),
-        points: entry.points,
-        raceTrack: sessionSetting.track,
-      };
-    })
-    // Remove nulls
-    .filter(
-      (
-        result
-      ): result is {
-        roundNum: number;
-        roundName: string;
-        raceDate: string;
-        points: number;
-        raceTrack: string;
-      } => result !== null
-    );
-  return sessionResults;
-};
+//   return teamPoints;
+// };
 
 
-export const getDriverInfo = (driverId: number, drivers: Driver[], team: Team[]) => {
-  const driver = drivers.find(d => d.id === driverId);
-  const driverTeam = driver ? team.find(t => t.id === driver.team_id) : null;
+// export const getParticipantStandingInfo = (
+//   totalPoints: DriverStandings[] | TeamStandings[],
+//   sessions: Session[],
+//   sessionSettings: SessionSettings[],
+//   raceDays: RaceDay[],
+//   rounds: Round[]
+// ) => {
+//   const sessionResults = totalPoints
+//     .map((entry) => {
+//       // 1. Find the session
+//       const session = sessions.find((s) => s.id === entry.session_id);
+//       if (!session) return null;
 
-  return {
-    ...driver,
-    teamName: driverTeam ? driverTeam.team_name : undefined
-  };
-}
+//       // 1a. Find the session settings for the session
+//       const sessionSetting = sessionSettings.find(
+//         (ss) => ss.session_id === session.id
+//       );
+//       if (!sessionSetting) return null;
 
-// Get detailed race results for a session with driver info (for ScheduleTab race results modal)
-export const getRaceResults = (sessionId: number, driverStandings: DriverStandings[], drivers: Driver[], teams: Team[]) => {
-  const results = driverStandings.filter(d => d.session_id === sessionId);
-  const sortedResults = results.sort((a, b) => (b.points || 0) - (a.points || 0));
+//       // 2. Find the race day for the session
+//       const raceDay = raceDays.find((r) => r.id === session.race_day_id);
+//       if (!raceDay) return null;
 
-  const detailedResults = sortedResults.map(result => {
-    const driverInfo = getDriverInfo(result.driver_id, drivers, teams);
-    return {
-      time: result.time,
-      points: result.points,
-      driverName: driverInfo.name,
-      teamName: driverInfo.teamName,
-      driverCrew: driverInfo?.crew,
-    };
-  }
-)
+//       // 3. Find the round for the race day
+//       const round = rounds.find((r) => r.id === raceDay.round_id);
+//       if (!round) return null;
 
-  return detailedResults;
-}
+//       return {
+//         roundNum: round.round_num,
+//         roundName: round.round_name,
+//         raceDate: formatRaceDate(raceDay.race_date, true),
+//         points: entry.points,
+//         raceTrack: sessionSetting.track,
+//       };
+//     })
+//     // Remove nulls
+//     .filter(
+//       (
+//         result
+//       ): result is {
+//         roundNum: number;
+//         roundName: string;
+//         raceDate: string;
+//         points: number;
+//         raceTrack: string;
+//       } => result !== null
+//     );
+//   return sessionResults;
+// };
+
+
+// export const getDriverInfo = (driverId: number, drivers: Driver[], team: Team[]) => {
+//   const driver = drivers.find(d => d.id === driverId);
+//   const driverTeam = driver ? team.find(t => t.id === driver.team_id) : null;
+
+//   return {
+//     ...driver,
+//     teamName: driverTeam ? driverTeam.team_name : undefined
+//   };
+// }
+
+// // Get detailed race results for a session with driver info (for ScheduleTab race results modal)
+// export const getRaceResults = (sessionId: number, driverStandings: DriverStandings[], drivers: Driver[], teams: Team[]) => {
+//   const results = driverStandings.filter(d => d.session_id === sessionId);
+//   const sortedResults = results.sort((a, b) => (b.points || 0) - (a.points || 0));
+
+//   const detailedResults = sortedResults.map(result => {
+//     const driverInfo = getDriverInfo(result.driver_id, drivers, teams);
+//     return {
+//       time: result.time,
+//       points: result.points,
+//       driverName: driverInfo.name,
+//       teamName: driverInfo.teamName,
+//       driverCrew: driverInfo?.crew,
+//     };
+//   }
+// )
+
+//   return detailedResults;
+// }

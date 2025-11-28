@@ -1,14 +1,12 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { toLocalTime } from "../../../../../util/helper/helperFunctions";
+import { selectRaceDayLineupDetails } from "../../../../../store/selectors/combinedSelectors";
+import { selectDetailedTeamLineups } from "../../../../../store/selectors/teamSelectors";
+import TeamCard from "../../../../../components/cards/teamCard/teamCard";
+import ParticipantCard from "../../../../../components/cards/participantCard/participantCard";
 import TabSwitch from "../../../../../components/tabs/tabSwitch/tabSwitch";
-import type {
-  DriverLineup,
-  Team,
-  TeamLineup,
-  Driver,
-  RaceDay,
-  Split,
-  Session,
-} from "../../../../../types/storeTypes";
+import ShowHideButton from "../../../../../components/showHideButton/showHideButton";
 import {
   CardList,
   Heat,
@@ -24,30 +22,8 @@ import {
   TeamCards,
   TitleContainer,
 } from "./lineupTab.styles";
-import TeamCard from "../../../../../components/cards/teamCard/teamCard";
-import ParticipantCard from "../../../../../components/cards/participantCard/participantCard";
-import { toLocalTime } from "../../../../../util/helper/helperFunctions";
-import ShowHideButton from "../../../../../components/showHideButton/showHideButton";
 
-type LineupTabProps = {
-  teamLineups: TeamLineup[];
-  teams: Team[];
-  drivers: Driver[];
-  driverLineups: DriverLineup[];
-  raceDays: RaceDay[];
-  splits: Split[];
-  sessions: Session[];
-};
-
-const LineupTab = ({
-  teamLineups,
-  teams,
-  driverLineups,
-  drivers,
-  raceDays,
-  splits,
-  sessions,
-}: LineupTabProps) => {
+const LineupTab = () => {
   const [isTeam, setIsTeam] = useState(false);
   const [visibleSplits, setVisibleSplits] = useState<Record<number, boolean>>(
     {}
@@ -58,20 +34,8 @@ const LineupTab = ({
     { label: "Drivers", active: !isTeam, onClick: () => setIsTeam(false) },
   ];
 
-  // Match drivers to their teams
-  const teamDriversMap = useMemo(() => {
-    // Create an object of team_id to drivers.
-    // Ex. { 1: [driver1, driver2], 2: [driver3] } -> KEY: team_id, VALUE: drivers array
-    const map: Record<number, Driver[]> = {};
-    for (const driver of drivers) {
-      // If this team doesn't exist yet in the map, create an empty array for it
-      if (!map[driver.team_id]) map[driver.team_id] = [];
-      // Add the driver to their team's array
-      map[driver.team_id].push(driver);
-    }
-    // Return the completed map
-    return map;
-  }, [drivers]);
+  const raceDayLineups = useSelector(selectRaceDayLineupDetails);
+  const teamLineupDetails = useSelector(selectDetailedTeamLineups);
 
   const toggleSplitVisibility = (splitId: number) => {
     setVisibleSplits((prev) => ({
@@ -88,21 +52,15 @@ const LineupTab = ({
 
       {isTeam ? (
         <TeamCards>
-          {teamLineups.length ? (
-            teamLineups.map((tl) => {
-              const team = teams.find((t) => t.id === tl.team_id);
-              if (!team) return null;
-
-              // Get drivers for this team
-              const teamDrivers = teamDriversMap[team.id] || [];
-
+          {teamLineupDetails.length ? (
+            teamLineupDetails.map((tl) => {
               return (
                 <TeamCard
                   key={tl.id}
-                  teamName={team.team_name}
-                  teamNumber={tl.lineup_num}
-                  teamImage={team.team_logo}
-                  teamDrivers={teamDrivers.map((d) => d.name)}
+                  teamName={tl.teamName}
+                  teamNumber={tl.teamNumber}
+                  teamImage={tl.teamImage}
+                  teamDrivers={tl.drivers}
                   isDisabled
                 />
               );
@@ -113,13 +71,10 @@ const LineupTab = ({
         </TeamCards>
       ) : (
         <Heats>
-          {raceDays.map((raceDay) => {
+          {raceDayLineups.map((raceDay) => {
             const raceDOW = new Date(raceDay.race_date).toLocaleDateString(
               "en-US",
               { weekday: "long" }
-            );
-            const raceSplits = splits.filter(
-              (s) => s.race_day_id === raceDay.id
             );
 
             return (
@@ -128,20 +83,18 @@ const LineupTab = ({
                   <HeatTitle>{`Race Day ${raceDay.id}`}</HeatTitle>
                   <HeatSubtitle>{raceDOW}</HeatSubtitle>
                 </HeatHeader>
-                {raceSplits.map((split) => {
-                  const splitTime = sessions.find(
-                    (session) => session.split_id === split.id
+                {raceDay.splits.map((split) => {
+                  const splitTime = split.sessions.find(
+                    (sess) => sess.split_id === split.id
                   );
                   const splitLocalTime = splitTime
                     ? toLocalTime(splitTime.start_time ?? undefined)
                     : undefined;
-                  const splitDriverLineups = driverLineups.filter(
-                    (dl) => dl.split_id === split.id
-                  );
-
                   return (
                     <SplitContainer key={split.id}>
-                      <SplitHeader isHidden={!(visibleSplits[split.id] ?? true)}>
+                      <SplitHeader
+                        isHidden={!(visibleSplits[split.id] ?? true)}
+                      >
                         <TitleContainer>
                           <SplitTitle>{split.split_name}</SplitTitle>
                           <SplitSubtitle>{splitLocalTime}</SplitSubtitle>
@@ -153,29 +106,22 @@ const LineupTab = ({
                       </SplitHeader>
                       {visibleSplits[split.id] ?? true ? (
                         <CardList>
-                          {splitDriverLineups.length ? (
-                            splitDriverLineups.map((dl) => {
-                              const driver = drivers.find(
-                                (d) => d.id === dl.driver_id
-                              );
-                              const team = teams.find(
-                                (t) => t.id === driver?.team_id
-                              );
-                              if (!driver || !team) return null;
-
+                          {split.driverLineups.length ? (
+                            split.driverLineups.map((dl) => {
                               const driverSocials = {
                                 twitch:
-                                  driver.twitch_username && driver.twitch_link
+                                  dl.socials.twitchUsername && dl.socials.twitch
                                     ? {
-                                        username: driver.twitch_username,
-                                        url: driver.twitch_link,
+                                        username: dl.socials.twitchUsername,
+                                        url: dl.socials.twitch,
                                       }
                                     : undefined,
                                 youtube:
-                                  driver.youtube_username && driver.youtube_link
+                                  dl.socials.youtubeUsername &&
+                                  dl.socials.youtube
                                     ? {
-                                        username: driver.youtube_username,
-                                        url: driver.youtube_link,
+                                        username: dl.socials.youtubeUsername,
+                                        url: dl.socials.youtube,
                                       }
                                     : undefined,
                               };
@@ -183,11 +129,11 @@ const LineupTab = ({
                               return (
                                 <ParticipantCard
                                   key={dl.id}
-                                  participantNum={dl.lineup_num}
-                                  name={driver?.name}
-                                  carTeam={team?.team_name}
-                                  crew={driver?.crew}
-                                  psnId={driver?.psn_id}
+                                  participantNum={dl.lineupNum}
+                                  name={dl.name || "Unknown Driver"}
+                                  carTeam={dl.team || "Unknown Team"}
+                                  crew={dl?.crew}
+                                  psnId={dl.psn || ""}
                                   socials={driverSocials}
                                 />
                               );

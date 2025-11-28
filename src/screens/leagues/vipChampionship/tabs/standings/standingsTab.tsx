@@ -1,16 +1,15 @@
 import { useState } from "react";
-import TabSwitch from "../../../../../components/tabs/tabSwitch/tabSwitch";
+import { useSelector } from "react-redux";
+import { selectAllDriverInfo } from "../../../../../store/selectors/combinedSelectors";
+import { selectAllTeamInfo } from "../../../../../store/selectors/teamSelectors";
 import type {
   Driver,
-  DriverStandings,
-  RaceDay,
-  Round,
-  Session,
-  SessionSettings,
   Team,
-  TeamStandings,
 } from "../../../../../types/storeTypes";
-import { getTotalPoints } from "../../../../../util/helper/helperFunctions";
+import StandingsModal from "./standingsModal/standingsModal";
+import TabSwitch from "../../../../../components/tabs/tabSwitch/tabSwitch";
+import TableRowLink from "../../../../../components/tableRowLink/tableRowLink";
+import Modal from "../../../../../components/modal/modal";
 import {
   CellText,
   ContentHeader,
@@ -25,31 +24,16 @@ import {
   SwitchContainer,
   TeamCell,
 } from "./standingsTab.styles";
-import TableRowLink from "../../../../../components/tableRowLink/tableRowLink";
-import Modal from "../../../../../components/modal/modal";
-import StandingsModal from "./standingsModal/standingsModal";
 
 type StandingsTabProps = {
-  allTeamStandings: TeamStandings[];
-  allDriverStandings: DriverStandings[];
   teams: Team[];
   drivers: Driver[];
-  rounds: Round[];
-  raceDays: RaceDay[];
-  sessions: Session[];
-  sessionSettings: SessionSettings[];
   leagueName: string;
 };
 
 const StandingsTab = ({
-  allTeamStandings,
-  allDriverStandings,
   teams,
   drivers,
-  rounds,
-  raceDays,
-  sessions,
-  sessionSettings,
   leagueName
 }: StandingsTabProps) => {
   const [isTeam, setIsTeam] = useState(true);
@@ -57,26 +41,9 @@ const StandingsTab = ({
     null
   );
 
-  const teamTotals = teams.map((team) => {
-    const totalPoints = getTotalPoints(team.id, "team", allTeamStandings);
-    return {
-      teamId: team.id,
-      teamName: team.team_name,
-      totalPoints,
-    };
-  });
+  const driverTotals = useSelector(selectAllDriverInfo);
+  const teamTotals = useSelector(selectAllTeamInfo);
 
-  const driverTotals = drivers.map((driver) => {
-    const totalPoints = getTotalPoints(driver.id, "driver", allDriverStandings);
-    const driverTeam = teams.find((team) => team.id === driver.team_id);
-    return {
-      driverId: driver.id,
-      driverName: driver.name,
-      driverCrew: driver.crew,
-      driverTeam: driverTeam?.team_name,
-      totalPoints,
-    };
-  });
 
   const tabs = [
     { label: "Teams", active: isTeam, onClick: () => setIsTeam(true) },
@@ -114,11 +81,11 @@ const StandingsTab = ({
                 <div key={index}>
                   <TableRowLink
                     rank={index + 1}
-                    participant={teamTotal.teamName}
+                    participant={teamTotal.team_name}
                     points={teamTotal.totalPoints}
                     onClick={() => {
                       const selectedTeam = teams.find(
-                        (team) => team.id === teamTotal.teamId
+                        (team) => team.id === teamTotal.id
                       );
                       if (selectedTeam) {
                         console.log("selectedTeam: ", selectedTeam);
@@ -159,13 +126,13 @@ const StandingsTab = ({
                 <div key={index}>
                   <TableRowLink
                     rank={index + 1}
-                    participant={driverTotal.driverName}
-                    participantCrew={driverTotal.driverCrew}
-                    driverTeam={driverTotal.driverTeam}
+                    participant={driverTotal.name}
+                    participantCrew={driverTotal.crew}
+                    driverTeam={driverTotal.teamName}
                     points={driverTotal.totalPoints}
                     onClick={() => {
                       const selectedDriver = drivers.find(
-                        (driver) => driver.id === driverTotal.driverId
+                        (driver) => driver.id === driverTotal.id
                       );
                       if (selectedDriver) {
                         setSelectedModal(selectedDriver);
@@ -183,12 +150,6 @@ const StandingsTab = ({
           <StandingsModal
             leagueName={leagueName}
             selectedModal={selectedModal}
-            rounds={rounds}
-            raceDays={raceDays}
-            sessions={sessions}
-            sessionSettings={sessionSettings}
-            allTeamStandings={allTeamStandings}
-            allDriverStandings={allDriverStandings}
           />
         </Modal>
       )}

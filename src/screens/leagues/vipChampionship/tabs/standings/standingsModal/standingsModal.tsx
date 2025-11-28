@@ -1,19 +1,9 @@
+import { useSelector } from "react-redux";
 import TableRowLink from "../../../../../../components/tableRowLink/tableRowLink";
 import type {
   Driver,
-  DriverStandings,
-  RaceDay,
-  Round,
-  Session,
-  SessionSettings,
   Team,
-  TeamStandings,
 } from "../../../../../../types/storeTypes";
-import {
-  getAllDriverSessionPoints,
-  getAllTeamSessionPoints,
-  getParticipantStandingInfo,
-} from "../../../../../../util/helper/helperFunctions";
 import {
   CellText,
   ContentHeader,
@@ -37,29 +27,18 @@ import {
   TotalPointsText,
   TotalText,
 } from "./standingsModal.styles";
+import { selectParticipantSessionResults } from "../../../../../../store/selectors/sessionSelectors";
+
 
 type StandingsModalProps = {
   selectedModal: Driver | Team;
-  allTeamStandings: TeamStandings[];
-  allDriverStandings: DriverStandings[];
-  rounds: Round[];
-  raceDays: RaceDay[];
-  sessions: Session[];
-  sessionSettings: SessionSettings[];
   leagueName: string;
 };
 
 const StandingsModal = ({
   selectedModal,
-  allTeamStandings,
-  allDriverStandings,
-  rounds,
-  raceDays,
-  sessions,
-  sessionSettings,
   leagueName,
 }: StandingsModalProps) => {
-
   const isTeamModal = selectedModal && "team_name" in selectedModal;
 
   const name = isTeamModal
@@ -68,26 +47,16 @@ const StandingsModal = ({
     ? selectedModal.name
     : "";
 
-  const totalSessionResults =
-    isTeamModal ?
-    getAllTeamSessionPoints(selectedModal.id, "team", allTeamStandings) : getAllDriverSessionPoints(
-    selectedModal.id,
-    "driver",
-    allDriverStandings
+  const sessionResults = useSelector(
+    selectParticipantSessionResults(
+      selectedModal.id,
+      isTeamModal ? "team" : "driver"
+    )
   );
 
-  const sessionResults = totalSessionResults
-      ? getParticipantStandingInfo(
-          totalSessionResults,
-          sessions,
-          sessionSettings,
-          raceDays,
-          rounds
-        )
-      : [];
 
   const getTotalPoints = () => {
-    return sessionResults.reduce((acc, curr) => acc + (curr.points || 0), 0);
+    return sessionResults.reduce((acc, curr) => acc + (curr?.points || 0), 0);
   };
   const totalPointsValue = getTotalPoints();
 
@@ -97,13 +66,17 @@ const StandingsModal = ({
         <ModalTitle>{name}</ModalTitle>
         <SubtitleContainer>
           <ModalSubtitleColor>{leagueName}</ModalSubtitleColor>
-          <ModalSubtitle>{isTeamModal ? "Team" : "Driver"} Performance</ModalSubtitle>
+          <ModalSubtitle>
+            {isTeamModal ? "Team" : "Driver"} Performance
+          </ModalSubtitle>
         </SubtitleContainer>
       </TitleContnainer>
       <ContentSection>
         <StandingsTableContainer>
           <StandingsTableHeader>
-            <StandingsTableTitle>{isTeamModal ? "TEAM'S" : "DRIVER'S"} Season Results</StandingsTableTitle>
+            <StandingsTableTitle>
+              {isTeamModal ? "TEAM'S" : "DRIVER'S"} Season Results
+            </StandingsTableTitle>
           </StandingsTableHeader>
           <StandingsTableContent>
             <ContentHeader>
@@ -121,10 +94,10 @@ const StandingsModal = ({
               sessionResults.map((res, index) => (
                 <div key={index}>
                   <TableRowLink
-                    participant={res.roundName}
-                    participantCrew={res.raceTrack}
-                    points={res.points}
-                    time={res.raceDate}
+                    participant={res?.roundName || ""}
+                    participantCrew={res?.raceTrack || ""}
+                    points={res?.points || 0}
+                    time={res?.raceDate || ""}
                   />
                   <RowDivider />
                 </div>

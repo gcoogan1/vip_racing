@@ -18,6 +18,6 @@ export const ModalContent = styled.div`
   border-radius: ${theme.border.radius.large};
   padding: ${theme.layout.space.xlarge} ${theme.layout.space.large};
   overflow-y: auto;
-  height: 100%;
+  /* height: 100%; */
   position: relative;
 `;

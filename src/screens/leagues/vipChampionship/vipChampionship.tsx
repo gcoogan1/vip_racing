@@ -62,16 +62,16 @@ const VipChampionship = () => {
   const tabContentMap = {
     overview: <OverviewTab />,
     lineup: (
-      <LineupTab />
+      <LineupTab leagueName={league.name || "League"} />
     ),
     schedule: (
-      <ScheduleTab />
+      <ScheduleTab leagueName={league.name || "League"} />
     ),
     standings: (
       <StandingsTab
         teams={teams}
         drivers={drivers}
-        leagueName={league.name || ""}
+        leagueName={league.name || "League"}
       />
     ),
     rules: <RulesTab />,

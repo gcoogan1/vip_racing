@@ -35,7 +35,7 @@ type ParticipantCardProps = {
     youtube?: SocialLink;
     discord?: SocialLink;
   };
-  resultsOnClick?: () => void;
+  resultsOnClick: () => void;
 };
 
 const ParticipantCard = ({
@@ -92,7 +92,7 @@ const ParticipantCard = ({
         variant="secondary"
         label="View Results"
         isDisabled={!resultsOnClick}
-        onClick={resultsOnClick ?? (() => {})}
+        onClick={resultsOnClick && (() => resultsOnClick())}
         icon={<ArrowRight width={16} height={16} />}
       />
       </ParticipantContent>

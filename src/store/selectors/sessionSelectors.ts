@@ -128,7 +128,6 @@ export const selectSessionDetailsById = (sessionId: number) =>
     }
   );
 
-
 // Selector that gets all session results for a participant (driver OR team) with enriched session info
 export const selectParticipantSessionResults = (
   id: number,
@@ -151,6 +150,7 @@ export const selectParticipantSessionResults = (
     ) => {
       return standings
         .map((entry) => {
+          console.log("Processing standing entry:", entry);
           const session = sessionsById[entry.session_id];
           if (!session) return null;
 
@@ -171,8 +171,10 @@ export const selectParticipantSessionResults = (
             raceDate: formatRaceDate(raceDay.race_date, true),
             points: entry.points,
             raceTrack: setting.track,
+            raceDayId: raceDay.id,
           };
         })
         .filter(Boolean);
     }
   );
+

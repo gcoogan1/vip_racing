@@ -22,12 +22,31 @@ import {
   TeamCards,
   TitleContainer,
 } from "./lineupTab.styles";
+import Modal from "../../../../../components/modal/modal";
+import StandingsModal from "../standings/standingsModal/standingsModal";
+import RaceResultModal from "../schedule/modals/raceResultModal/raceResultModal";
 
-const LineupTab = () => {
+type ParticipantResults = {
+  id: number;
+  name: string;
+};
+
+type LineupTabProps = {
+  leagueName: string;
+};
+
+const LineupTab = ({ leagueName }: LineupTabProps) => {
   const [isTeam, setIsTeam] = useState(false);
   const [visibleSplits, setVisibleSplits] = useState<Record<number, boolean>>(
     {}
   );
+  const [showDriverResults, setShowDriverResults] =
+    useState<ParticipantResults | null>(null);
+  const [showSessionResults, setShowSessionResults] = useState<number | null>(
+    null
+  );
+  const [showTeamResults, setShowTeamResults] =
+    useState<ParticipantResults | null>(null);
 
   const tabs = [
     { label: "Teams", active: isTeam, onClick: () => setIsTeam(true) },
@@ -61,7 +80,9 @@ const LineupTab = () => {
                   teamNumber={tl.teamNumber}
                   teamImage={tl.teamImage}
                   teamDrivers={tl.drivers}
-                  isDisabled
+                  resultsOnClick={() =>
+                    setShowTeamResults({ id: tl.id, name: tl.teamName })
+                  }
                 />
               );
             })
@@ -135,6 +156,12 @@ const LineupTab = () => {
                                   crew={dl?.crew}
                                   psnId={dl.psn || ""}
                                   socials={driverSocials}
+                                  resultsOnClick={() =>
+                                    setShowDriverResults({
+                                      id: dl.id,
+                                      name: dl.name || "Unknown Driver",
+                                    })
+                                  }
                                 />
                               );
                             })
@@ -150,6 +177,43 @@ const LineupTab = () => {
             );
           })}
         </Heats>
+      )}
+      {showDriverResults && (
+        <Modal onClose={() => setShowDriverResults(null)}>
+          <StandingsModal
+            participantId={showDriverResults.id}
+            participantName={showDriverResults.name}
+            leagueName={leagueName}
+            onSessionClick={(id) => {
+              setShowSessionResults(id);
+              setShowDriverResults(null);
+            }}
+          />
+        </Modal>
+      )}
+      {showSessionResults && (
+        <Modal onClose={() => setShowSessionResults(null)}>
+          <RaceResultModal
+            raceDayId={showSessionResults}
+            onDriverClick={(id: number, name: string) => {
+              setShowDriverResults({ id, name });
+              setShowSessionResults(null);
+            }}
+          />
+        </Modal>
+      )}
+      {showTeamResults && (
+        <Modal onClose={() => setShowTeamResults(null)}>
+          <StandingsModal
+            participantId={showTeamResults.id}
+            participantName={showTeamResults.name}
+            leagueName={leagueName}
+            onSessionClick={(id) => {
+              setShowSessionResults(id);
+              setShowTeamResults(null);
+            }}
+          />
+        </Modal>
       )}
     </>
   );

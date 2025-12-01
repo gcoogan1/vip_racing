@@ -31,12 +31,18 @@ import { selectParticipantSessionResults } from "../../../../../../store/selecto
 
 
 type StandingsModalProps = {
-  selectedModal: Driver | Team;
+  selectedModal?: Driver | Team;
+  participantId?: number;
+  participantName?: string;
+  onSessionClick?: (sessionId: number) => void;
   leagueName: string;
 };
 
 const StandingsModal = ({
   selectedModal,
+  participantId,
+  participantName,
+  onSessionClick,
   leagueName,
 }: StandingsModalProps) => {
   const isTeamModal = selectedModal && "team_name" in selectedModal;
@@ -49,11 +55,10 @@ const StandingsModal = ({
 
   const sessionResults = useSelector(
     selectParticipantSessionResults(
-      selectedModal.id,
+      selectedModal?.id || participantId || 0,
       isTeamModal ? "team" : "driver"
     )
   );
-
 
   const getTotalPoints = () => {
     return sessionResults.reduce((acc, curr) => acc + (curr?.points || 0), 0);
@@ -61,9 +66,9 @@ const StandingsModal = ({
   const totalPointsValue = getTotalPoints();
 
   return (
-    <ModalContent>
+    <ModalContent onClick={e => e.stopPropagation()}>
       <TitleContnainer>
-        <ModalTitle>{name}</ModalTitle>
+        <ModalTitle>{name || participantName}</ModalTitle>
         <SubtitleContainer>
           <ModalSubtitleColor>{leagueName}</ModalSubtitleColor>
           <ModalSubtitle>
@@ -98,6 +103,12 @@ const StandingsModal = ({
                     participantCrew={res?.raceTrack || ""}
                     points={res?.points || 0}
                     time={res?.raceDate || ""}
+                    onClick={() => {
+                      console.log("Session result clicked:", res);
+                      if (onSessionClick && res?.raceDayId) {
+                        onSessionClick(res?.raceDayId);
+                      }
+                    }}
                   />
                   <RowDivider />
                 </div>

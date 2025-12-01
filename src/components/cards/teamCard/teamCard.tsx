@@ -7,11 +7,11 @@ type TeamCardProps = {
   teamName: string;
   teamImage: string;
   teamDrivers: string[];
-  onClick?: () => void;
+  resultsOnClick: () => void;
   isDisabled?: boolean;
 }
 
-const TeamCard = ({ teamNumber, teamName, teamDrivers, teamImage, isDisabled }: TeamCardProps) => {
+const TeamCard = ({ teamNumber, teamName, teamDrivers, teamImage, isDisabled, resultsOnClick }: TeamCardProps) => {
   const addZero = (num: number) => (num < 10 ? `0${num}` : num);
 
   return (
@@ -28,7 +28,7 @@ const TeamCard = ({ teamNumber, teamName, teamDrivers, teamImage, isDisabled }: 
             </DriverItem>
           ))}
         </DriversList>
-        <Button isDisabled={isDisabled} label="View Results" onClick={() => alert(`Viewing results for Team ${teamNumber}`)} variant="secondary" icon={<ArrowRight width={16} height={16} />} />
+        <Button isDisabled={isDisabled} label="View Results" onClick={resultsOnClick && (() => resultsOnClick())} variant="secondary" icon={<ArrowRight width={16} height={16} />} />
       </TeamInfo>
     </TeamCardContainer>
   )

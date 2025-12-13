@@ -30,7 +30,7 @@ const tabs = [
 ];
 
 const VipMonthly = () => {
-  const [activeTab, setActiveTab] = useState<string>("schedule");
+  const [activeTab, setActiveTab] = useState<string>("overview");
 
 
   const dispatch = useDispatch<AppDispatch>();

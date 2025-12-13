@@ -8,7 +8,7 @@ const OverviewTab = () => {
 
   return (
     <>
-      <Banner src={VipOverview} alt="Banner Image" />
+      <Banner loading="lazy" src={VipOverview} alt="Banner Image" />
     </>
   );
 };

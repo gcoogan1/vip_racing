@@ -60,7 +60,7 @@ export const RoundTitle = styled.h3`
 
 export const RoundSubtitle = styled.h3`
   ${fontCSS(theme.typography.subtitle.large)};
-  color: ${theme.colors.surface.text1};
+  color: ${theme.colors.surface.text2};
 `;
 
 

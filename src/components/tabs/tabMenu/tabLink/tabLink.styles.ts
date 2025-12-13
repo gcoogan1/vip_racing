@@ -11,6 +11,11 @@ export const LinkContainer = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+    @media (max-width: 703px) {
+    padding-left: ${theme.layout.space.small};
+    padding-right: ${theme.layout.space.small};
+  }
 `;
 
 export const LinkText = styled.div<{ $active: boolean }>`

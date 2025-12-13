@@ -28,14 +28,14 @@ type ParticipantCardProps = {
   participantNum: number;
   name: string;
   carTeam: string;
-  crew: string;
+  crew?: string;
   psnId: string;
   socials?: {
     twitch?: SocialLink;
     youtube?: SocialLink;
     discord?: SocialLink;
   };
-  resultsOnClick?: () => void;
+  resultsOnClick: () => void;
 };
 
 const ParticipantCard = ({
@@ -62,7 +62,7 @@ const ParticipantCard = ({
           <InfoList>
             <InfoItem>
               <InfoLabel>Crew</InfoLabel>
-              <InfoValue>{crew}</InfoValue>
+              <InfoValue>{crew || "Free Agent"}</InfoValue>
             </InfoItem>
             <InfoItem>
               <InfoLabel>PSN ID</InfoLabel>
@@ -91,7 +91,8 @@ const ParticipantCard = ({
       <Button
         variant="secondary"
         label="View Results"
-        onClick={resultsOnClick ?? (() => {})}
+        isDisabled={!resultsOnClick}
+        onClick={resultsOnClick && (() => resultsOnClick())}
         icon={<ArrowRight width={16} height={16} />}
       />
       </ParticipantContent>

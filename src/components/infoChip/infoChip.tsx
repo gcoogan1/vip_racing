@@ -2,15 +2,16 @@ import { Description, InfoChipContainer, NumberContainer, Subtitle, Title } from
 
 type InfoChipProps = {
   rounds: number;
+  category: string;
   description: string;
 }
 
-const InfoChip = ({ rounds, description }: InfoChipProps) => {
+const InfoChip = ({ rounds, category, description }: InfoChipProps) => {
   return (
     <InfoChipContainer>
       <NumberContainer>
         <Title>{rounds}</Title>
-        <Subtitle>ROUNDS</Subtitle>
+        <Subtitle>{category}</Subtitle>
       </NumberContainer>
       <Description>{description}</Description>
     </InfoChipContainer>

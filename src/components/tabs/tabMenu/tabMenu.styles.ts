@@ -5,5 +5,5 @@ export const TabContainer = styled.div`
   display: flex;
   border-bottom: ${theme.border.width.thin} solid ${theme.colors.surface.line};
   width: 100%;
-  
+  justify-content: center
 `

@@ -1,25 +1,34 @@
 import Rank from "./rank/rank"
-import { LinkContainer, PlayerCell, PointsCell, RacingCarCell, TeamCell, TimeCell, UsernameCell } from "./tableRowLink.styles"
+import { LinkContainer, PlayerCell, PointsCell, DriverTeamCell, CrewCell, TimeCell, UsernameCell } from "./tableRowLink.styles"
 
 type TableRowLinkProps = {
-  rank: number,
-  username: string,
-  team: string,
-  racingCar: string,
-  time: string,
-  points: number
+  rank?: number,
+  participant: string,
+  participantCrew?: string,
+  driverTeam?: string,
+  time?: string,
+  points: number,
+  onClick?: () => void,
 }
 
-const TableRowLink = ({ rank, username, team, racingCar, time, points }: TableRowLinkProps) => {
+const TableRowLink = ({ rank, participant, participantCrew, driverTeam, time, points, onClick }: TableRowLinkProps) => {
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onClick) {
+      onClick();
+    }
+  };
+
   return (
-    <LinkContainer to={`/${username}`}>
-      <Rank rank={rank} />
+    <LinkContainer to="" onClick={handleClick}>
+      {rank && <Rank rank={rank} />}
       <PlayerCell>
-        <UsernameCell>{username}</UsernameCell>
-        <TeamCell>{team}</TeamCell>
+        <UsernameCell>{participant}</UsernameCell>
+        <CrewCell>{participantCrew}</CrewCell>
       </PlayerCell>
-      <RacingCarCell>{racingCar}</RacingCarCell>
-      <TimeCell>{time}</TimeCell>
+      {driverTeam && <DriverTeamCell>{driverTeam}</DriverTeamCell>}
+      {time && <TimeCell>{time}</TimeCell>}
       <PointsCell>{points}</PointsCell>
     </LinkContainer>
   )

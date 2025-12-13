@@ -13,12 +13,13 @@ import {
 } from "./raceCard.styles";
 
 type RaceCardProps = {
-  raceNumber: number;
+  raceNumber: string;
   raceDate: string;
   raceTrack: string;
   raceImage: string;
   settingsOnClick: () => void;
   resultsOnClick: () => void;
+  noResults?: boolean;
 };
 
 const RaceCard = ({
@@ -28,20 +29,21 @@ const RaceCard = ({
   raceImage,
   settingsOnClick,
   resultsOnClick,
+  noResults
 }: RaceCardProps) => {
   return (
     <RaceCardContainer>
       <RaceCardContent>
         <RaceCardDetails>
           <RaceInfo>
-            <RaceNumber>Race {raceNumber}</RaceNumber>
+            <RaceNumber>{raceNumber}</RaceNumber>
             <RaceDate>{raceDate}</RaceDate>
           </RaceInfo>
           <RaceTrack>{raceTrack}</RaceTrack>
         </RaceCardDetails>
         <ButtonsContainer>
           <Button variant="secondary" onClick={settingsOnClick} label="Event Settings" icon={<ArrowRight width={16} height={16} />} />
-          <Button variant="secondary" onClick={resultsOnClick} label="View Results" icon={<ArrowRight width={16} height={16} />} />
+          {!noResults && <Button variant="secondary" onClick={resultsOnClick} label="View Results" icon={<ArrowRight width={16} height={16} />} />}
         </ButtonsContainer>
       </RaceCardContent>
       <RaceCardImage src={raceImage} alt={`Image of race ${raceNumber}`} />

@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import { fontCSS, theme } from "../../styles/theme";
 
 export const ButtonContainer = styled.button`
+  margin-bottom: ${theme.layout.space.small};
   cursor: pointer;
   background-color: ${theme.colors.surface.text1};
   border-radius: ${theme.border.radius.round};

@@ -6,12 +6,13 @@ type ButtonProps = {
   onClick: () => void;
   label?: string;
   icon?: React.ReactNode;
+  isDisabled?: boolean;
   variant?: "primary" | "secondary" | "tertiary" | "CTA";
 };
 
-const Button = ({ label, onClick, icon, variant = "primary" }: ButtonProps) => {
+const Button = ({ label, onClick, icon, variant = "primary", isDisabled }: ButtonProps) => {
   return (
-    <ButtonContainer onClick={onClick} $variant={variant}>
+    <ButtonContainer onClick={onClick} $variant={variant} disabled={isDisabled}>
       {label}
       {icon}
     </ButtonContainer>

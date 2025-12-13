@@ -24,4 +24,5 @@ export const Content = styled.div`
   z-index: 1;
   text-align: center;
   width: 100%;
+  background: linear-gradient(360deg, #160E0B 30.29%, rgba(22, 14, 11, 0) 100%);
 `;

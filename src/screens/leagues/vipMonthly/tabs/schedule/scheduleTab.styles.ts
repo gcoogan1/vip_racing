@@ -50,11 +50,17 @@ export const RoundHeader = styled.div<{ isHidden?: boolean }>`
     isHidden ? theme.border.radius.medium : "0"};
   border-bottom-right-radius: ${({ isHidden }) =>
     isHidden ? theme.border.radius.medium : "0"};
+  flex-direction: column;
 `;
 
 export const RoundTitle = styled.h3`
   ${fontCSS(theme.typography.subtitle.large)};
   color: ${theme.colors.primary.yellow};
+`;
+
+export const RoundSubtitle = styled.h3`
+  ${fontCSS(theme.typography.subtitle.large)};
+  color: ${theme.colors.surface.text1};
 `;
 
 

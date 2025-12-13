@@ -17,6 +17,16 @@ type League = {
 
 export const leagues: League[] = [
   {
+    name: "VIP Monthly Lobby",
+    season: "3 race session. once a month.",
+    description: "Join VIP members in an evening of high-octane racing through multiple disciplines. The hosted lobby aims to provide a fun racing environment designed for drivers to compete with VIP members.",
+    miniImg: "🏁",
+    image: CarsRacingHighlands,
+    imgAlt: "Cars racing in the highlands",
+    buttonLabel: "View League",
+    route: "/leagues/vip-monthly-lobby"
+  },
+  {
     name: "VIP Championship",
     season: "5 race season. 1 Grand finale.",
     description: "Take part in the ultimate league on Gran Turismo 7. Battle across multiple thrilling rounds, which are introduced in a new format every year, with some of the most competitive drivers.",
@@ -36,24 +46,4 @@ export const leagues: League[] = [
     buttonLabel: "Coming Soon",
     route: "/leagues/vip-formula1"
   },
-  {
-    name: "VIP Monthly Lobby",
-    season: "3 race session. once a month.",
-    description: "Join VIP members in an evening of high-octane racing through multiple disciplines. The hosted lobby aims to provide a fun racing environment designed for drivers to compete with VIP members.",
-    miniImg: "🏁",
-    image: CarsRacingHighlands,
-    imgAlt: "Cars racing in the highlands",
-    buttonLabel: "Coming Soon",
-    route: "/leagues/vip-lobby"
-  },
-  {
-    name: "VIP Monthly Lobby",
-    season: "2026",
-    description: "Join VIP members in an evening of high-octane racing through multiple disciplines. The lobby aims to provide a fun racing environment designed for drivers to compete with VIP members.",
-    miniImg: "🏁",
-    image: CarsRacingHighlands,
-    imgAlt: "Cars racing in the highlands",
-    buttonLabel: "Coming Soon",
-    route: "/leagues/vip-monthly-lobby"
-  }
 ]

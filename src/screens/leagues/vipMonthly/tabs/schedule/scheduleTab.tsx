@@ -13,6 +13,7 @@ import {
   RoundsList,
   RoundTitle,
   RacesContainer,
+  RoundSubtitle,
 } from "./scheduleTab.styles";
 import StandingsModal from "../standings/standingsModal/standingsModal";
 import SettingsModal from "./modals/settingsModal/settingsModal";
@@ -52,6 +53,7 @@ const ScheduleTab = ({ leagueName }: ScheduleTabProps) => {
           <RoundSection key={raceDayGroup.id}>
             <RoundHeader isHidden={raceDayGroup.raceDays.length === 0}>
               <RoundTitle>{raceDayGroup.round_name}</RoundTitle>
+              <RoundSubtitle>PRESENTED BY DA_CRAWLER</RoundSubtitle>
             </RoundHeader>
             {raceDayGroup.raceDays.length > 0 && (
               <RacesContainer>

@@ -53,7 +53,7 @@ const ScheduleTab = ({ leagueName }: ScheduleTabProps) => {
           <RoundSection key={raceDayGroup.id}>
             <RoundHeader isHidden={raceDayGroup.raceDays.length === 0}>
               <RoundTitle>{raceDayGroup.round_name}</RoundTitle>
-              <RoundSubtitle>PRESENTED BY DA_CRAWLER</RoundSubtitle>
+              <RoundSubtitle>PRESENTED BY DA_CRAWL3R</RoundSubtitle>
             </RoundHeader>
             {raceDayGroup.raceDays.length > 0 && (
               <RacesContainer>

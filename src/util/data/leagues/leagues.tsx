@@ -45,5 +45,15 @@ export const leagues: League[] = [
     imgAlt: "Cars racing in the highlands",
     buttonLabel: "Coming Soon",
     route: "/leagues/vip-lobby"
+  },
+  {
+    name: "VIP Monthly Lobby",
+    season: "2026",
+    description: "Join VIP members in an evening of high-octane racing through multiple disciplines. The lobby aims to provide a fun racing environment designed for drivers to compete with VIP members.",
+    miniImg: "🏁",
+    image: CarsRacingHighlands,
+    imgAlt: "Cars racing in the highlands",
+    buttonLabel: "Coming Soon",
+    route: "/leagues/vip-monthly-lobby"
   }
 ]

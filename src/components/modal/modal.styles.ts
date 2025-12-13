@@ -9,6 +9,9 @@ export const ModalOverlay = styled.div`
   height: 100%;
   border-radius: ${theme.border.radius.medium};
   margin-top: ${theme.layout.space.xlarge};
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #5c5654 transparent;
 `;
 
 export const ModalContent = styled.div`

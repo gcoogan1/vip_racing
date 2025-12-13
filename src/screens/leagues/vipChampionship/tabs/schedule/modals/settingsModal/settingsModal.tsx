@@ -31,15 +31,13 @@ const SettingsModal = ({ sessionId }: SettingsModalProps) => {
 
 
   const settings = useSelector(selectSessionDetailsById(sessionId));
-  console.log("Session Settings:", settings);
 
-  
   return (
     <>
       <ModalContent>
         <TitleContainer>
           <SubtitleContainer>
-            <ModalSubtitleColor>Round 1 - Race Day 1</ModalSubtitleColor>
+            <ModalSubtitleColor>{settings?.raceDayName}- {settings?.sessionName}</ModalSubtitleColor>
             <ModalSubtitle>SATURDAY, 28 Jan 2026 · 9:00PM EST</ModalSubtitle>
           </SubtitleContainer>
           <ModalTitle>Nurburgring GP</ModalTitle>

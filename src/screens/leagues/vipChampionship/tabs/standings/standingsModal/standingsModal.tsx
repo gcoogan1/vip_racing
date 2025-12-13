@@ -104,7 +104,6 @@ const StandingsModal = ({
                     points={res?.points || 0}
                     time={res?.raceDate || ""}
                     onClick={() => {
-                      console.log("Session result clicked:", res);
                       if (onSessionClick && res?.raceDayId) {
                         onSessionClick(res?.raceDayId);
                       }

@@ -33,7 +33,7 @@ const VipLeaguesCard = ({ cardImage, imgAlt, titleImg, title, subtitle, descript
     if (path) {
       navigate(path);
     } else {
-      console.log("Route is undefined");
+      console.error("Route is undefined");
     }
   }
   

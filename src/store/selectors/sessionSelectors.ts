@@ -86,10 +86,13 @@ export const selectSessionDetailsById = (sessionId: number) =>
       const session = sessionsById[sessionId];
       if (!session) return null;
 
-      const setting = settingsById[sessionId];
+      const setting = Object.values(settingsById).find(
+        (s) => s.session_id === sessionId
+      );
       const split = splitsById[session.split_id];
       const raceDay = split ? raceDaysById[split.race_day_id] : null;
       const round = raceDay ? roundsById[raceDay.round_id] : null;
+
 
       const drivers = Object.values(driverStandingsById)
         .filter((ds) => ds.session_id === session.id)
@@ -113,14 +116,14 @@ export const selectSessionDetailsById = (sessionId: number) =>
         type: session.type,
         car: setting?.car ?? "",
         track: setting?.track ?? "",
-
+        carImageUrl: setting?.car_img_url ?? "",
         splitId: split?.id ?? 0,
         splitName: split?.split_name ?? "",
-
+        numLaps: setting?.num_laps ?? 0,
+        carImageUrlNoBg: setting?.car_img_no_bg_url ?? "",
         raceDayId: raceDay?.id ?? 0,
         raceDate: raceDay?.race_date ?? "",
         raceDayName: raceDay?.race_day_name ?? "",
-
         roundNumber: round?.round_num ?? 0,
 
         drivers,
@@ -150,7 +153,7 @@ export const selectParticipantSessionResults = (
     ) => {
       return standings
         .map((entry) => {
-          console.log("Processing standing entry:", entry);
+
           const session = sessionsById[entry.session_id];
           if (!session) return null;
 

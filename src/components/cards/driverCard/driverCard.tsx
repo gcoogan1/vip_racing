@@ -57,8 +57,6 @@ const DriverCard = ({
   socials,
 }: DriverCardProps) => {
 
-  console.log(flag);
-
   return (
     <DriverCardContainer>
       <DriverImage src={cardImg} alt={name} loading="lazy" />

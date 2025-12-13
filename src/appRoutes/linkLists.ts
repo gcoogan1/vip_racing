@@ -22,9 +22,10 @@ export const gameLinks: ExternalLink[] = [
 ];
 
 export const vipLeagues: Link[] = [
-  { to: "/leagues/vip-gt3", label: "VIP Championship" },
-  { to: "/leagues/vip-formula1", label: "VIP Formula 1 League" },
-  { to: "/leagues/vip-lobby", label: "VIP Monthly Lobby" },
+  // { to: "/leagues/vip-gt3", label: "VIP Championship" },
+  { to: "/leagues/vip-monthly-lobby", label: "VIP Monthly Lobby" },
+  // { to: "/leagues/vip-formula1", label: "VIP Formula 1 League" },
+  // { to: "/leagues/vip-lobby", label: "VIP Monthly Lobby" },
 ];
 
 export const competitionLinks: Link[] = [

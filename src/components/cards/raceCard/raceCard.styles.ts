@@ -11,6 +11,7 @@ export const RaceCardContainer = styled.div`
   border-top-left-radius: ${theme.border.radius.large};
   border-bottom-left-radius: ${theme.border.radius.large};
   background: linear-gradient(90deg, rgba(241, 228, 71, 0.1) 0%, rgba(241, 228, 71, 0) 50%);
+  justify-content: space-between;
 
   @media (max-width: 768px) {
     width: 100%;

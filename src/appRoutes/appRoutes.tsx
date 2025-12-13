@@ -1,5 +1,6 @@
 import { lazy } from "react";
 import ComingSoonScreen from "../screens/comingSoon/comingSoonScreen";
+import VipMonthly from "../screens/leagues/vipMonthly/vipMonthly";
 
 const HomeScreen = lazy(() => import("../screens/homeScreen"));
 const DriversScreen = lazy(() => import("../screens/drivers/driversScreen"));
@@ -36,6 +37,10 @@ export const ROUTES: Route[] = [
   {
     path: '/leagues/vip-gt3',
     element: <VipChampionshipScreen />
+  },
+  {
+    path: '/leagues/vip-monthly-lobby',
+    element: <VipMonthly />
   },
   {
     path: '/leagues/vip-formula1',

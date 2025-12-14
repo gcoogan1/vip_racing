@@ -74,4 +74,10 @@ export const streamers: Streamer[] = [
     channelId: "UC5Q2J_v76zwxbOM-vJmMdIA",
     id: 88
   },
+  {
+    name: "CornBredGaming_ViP",
+    username: "@CornBredGaming_ViP",
+    channelId: "UCKBCAUpKvY-zqc6Zt9QI74Q",
+    id: 11
+  }
 ];

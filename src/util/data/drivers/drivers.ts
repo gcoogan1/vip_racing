@@ -14,6 +14,7 @@ import PrincePlaka from "../../../assets/drivers/PrincePlaka.png";
 import Left2PassU from "../../../assets/drivers/Left2PassU.png";
 import JPScale from "../../../assets/drivers/JPScale.png";
 import RowdyBurns from "../../../assets/drivers/RowdyBurns.png";
+import CornBred from "../../../assets/drivers/CornBred.png";
 
 type SocialLink = {
   username: string;
@@ -171,7 +172,7 @@ export const drivers: Driver[] = [
     psnId: "sup_player_1",
     favCar: "Genesis G70 GR4",
     favTrack: "Deep Forest Raceway",
-    hardware: "Logitech G29",
+    hardware: "Logitech G PRO Racing Wheel",
     cardImg: Player,
     flag: "us",
     socials: {
@@ -272,6 +273,21 @@ export const drivers: Driver[] = [
     flag: "ca",
     socials: {
       youtube: { username: "@VIP_rowdyburns", url: "https://youtube.com/@VIP_rowdyburns", channelId: "UC_PAOT7sqREVJYUE1YRr78Q" },
+    }
+  },
+  {
+    id: 11,
+    name: "CornBred",
+    rank: "The Fockr",
+    gtTag: "VIP_CornBred",
+    psnId: "JRizzell11",
+    favCar: "BMW M6 GT3 ‘16",
+    favTrack: "Nürburgring Nordschleife",
+    hardware: "Logitech G PRO Racing Wheel",
+    cardImg: CornBred,
+    flag: "ca",
+    socials: {
+      youtube: { username: "@CornBredGaming_ViP", url: "https://youtube.com/@CornBredGaming_ViP", channelId: "UCKBCAUpKvY-zqc6Zt9QI74Q" },
     }
   },
 ]

@@ -10,7 +10,7 @@ export const RaceASettings: RaceSettingsConfig = {
     equalConditionsMode: "",
     timeOfDay: "Afternoon",
     variableTimeSpeedRate: "5x",
-    customWeather: "R03 - R04 - R02 - R04 - R04 - Random",
+    customWeather: "R03 - R04 - R02 - R04 - Random",
   },
   qualifierSettings: {
     timeLimit: "10 Minute(s)",

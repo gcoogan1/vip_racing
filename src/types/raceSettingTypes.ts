@@ -28,18 +28,7 @@ export const raceSettingsSchema: SettingSection[] = [
     ]
   },
 
-  {
-    section: "qualifierSettings",
-    label: "Qualifier Settings",
-    fields: [
-      { key: "timeLimit", label: "Time Limit" },
-      { key: "qualifyingContTime", label: "Qualifying Continuation Time" },
-      { key: "tireWearRate", label: "Tire Wear Rate (Qualifier)" },
-      { key: "fuelConsumptionRate", label: "Fuel Consumption Rate (Qualifier)" },
-      { key: "initialFuel", label: "Initial Fuel" },
-    ]
-  },
-
+  
   {
     section: "raceSettings",
     label: "Race Settings",
@@ -58,10 +47,24 @@ export const raceSettingsSchema: SettingSection[] = [
       { key: "initialFuel", label: "Initial Fuel" },
       { key: "gripRedOffTrack", label: "Grip Reduction Off Track" },
       { key: "raceFinishDelay", label: "Race Finish Delay" },
+      { key: "minNumPitStops", label: "Minimum No. of Pit Stops" },
+      { key: "reqTireTypeChange", label: "Required Tire Type Change" },
       { key: "nitroOvertake", label: "Nitro / Overtaking System Usage Multiplier" }
     ]
   },
-
+  
+  {
+    section: "qualifierSettings",
+    label: "Qualifier Settings",
+    fields: [
+      { key: "timeLimit", label: "Time Limit" },
+      { key: "qualifyingContTime", label: "Qualifying Continuation Time" },
+      { key: "tireWearRate", label: "Tire Wear Rate (Qualifier)" },
+      { key: "fuelConsumptionRate", label: "Fuel Consumption Rate (Qualifier)" },
+      { key: "initialFuel", label: "Initial Fuel" },
+      { key: "slipstreamStrength", label: "Slipstream Strength (Qualifier)" }
+    ]
+  },
   {
     section: "regulationSettings",
     label: "Regulation Settings",
@@ -76,7 +79,11 @@ export const raceSettingsSchema: SettingSection[] = [
       { key: "nitro", label: "Nitrous" },
       { key: "kartUsage", label: "Kart Usage" },
       { key: "engineSwap", label: "Engine Swap" },
-      { key: "tuningParts", label: "Tuning Parts" }
+      { key: "tuningParts", label: "Tuning Parts" },
+      { key: "yearLowerLimit", label: "Year (Lower Limit)" },
+      { key: "yearUpperLimit", label: "Year (Upper Limit)" },
+      { key: "drivetrain", label: "Drivetrain" },
+      { key: "aspiration", label: "Aspiration" }
     ]
   },
 
@@ -116,7 +123,7 @@ export type RaceSettingsConfig = {
     equalConditionsMode: string;
     timeOfDay: string;
     variableTimeSpeedRate: string;
-    customWeather: string;
+    customWeather?: string;
   };
 
   qualifierSettings: {
@@ -125,6 +132,7 @@ export type RaceSettingsConfig = {
     fuelConsumptionRate: string;
     initialFuel: string;
     tireWearRate: string;
+    slipstreamStrength?: string;
   };
 
   raceSettings: {
@@ -142,6 +150,8 @@ export type RaceSettingsConfig = {
     initialFuel: string;
     gripRedOffTrack: string;
     raceFinishDelay: string;
+    minNumPitStops?: string;
+    reqTireTypeChange?: string;
     nitroOvertake: string;
   };
 
@@ -157,6 +167,10 @@ export type RaceSettingsConfig = {
     kartUsage: string;
     engineSwap: string;
     tuningParts: string;
+    yearLowerLimit?: string;
+    yearUpperLimit?: string;
+    drivetrain?: string;
+    aspiration?: string;
   };
 
   penaltySettings: {

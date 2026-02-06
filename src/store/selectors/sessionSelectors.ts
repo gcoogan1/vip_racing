@@ -115,6 +115,7 @@ export const selectSessionDetailsById = (sessionId: number) =>
         startTime: session.start_time,
         type: session.type,
         car: setting?.car ?? "",
+        secondCar: setting?.second_car ?? "",
         track: setting?.track ?? "",
         carImageUrl: setting?.car_img_url ?? "",
         splitId: split?.id ?? 0,

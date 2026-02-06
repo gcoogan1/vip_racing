@@ -154,12 +154,12 @@ export const CarSettingsDetail = styled.div`
   background: #ffffff1a;
 `;
 
-export const CarSettingsImage = styled.img`
+export const CarSettingsImage = styled.img<{ $double?: boolean }>`
   width: 272px;
   height: 143px;
   object-fit: contain;
   position: absolute;
-  bottom: -16px;
+  bottom: ${({ $double }) => ($double ? "-32px" : "-16px")};
   z-index: 3;  
 `;
 
@@ -177,11 +177,11 @@ export const SettingsDetailTitle = styled.p`
 export const SettingsDetailText = styled.p`
   ${fontCSS(theme.typography.body.bold)};
   width: 224px;
-  height: 20px;
+  /* height: 20px; */
   color: ${theme.colors.surface.text1};
-  overflow:hidden; 
+  /* overflow:hidden; 
   white-space:nowrap; 
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; */
 `;
 
 //   display: flex;

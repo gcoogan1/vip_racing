@@ -43,6 +43,7 @@ export interface SessionSettings {
   session_id: number;
   track: string;
   car: string;
+  second_car?: string;
   car_img_url?: string;
   num_laps?: number;
   car_img_no_bg_url?: string;

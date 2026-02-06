@@ -90,10 +90,16 @@ const SettingsModal = ({ sessionId }: SettingsModalProps) => {
                 <CarSettingsDetail>
                   <SettingsDetailTitle>Car</SettingsDetailTitle>
                   <SettingsDetailText>{settings?.car}</SettingsDetailText>
+                  {settings?.secondCar && (
+                    <SettingsDetailText>
+                      {settings.secondCar}
+                    </SettingsDetailText>
+                  )}
                 </CarSettingsDetail>
                 <CarSettingsImage
                   src={settings?.carImageUrlNoBg}
                   alt="Car Image"
+                  $double={!!settings?.secondCar}
                 />
               </SmallSettingsTableContent>
             </SettingsTable>

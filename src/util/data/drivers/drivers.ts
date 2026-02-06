@@ -284,7 +284,7 @@ export const drivers: Driver[] = [
     psnId: "JRizzell11",
     favCar: "Aston Martin V12 Vantage GT3 '12",
     favTrack: "Kyoto Driving Park - Yamagiwa",
-    hardware: "Logitech G PRO Racing Wheel",
+    hardware: "Fanatec DD Pro",
     cardImg: CornBred,
     flag: "us",
     socials: {

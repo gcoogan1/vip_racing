@@ -77,6 +77,7 @@ const ScheduleTab = ({ leagueName }: ScheduleTabProps) => {
                             raceTrack={sessionSetting?.track || "TBD"}
                             raceImage={sessionSetting?.car_img_url || Unknown}
                             settingsOnClick={() => setShowRaceSettings(session.id)}
+                            showNoCars={sessionSetting?.show_no_cars || false}
                             noResults
                             resultsOnClick={() => {
                               setSelectedRaceResults({

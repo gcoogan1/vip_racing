@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import HeroSection from "../../../components/heroSection/heroSection";
 import VipRacingSideBySide from "../../../assets/hero/VipRacingSideBySide.jpg";
-import TabButton from "../../../components/tabs/tabButton/tabButton";
+// import TabButton from "../../../components/tabs/tabButton/tabButton";
 import TabMenu from "../../../components/tabs/tabMenu/tabMenu";
 import OverviewTab from "./tabs/overview/overviewTab";
 import ScheduleTab from "./tabs/schedule/scheduleTab";
 import StandingsTab from "./tabs/standings/standingsTab";
 import {
-  ButtonsContainer,
+  // ButtonsContainer,
   HeroTextContainer,
   HeroTextContent,
   SectionContainer,
@@ -24,13 +24,13 @@ import { selectFullLeagueData } from "../../../store/selectors/fullLeagueDataSel
 import LoadingScreen from "../../loading/loadingScreen";
 
 const tabs = [
-  { id: "overview", label: "Overview" },
+  // { id: "overview", label: "Overview" },
   { id: "schedule", label: "Schedule" },
-  { id: "standings", label: "Standings" },
+  // { id: "standings", label: "Standings" },
 ];
 
 const VipMonthly = () => {
-  const [activeTab, setActiveTab] = useState<string>("overview");
+  const [activeTab, setActiveTab] = useState<string>("schedule");
 
 
   const dispatch = useDispatch<AppDispatch>();
@@ -87,11 +87,11 @@ const VipMonthly = () => {
       </HeroSection>
       <SectionContainer>
         <SectionContent>
-          <ButtonsContainer>
+          {/* <ButtonsContainer>
             <TabButton active label="2026" />
             <TabButton isDisabled label="2027" />
             <TabButton isDisabled label="2028" />
-          </ButtonsContainer>
+          </ButtonsContainer> */}
           <TabsContainer>
             <TabMenu
               tabs={tabs}

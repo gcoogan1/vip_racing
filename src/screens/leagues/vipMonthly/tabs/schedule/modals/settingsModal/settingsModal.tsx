@@ -48,8 +48,9 @@ const SettingsModal = ({ sessionId }: SettingsModalProps) => {
         };
       })
     : [];
-  const raceDate = settings?.raceDate
-    ? formatRaceDate(settings.raceDate)
+
+  const raceDate = settings?.startTime
+    ? formatRaceDate(settings.startTime)
     : "--";
 
   return (
@@ -97,7 +98,6 @@ const SettingsModal = ({ sessionId }: SettingsModalProps) => {
               </SmallSettingsTableContent>
             </SettingsTable>
           </TableContainerRow>
-
           {mappedSettings.map((setting, index) => (
             <SettingsTable key={index}>
               <SettingsTableHeader>

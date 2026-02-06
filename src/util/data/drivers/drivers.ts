@@ -15,6 +15,7 @@ import Left2PassU from "../../../assets/drivers/Left2PassU.png";
 import JPScale from "../../../assets/drivers/JPScale.png";
 import RowdyBurns from "../../../assets/drivers/RowdyBurns.png";
 import CornBred from "../../../assets/drivers/CornBred.png";
+import Shahir from "../../../assets/drivers/Shahir.png"
 
 type SocialLink = {
   username: string;
@@ -214,7 +215,7 @@ export const drivers: Driver[] = [
     psnId: "resigned_staff3",
     favCar: "Genesis G70 GR4",
     favTrack: "Nürburgring Nordschleife",
-    hardware: "Fanatec Gran Turismo DD Pro",
+    hardware: "Logitech G29",
     cardImg: DewayneT,
     flag: "us"
   },
@@ -281,13 +282,29 @@ export const drivers: Driver[] = [
     rank: "The Fockr",
     gtTag: "VIP_CornBred",
     psnId: "JRizzell11",
-    favCar: "BMW M6 GT3 ‘16",
-    favTrack: "Nürburgring Nordschleife",
+    favCar: "Aston Martin V12 Vantage GT3 '12",
+    favTrack: "Kyoto Driving Park - Yamagiwa",
     hardware: "Logitech G PRO Racing Wheel",
     cardImg: CornBred,
-    flag: "ca",
+    flag: "us",
     socials: {
       youtube: { username: "@CornBredGaming_ViP", url: "https://youtube.com/@CornBredGaming_ViP", channelId: "UCKBCAUpKvY-zqc6Zt9QI74Q" },
+    }
+  },
+  {
+    id: 31,
+    name: "Shahir",
+    rank: "King of New Jersey",
+    gtTag: "VIP_Shahir",
+    psnId: "TTV-shahirDTG",
+    favCar: "Ferrari 458 Italia",
+    favTrack: "Nürburgring Nordschleife",
+    hardware: "Logitech G29",
+    cardImg: Shahir,
+    flag: "us",
+    socials: {
+      youtube: { username: "@Shahir Al-Mollah", url: "https://youtube.com/@ShahirAlMollah", channelId: "UCcFnGkofTMmKD7y3NFDV6qA" },
+      twitch: { username: "@shahirDTG", url: "https://www.twitch.tv/shahirDTG" },
     }
   },
 ]

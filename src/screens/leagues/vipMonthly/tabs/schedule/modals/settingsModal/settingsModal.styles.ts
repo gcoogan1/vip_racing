@@ -180,8 +180,8 @@ export const SettingsDetailText = styled.p`
   height: 20px;
   color: ${theme.colors.surface.text1};
   overflow:hidden; 
-        white-space:nowrap; 
-        text-overflow: ellipsis;
+  white-space:nowrap; 
+  text-overflow: ellipsis;
 `;
 
 //   display: flex;

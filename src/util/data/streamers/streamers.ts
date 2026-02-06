@@ -15,7 +15,7 @@ export const streamers: Streamer[] = [
     channelId: "UC1Bn8HomwnhOmtukIA5Bkzw",
   },
   {
-    name: "@Da_Crawl3r",
+    name: "Da_Crawl3r",
     username: "@Da_Crawl3r",
     channelId: "UChhn-Ho72-weSlgGyKqqIog",
     id: 7
@@ -75,9 +75,15 @@ export const streamers: Streamer[] = [
     id: 88
   },
   {
-    name: "CornBredGaming_ViP",
+    name: "VIP_CornBred",
     username: "@CornBredGaming_ViP",
     channelId: "UCKBCAUpKvY-zqc6Zt9QI74Q",
     id: 11
+  },
+  {
+    name: "Shahir",
+    username: "@ShahirAlMollah",
+    channelId: "UCcFnGkofTMmKD7y3NFDV6qA",
+    id: 31
   }
 ];

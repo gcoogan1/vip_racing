@@ -120,6 +120,7 @@ export const selectSessionDetailsById = (sessionId: number) =>
         splitId: split?.id ?? 0,
         splitName: split?.split_name ?? "",
         numLaps: setting?.num_laps ?? 0,
+        showNoCars: setting?.show_no_cars ?? false,
         carImageUrlNoBg: setting?.car_img_no_bg_url ?? "",
         raceDayId: raceDay?.id ?? 0,
         raceDate: raceDay?.race_date ?? "",

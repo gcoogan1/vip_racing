@@ -46,6 +46,7 @@ export interface SessionSettings {
   car_img_url?: string;
   num_laps?: number;
   car_img_no_bg_url?: string;
+  show_no_cars?: boolean;
 }
 
 export interface Driver {

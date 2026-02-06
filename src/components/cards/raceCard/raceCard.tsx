@@ -20,6 +20,7 @@ type RaceCardProps = {
   settingsOnClick: () => void;
   resultsOnClick: () => void;
   noResults?: boolean;
+  showNoCars?: boolean;
 };
 
 const RaceCard = ({
@@ -29,7 +30,8 @@ const RaceCard = ({
   raceImage,
   settingsOnClick,
   resultsOnClick,
-  noResults
+  noResults,
+  showNoCars,
 }: RaceCardProps) => {
   return (
     <RaceCardContainer>
@@ -46,7 +48,7 @@ const RaceCard = ({
           {!noResults && <Button variant="secondary" onClick={resultsOnClick} label="View Results" icon={<ArrowRight width={16} height={16} />} />}
         </ButtonsContainer>
       </RaceCardContent>
-      <RaceCardImage src={raceImage} alt={`Image of race ${raceNumber}`} />
+      {!showNoCars && <RaceCardImage src={raceImage} alt={`Image of race ${raceNumber}`} />}
     </RaceCardContainer>
   );
 };

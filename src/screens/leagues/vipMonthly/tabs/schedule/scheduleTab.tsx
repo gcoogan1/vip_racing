@@ -46,14 +46,16 @@ const ScheduleTab = ({ leagueName }: ScheduleTabProps) => {
 
   const raceDaysByRound = useSelector(selectRaceDaysGroupedByRound);
 
+
   return (
     <RoundsList>
       {raceDaysByRound.map((raceDayGroup) => {
+        const createdBy = raceDayGroup.round_name === "March" ? "VIP_PLAYER" : "DA_CRAWL3R";
         return (
           <RoundSection key={raceDayGroup.id}>
             <RoundHeader isHidden={raceDayGroup.raceDays.length === 0}>
               <RoundTitle>{raceDayGroup.round_name}</RoundTitle>
-              <RoundSubtitle>PRESENTED BY DA_CRAWL3R</RoundSubtitle>
+              <RoundSubtitle>PRESENTED BY {createdBy}</RoundSubtitle>
             </RoundHeader>
             {raceDayGroup.raceDays.length > 0 && (
               <RacesContainer>

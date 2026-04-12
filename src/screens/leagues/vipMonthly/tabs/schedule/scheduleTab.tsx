@@ -49,8 +49,8 @@ const ScheduleTab = ({ leagueName }: ScheduleTabProps) => {
 
   return (
     <RoundsList>
-      {raceDaysByRound.map((raceDayGroup) => {
-        const createdBy = raceDayGroup.round_name === "March" ? "VIP_PLAYER" : "DA_CRAWL3R";
+      {[...raceDaysByRound].reverse().map((raceDayGroup) => {
+        const createdBy = raceDayGroup.round_name === "March" ? "VIP_PLAYER" : raceDayGroup.round_name === "April" ? "VIP_SCARLXRD" : "DA_CRAWL3R";
         return (
           <RoundSection key={raceDayGroup.id}>
             <RoundHeader isHidden={raceDayGroup.raceDays.length === 0}>

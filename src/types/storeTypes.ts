@@ -14,6 +14,7 @@ export interface Round {
   league_id: number;
   round_num: number;
   round_name: string;
+  created_by?: string;
 }
 
 export interface RaceDay {
@@ -46,6 +47,7 @@ export interface SessionSettings {
   second_car?: string;
   car_img_url?: string;
   num_laps?: number;
+  time_limit?: string;
   car_img_no_bg_url?: string;
   show_no_cars?: boolean;
 }

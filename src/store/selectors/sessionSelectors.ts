@@ -121,12 +121,14 @@ export const selectSessionDetailsById = (sessionId: number) =>
         splitId: split?.id ?? 0,
         splitName: split?.split_name ?? "",
         numLaps: setting?.num_laps ?? 0,
+        timeLimit: setting?.time_limit,
         showNoCars: setting?.show_no_cars ?? false,
         carImageUrlNoBg: setting?.car_img_no_bg_url ?? "",
         raceDayId: raceDay?.id ?? 0,
         raceDate: raceDay?.race_date ?? "",
         raceDayName: raceDay?.race_day_name ?? "",
         roundNumber: round?.round_num ?? 0,
+        roundCreatedBy: round?.created_by ?? "",
 
         drivers,
       };

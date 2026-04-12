@@ -72,7 +72,7 @@ export const SettingsTable = styled.div<{ isSmall?: boolean, isCar?: boolean }>`
   border-top-right-radius: ${theme.border.radius.medium};
   position: relative;
   overflow: hidden;
-  height: ${({ isCar }) => (isCar ? "211px" : "auto")};
+  min-height: ${({ isCar }) => (isCar ? "211px" : "auto")};
 
   &::before {
     content: "";
@@ -107,12 +107,13 @@ export const SettingsTableTitle = styled.h3`
   color: ${theme.colors.surface.text2};
 `;
 
-export const SmallSettingsTableContent = styled.div`
+export const SmallSettingsTableContent = styled.div<{ isCar?: boolean }>`
   display: flex;
   justify-content: space-between;
   width: 100%;
   flex-direction: column;
   padding: ${theme.layout.space.medium};
+  padding-bottom: ${({ isCar }) => (isCar ? "50px" : theme.layout.space.medium)};
   gap: ${theme.layout.space.medSmall};
 `;
 
@@ -159,8 +160,9 @@ export const CarSettingsImage = styled.img<{ $double?: boolean }>`
   height: 143px;
   object-fit: contain;
   position: absolute;
+  right: ${theme.layout.space.medium};
   bottom: ${({ $double }) => ($double ? "-32px" : "-16px")};
-  z-index: 3;  
+  z-index: 3;
 `;
 
 
@@ -177,11 +179,8 @@ export const SettingsDetailTitle = styled.p`
 export const SettingsDetailText = styled.p`
   ${fontCSS(theme.typography.body.bold)};
   width: 224px;
-  /* height: 20px; */
   color: ${theme.colors.surface.text1};
-  /* overflow:hidden; 
-  white-space:nowrap; 
-  text-overflow: ellipsis; */
+  word-break: break-word;
 `;
 
 //   display: flex;

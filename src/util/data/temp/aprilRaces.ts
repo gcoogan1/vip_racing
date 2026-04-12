@@ -1,27 +1,21 @@
-import type {
-  RaceSettings,
-  RaceSettingsConfig,
-} from "../../../types/raceSettingTypes";
-import { AprilRaceASettings, AprilRaceBSettings, AprilRaceCSettings } from "./aprilRaces";
-import { FebRaceASettings, FebRaceBSettings, FebRaceCSettings } from "./februaryRaces";
-import { MarchRaceASettings, MarchRaceBSettings, MarchRaceCSettings } from "./marchRaces";
+import type { RaceSettingsConfig } from "../../../types/raceSettingTypes";
 
-export const RaceASettings: RaceSettingsConfig = {
+export const AprilRaceASettings: RaceSettingsConfig = {
   timeWeatherSettings: {
     weatherSelectionMethod: "Custom Weather",
     presetWeather: "--",
-    equalConditionsMode: "",
-    timeOfDay: "Afternoon",
-    variableTimeSpeedRate: "5x",
-    customWeather: "R03 - R04 - R02 - R04 - Random",
+    equalConditionsMode: "--",
+    timeOfDay: "Early Morning",
+    variableTimeSpeedRate: "8x",
+    customWeather: "S14 - S14 - S09 - C06 - C03",
   },
   qualifierSettings: {
     timeLimit: "10 Minute(s)",
-    qualifyingContTime: "120 Second(s)",
+    qualifyingContTime: "70 Second(s)",
     fuelConsumptionRate: "Same as During the Race",
-    initialFuel: "25 liters",
+    initialFuel: "30 liters",
     tireWearRate: "Same as During the Race",
-    slipstreamStrength: "Disabled",
+    slipstreamStrength: "Real",
   },
   raceSettings: {
     startType: "Grid Start",
@@ -32,94 +26,23 @@ export const RaceASettings: RaceSettingsConfig = {
     slipstreamStrength: "Real",
     visibleDamge: "On",
     mechanicalDamage: "Light",
-    tireWearRate: "7x",
-    fuelConsumptionRate: "3x",
-    refuelingSpeed: "3 L/sec",
+    tireWearRate: "3x",
+    fuelConsumptionRate: "6x",
+    refuelingSpeed: "5 L/sec",
     initialFuel: "Default",
     gripRedOffTrack: "Real",
-    raceFinishDelay: "120 Second(s)",
-    minNumPitStops: "0",
-    reqTireTypeChange: "On",
+    raceFinishDelay: "70 Second(s)",
+    minNumPitStops: "--",
+    reqTireTypeChange: "--",
     nitroOvertake: "Default",
   },
   regulationSettings: {
-    filterByCategory: "Gr.4",
+    filterByCategory: "No Limit",
     ppLimit: "No Limit",
     maxPowerOutput: "No Limit",
     minWeight: "No Limit",
     usableTire: "Racing",
-    usableTireTypes: "Medium, Soft",
-    requiredTireType: "None",
-    nitro: "Prohibited",
-    kartUsage: "Off",
-    engineSwap: "Prohibited",
-    tuningParts: "Unrestricted",
-    yearLowerLimit: "No Limit",
-    yearUpperLimit: "No Limit",
-    drivetrain: "Unrestricted",
-    aspiration: "Unrestricted",
-  },
-  penaltySettings: {
-    shortCut: "Weak",
-    wallCollision: "Off",
-    correctVehicleCourse: "Off",
-    carCollision: "On",
-    pitLane: "On",
-    ghosting: "None",
-    flagRules: "On",
-  },
-  limitDrivingOptions: {
-    countersteeringAssistance: "No Limit",
-    asm: "No Limit",
-    drivingLineAssist: "No Limit",
-    tractionControl: "No Limit",
-    abs: "No Limit",
-    autoDrive: "Prohibited",
-  },
-};
-
-export const RaceBSettings: RaceSettingsConfig = {
-  timeWeatherSettings: {
-    weatherSelectionMethod: "Custom Weather",
-    presetWeather: "--",
-    equalConditionsMode: "",
-    timeOfDay: "Evening",
-    variableTimeSpeedRate: "5x",
-  },
-  qualifierSettings: {
-    timeLimit: "10 Minute(s)",
-    qualifyingContTime: "120 Second(s)",
-    fuelConsumptionRate: "Same as During the Race",
-    initialFuel: "25 liters",
-    tireWearRate: "4x",
-    slipstreamStrength: "Disabled",
-  },
-  raceSettings: {
-    startType: "Grid Start",
-    gridOrder: "Fastest First",
-    bop: "On",
-    settingOptions: "Some",
-    boost: "None",
-    slipstreamStrength: "Real",
-    visibleDamge: "On",
-    mechanicalDamage: "Light",
-    tireWearRate: "7x",
-    fuelConsumptionRate: "3x",
-    refuelingSpeed: "3 L/sec",
-    initialFuel: "Default",
-    gripRedOffTrack: "Real",
-    raceFinishDelay: "120 Second(s)",
-    minNumPitStops: "2",
-    reqTireTypeChange: "On",
-    nitroOvertake: "Default",
-  },
-  regulationSettings: {
-    filterByCategory: "Gr.3",
-    ppLimit: "No Limit",
-    maxPowerOutput: "No Limit",
-    minWeight: "No Limit",
-    usableTire: "Racing",
-    usableTireTypes: "Medium, Soft",
+    usableTireTypes: "Soft",
     requiredTireType: "Soft",
     nitro: "Prohibited",
     kartUsage: "Off",
@@ -136,7 +59,7 @@ export const RaceBSettings: RaceSettingsConfig = {
     correctVehicleCourse: "Off",
     carCollision: "On",
     pitLane: "On",
-    ghosting: "None",
+    ghosting: "Off",
     flagRules: "On",
   },
   limitDrivingOptions: {
@@ -149,21 +72,22 @@ export const RaceBSettings: RaceSettingsConfig = {
   },
 };
 
-export const RaceCSettings: RaceSettingsConfig = {
+export const AprilRaceBSettings: RaceSettingsConfig = {
   timeWeatherSettings: {
     weatherSelectionMethod: "Custom Weather",
     presetWeather: "--",
-    equalConditionsMode: "",
-    timeOfDay: "Evening",
-    variableTimeSpeedRate: "1x",
+    equalConditionsMode: "--",
+    timeOfDay: "Early Morning",
+    variableTimeSpeedRate: "8x",
+    customWeather: "S14 - S14 - S14 - S09",
   },
   qualifierSettings: {
     timeLimit: "10 Minute(s)",
-    qualifyingContTime: "120 Second(s)",
+    qualifyingContTime: "60 Second(s)",
     fuelConsumptionRate: "Same as During the Race",
-    initialFuel: "25 liters",
-    tireWearRate: "3x",
-    slipstreamStrength: "Disabled",
+    initialFuel: "Same as During the Race",
+    tireWearRate: "Same as During the Race",
+    slipstreamStrength: "Real",
   },
   raceSettings: {
     startType: "Grid Start",
@@ -174,28 +98,28 @@ export const RaceCSettings: RaceSettingsConfig = {
     slipstreamStrength: "Real",
     visibleDamge: "On",
     mechanicalDamage: "Light",
-    tireWearRate: "6x",
-    fuelConsumptionRate: "3x",
-    refuelingSpeed: "3 L/sec",
+    tireWearRate: "8x",
+    fuelConsumptionRate: "4x",
+    refuelingSpeed: "5 L/sec",
     initialFuel: "Default",
     gripRedOffTrack: "Real",
-    raceFinishDelay: "120 Second(s)",
-    minNumPitStops: "2",
-    reqTireTypeChange: "On",
+    raceFinishDelay: "70 Second(s)",
+    minNumPitStops: "0",
+    reqTireTypeChange: "--",
     nitroOvertake: "Default",
   },
   regulationSettings: {
-    filterByCategory: "Gr.1",
-    ppLimit: "No Limit",
+    filterByCategory: "No Limit",
+    ppLimit: "700",
     maxPowerOutput: "No Limit",
     minWeight: "No Limit",
-    usableTire: "Racing",
-    usableTireTypes: "Medium, Soft",
-    requiredTireType: "None",
+    usableTire: "Sports",
+    usableTireTypes: "Soft",
+    requiredTireType: "Soft",
     nitro: "Prohibited",
     kartUsage: "Off",
     engineSwap: "Prohibited",
-    tuningParts: "Unrestricted",
+    tuningParts: "Extreme and Lower",
     yearLowerLimit: "No Limit",
     yearUpperLimit: "No Limit",
     drivetrain: "Unrestricted",
@@ -207,7 +131,7 @@ export const RaceCSettings: RaceSettingsConfig = {
     correctVehicleCourse: "Off",
     carCollision: "On",
     pitLane: "On",
-    ghosting: "None",
+    ghosting: "Off",
     flagRules: "On",
   },
   limitDrivingOptions: {
@@ -220,52 +144,74 @@ export const RaceCSettings: RaceSettingsConfig = {
   },
 };
 
-export const Races: RaceSettings[] = [
-  {
-    id: 10,
-    data: RaceASettings,
+export const AprilRaceCSettings: RaceSettingsConfig = {
+  timeWeatherSettings: {
+    weatherSelectionMethod: "Custom Weather",
+    presetWeather: "--",
+    equalConditionsMode: "--",
+    timeOfDay: "Evening",
+    variableTimeSpeedRate: "5x",
+    customWeather: "R06 - C-2 - S14 - R01 - S09 - S06",
   },
-  {
-    id: 11,
-    data: RaceBSettings,
+  qualifierSettings: {
+    timeLimit: "10 Minute(s)",
+    qualifyingContTime: "70 Second(s)",
+    fuelConsumptionRate: "Same as During the Race",
+    initialFuel: "Same as During the Race",
+    tireWearRate: "Same as During the Race",
+    slipstreamStrength: "Real",
   },
-  {
-    id: 12,
-    data: RaceCSettings,
+  raceSettings: {
+    startType: "Grid Start with FSC",
+    gridOrder: "Fastest First",
+    bop: "On",
+    settingOptions: "All",
+    boost: "None",
+    slipstreamStrength: "Real",
+    visibleDamge: "On",
+    mechanicalDamage: "Light",
+    tireWearRate: "8x",
+    fuelConsumptionRate: "3x",
+    refuelingSpeed: "5 L/sec",
+    initialFuel: "Default",
+    gripRedOffTrack: "Real",
+    raceFinishDelay: "70 Second(s)",
+    minNumPitStops: "1",
+    reqTireTypeChange: "Off",
+    nitroOvertake: "Default",
   },
-  {
-    id: 13,
-    data: FebRaceASettings
+  regulationSettings: {
+    filterByCategory: "Gr.3",
+    ppLimit: "No Limit",
+    maxPowerOutput: "No Limit",
+    minWeight: "No Limit",
+    usableTire: "Racing",
+    usableTireTypes: "All",
+    requiredTireType: "Hard, Medium",
+    nitro: "Prohibited",
+    kartUsage: "Off",
+    engineSwap: "Prohibited",
+    tuningParts: "Extreme and Lower",
+    yearLowerLimit: "No Limit",
+    yearUpperLimit: "No Limit",
+    drivetrain: "Unrestricted",
+    aspiration: "Unrestricted",
   },
-  {
-    id: 14,
-    data: FebRaceBSettings
+  penaltySettings: {
+    shortCut: "Weak",
+    wallCollision: "Off",
+    correctVehicleCourse: "Off",
+    carCollision: "On",
+    pitLane: "On",
+    ghosting: "Off",
+    flagRules: "On",
   },
-  {
-    id: 15,
-    data: FebRaceCSettings
-  },{
-    id: 16,
-    data: MarchRaceASettings
+  limitDrivingOptions: {
+    countersteeringAssistance: "No Limit",
+    asm: "No Limit",
+    drivingLineAssist: "No Limit",
+    tractionControl: "No Limit",
+    abs: "No Limit",
+    autoDrive: "Prohibited",
   },
-  {
-    id: 17,
-    data: MarchRaceBSettings
-  },
-  {
-    id: 18,
-    data: MarchRaceCSettings
-  },
-  {
-    id: 19,
-    data: AprilRaceASettings
-  },
-  {
-    id: 20,
-    data: AprilRaceBSettings
-  },
-  {
-    id: 21,
-    data: AprilRaceCSettings
-  }
-];
+};

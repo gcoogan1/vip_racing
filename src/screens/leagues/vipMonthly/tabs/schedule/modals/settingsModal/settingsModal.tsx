@@ -53,6 +53,18 @@ const SettingsModal = ({ sessionId }: SettingsModalProps) => {
     ? formatRaceDate(settings.startTime)
     : "--";
 
+  const hasNumLaps = settings?.numLaps != null && settings.numLaps > 0;
+  const hasTimeLimit =
+    typeof settings?.timeLimit === "string" &&
+    settings.timeLimit.trim().length > 0;
+
+  const raceLengthTitle = hasNumLaps ? "No. of Laps" : "Time Limit";
+  const raceLengthValue = hasNumLaps
+    ? settings?.numLaps
+    : hasTimeLimit
+      ? settings?.timeLimit
+      : "--";
+
   return (
     <>
       <ModalContent>
@@ -77,8 +89,8 @@ const SettingsModal = ({ sessionId }: SettingsModalProps) => {
                   <SettingsDetailText>{settings?.track}</SettingsDetailText>
                 </SettingsDetail>
                 <SettingsDetail>
-                  <SettingsDetailTitle>No. of Laps</SettingsDetailTitle>
-                  <SettingsDetailText>{settings?.numLaps}</SettingsDetailText>
+                  <SettingsDetailTitle>{raceLengthTitle}</SettingsDetailTitle>
+                  <SettingsDetailText>{raceLengthValue}</SettingsDetailText>
                 </SettingsDetail>
               </SmallSettingsTableContent>
             </SettingsTable>
@@ -86,14 +98,26 @@ const SettingsModal = ({ sessionId }: SettingsModalProps) => {
               <SettingsTableHeader>
                 <SettingsTableTitle>Session</SettingsTableTitle>
               </SettingsTableHeader>
-              <SmallSettingsTableContent>
+              <SmallSettingsTableContent isCar>
                 <CarSettingsDetail>
                   <SettingsDetailTitle>Car</SettingsDetailTitle>
-                  <SettingsDetailText>{settings?.car}</SettingsDetailText>
+                  {settings?.car && settings.car.includes(";")
+                    ? settings.car.split(";").map((car, idx) => (
+                        <SettingsDetailText key={idx}>
+                          {car.trim()}
+                        </SettingsDetailText>
+                      ))
+                    : <SettingsDetailText>{settings?.car}</SettingsDetailText>}
                   {settings?.secondCar && (
-                    <SettingsDetailText>
-                      {settings.secondCar}
-                    </SettingsDetailText>
+                    settings.secondCar.includes(";")
+                      ? settings.secondCar.split(";").map((car, idx) => (
+                          <SettingsDetailText key={`second-${idx}`}>
+                            {car.trim()}
+                          </SettingsDetailText>
+                        ))
+                      : <SettingsDetailText>
+                          {settings.secondCar}
+                        </SettingsDetailText>
                   )}
                 </CarSettingsDetail>
                 <CarSettingsImage

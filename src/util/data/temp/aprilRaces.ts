@@ -151,7 +151,7 @@ export const AprilRaceCSettings: RaceSettingsConfig = {
     equalConditionsMode: "--",
     timeOfDay: "Evening",
     variableTimeSpeedRate: "5x",
-    customWeather: "R06 - C-2 - S14 - R01 - S09 - S06",
+    customWeather: "R06 - C02 - S14 - R01 - S09 - S06",
   },
   qualifierSettings: {
     timeLimit: "10 Minute(s)",

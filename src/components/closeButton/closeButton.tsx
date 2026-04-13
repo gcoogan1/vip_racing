@@ -8,7 +8,7 @@ type CloseButtonProps = {
 const CloseButton = ({ onClick }: CloseButtonProps) => {
   return (
     <ButtonContainer onClick={onClick}>
-      <Text>Close</Text><Close />
+      <Text>Close</Text><Close color="#160e0b" />
     </ButtonContainer>
   )
 }

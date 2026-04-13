@@ -11,7 +11,7 @@ function App() {
   });
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#160e0b" }}>
       <AppRouter />
     </div>
   )

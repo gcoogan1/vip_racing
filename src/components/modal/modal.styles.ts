@@ -22,4 +22,5 @@ export const ModalContent = styled.div`
   overflow-y: auto;
   margin: 0 auto;
   position: relative;
+  color: #160e0b;
 `;

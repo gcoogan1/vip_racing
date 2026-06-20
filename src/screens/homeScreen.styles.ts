@@ -206,7 +206,6 @@ export const VipLeague = styled.div`
 
 export const VipLeagueCard = styled.div`
   display: flex;
-  width: 384px;
   min-width: 264px;
   max-width: 384px;
   padding: ${theme.layout.space.medSmall};
@@ -359,6 +358,7 @@ export const LeagueContentButtonContainer = styled.div`
   align-items: flex-start;
   align-content: flex-start;
   gap: 8px;
+  width: 100%;
   align-self: stretch;
   flex-wrap: wrap;
 `;
@@ -700,6 +700,6 @@ export const FanZoneFanName = styled.h3`
 `;
 
 export const FanZoneFanRole = styled.p`
-  ${fontCSS(theme.typography.body.large)};
+  ${fontCSS(theme.typography.subtitle.large)};
   color: #F1E447;
 `;

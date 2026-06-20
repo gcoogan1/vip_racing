@@ -23,7 +23,7 @@ export const FooterContent = styled.div`
   padding: ${theme.layout.space.xlarge} 0px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: ${theme.layout.space.xlarge};
 
   @media (max-width: 703px) {

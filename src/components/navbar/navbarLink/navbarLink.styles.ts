@@ -13,6 +13,7 @@ export const NavbarLinkContainer= styled(NavLink)`
   display: flex;
   align-items: center;
   cursor: pointer;
+  z-index: 1;
 
   &.active {
     border-color: ${theme.colors.surface.text1};

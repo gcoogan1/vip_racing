@@ -162,7 +162,7 @@ const HomeScreen = () => {
           <VipTitleContainer>
             <VipMiniTitle>Motorsport Leagues presents</VipMiniTitle>
             <VipTitle>VIP GT World Championship</VipTitle>
-            <VipSubtitle>The ultimate league.</VipSubtitle>
+            <VipSubtitle>The most elite team-based sim racing league on Gran Turismo 7.</VipSubtitle>
           </VipTitleContainer>
           <VipContent>
             <SpecialContent>
@@ -212,8 +212,8 @@ const HomeScreen = () => {
                 </VipLeagueCard>
                 <LeagueContent>
                   <LeagueContentTextContainer>
-                    <LeagueContentTitle>The Premium League</LeagueContentTitle>
-                    <LeagueContentSubtitle>Join this league for the ultimate experience available in Gran Turismo 7. It is held annually and is likely to be the best thing ever made!</LeagueContentSubtitle>
+                    <LeagueContentTitle>The Ultimate League</LeagueContentTitle>
+                    <LeagueContentSubtitle>The four driver team championship kicks off its inaugural season from 8 July to 26 September. Each of the two divisions will battle across 8 challenging rounds, taking competitors around the world to crown a Team and Driver champion.</LeagueContentSubtitle>
                   </LeagueContentTextContainer>
                   <LeagueContentButtonContainer>
                     <ViewSeasonButton
@@ -346,7 +346,7 @@ const HomeScreen = () => {
               <FanZoneAvatar src={CrasherAvatar} alt="Fan Avatar" />
               <FanZoneFanTextContainer>
                 <FanZoneFanName>Crasher</FanZoneFanName>
-                <FanZoneFanRole>VIP’S #1 Fan</FanZoneFanRole>
+                <FanZoneFanRole>VIP’S #1 FAN</FanZoneFanRole>
               </FanZoneFanTextContainer>
             </FanZoneFan>
             <FanZoneImage src={CrasherCar} alt="Crasher Car" />

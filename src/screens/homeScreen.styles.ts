@@ -142,7 +142,7 @@ export const VipTitleContainer = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: ${theme.layout.space.xSmall};
+  gap: 4px;
 `;
 
 export const VipMiniTitle = styled.h3`
@@ -206,6 +206,7 @@ export const VipLeague = styled.div`
 
 export const VipLeagueCard = styled.div`
   display: flex;
+  width: 100%;
   min-width: 264px;
   max-width: 384px;
   padding: ${theme.layout.space.medSmall};
@@ -285,12 +286,18 @@ export const LeagueName = styled.h3`
 
 export const LeagueInfoContainer = styled.div`
   display: flex;
-  gap: 4px;
+  gap: 8px;
   color: #A5A5A5;
 `;
 
 export const LeagueInfoContent = styled.div`
   display: flex;
+  gap: 8px;
+`;
+
+export const Detail = styled.div`
+  display: flex;
+  align-items: center;
   gap: 4px;
 `;
 

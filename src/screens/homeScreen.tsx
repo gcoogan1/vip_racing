@@ -18,7 +18,7 @@ import ArrowRight from "../assets/icon/ArrowRight.svg?react";
 import iRacing from "../assets/game/iRacing.svg";
 import gt7 from "../assets/game/GT7.svg";
 import f1 from "../assets/game/F125.svg";
-import vipLeagueImage from "../assets/new/leaguecard.jpg";
+import vipLeagueImage from "../assets/new/lc.png";
 import ParticipantsIcon from "../assets/new/Participants.svg?react";
 import GameIcon from "../assets/new/Game.svg?react";
 import HostIcon from "../assets/new/Hosts.svg?react";
@@ -87,22 +87,19 @@ import {
   FanZoneFanRole,
   FanZoneFanTextContainer,
   FanZoneImage,
+  Detail,
 } from "./homeScreen.styles";
 import VipLeaguesCard from "../components/sectionCards/vipLeaguesCard/vipLeaguesCard";
 // import SportModeTable from "../components/tables/sportModeTable/sportModeTable";
 import VideoLink from "../components/videoLink/videoLink";
 import { useAnalytics } from "../util/hooks/useAnalytics";
 
-
 const HomeScreen = () => {
-
   const aboutRef = useRef<HTMLDivElement>(null);
   const isMobile = useMediaQuery("(max-width: 703px)");
   const { track } = useAnalytics();
 
-  const { videos, error } = useYouTubeStreams(
-    streamers,
-  );
+  const { videos, error } = useYouTubeStreams(streamers);
   const showVideos = videos.slice(0, 3);
   const navigate = useNavigate();
 
@@ -112,7 +109,8 @@ const HomeScreen = () => {
 
   const handleGoToSeasonGuide = () => {
     track("create_click", "Season Guide", "Homepage");
-    const url = "https://drive.google.com/file/d/1iG0xOqE32Oqwqzsv1CKEPfsTvvo8FuT6/view";
+    const url =
+      "https://drive.google.com/file/d/1iG0xOqE32Oqwqzsv1CKEPfsTvvo8FuT6/view";
     return window.open(url, "_blank", "noopener,noreferrer");
   };
 
@@ -125,10 +123,14 @@ const HomeScreen = () => {
   // const scrollToSection = () => {
   //   aboutRef.current?.scrollIntoView({ behavior: "smooth" });
   // };
-  
+
   return (
     <>
-      <HeroSection backgroundImage={CarsRacingFinishLine} large videoSrc={VIPHeroVideo}>
+      <HeroSection
+        backgroundImage={CarsRacingFinishLine}
+        large
+        videoSrc={VIPHeroVideo}
+      >
         <HeroTextContainer>
           <HeroTextContent>
             <TitleContainer>
@@ -152,7 +154,9 @@ const HomeScreen = () => {
       </HeroSection>
       <GamesSection>
         <GamesContainer>
-          {!isMobile && <IRacingLogo loading="lazy" src={iRacing} alt="iRacing Logo" />}
+          {!isMobile && (
+            <IRacingLogo loading="lazy" src={iRacing} alt="iRacing Logo" />
+          )}
           <GtLogo loading="lazy" src={gt7} alt="GT7 Logo" />
           {!isMobile && <F1Logo loading="lazy" src={f1} alt="F1 Logo" />}
         </GamesContainer>
@@ -162,50 +166,49 @@ const HomeScreen = () => {
           <VipTitleContainer>
             <VipMiniTitle>Motorsport Leagues presents</VipMiniTitle>
             <VipTitle>VIP GT World Championship</VipTitle>
-            <VipSubtitle>The most elite team-based sim racing league on Gran Turismo 7.</VipSubtitle>
+            <VipSubtitle>
+              The most elite team-based sim racing league on Gran Turismo 7.
+            </VipSubtitle>
           </VipTitleContainer>
           <VipContent>
             <SpecialContent>
               <VipLeague>
                 <VipLeagueCard>
-
-                  <ImageContainer
-                    $imageBg={vipLeagueImage}
-                  >
+                  <ImageContainer $imageBg={vipLeagueImage}>
                     <IndicatorsContainer>
-                          <StatusContainer>
-                            <StatusText>Coming Soon</StatusText>
-                          </StatusContainer>
+                      <StatusContainer>
+                        <StatusText>Coming Soon</StatusText>
+                      </StatusContainer>
                     </IndicatorsContainer>
                   </ImageContainer>
                   <TextContainer>
                     <LeagueName>VIP GT World Championship</LeagueName>
                     <LeagueInfoContainer>
                       <LeagueInfoContent>
-                          <Icon
-                            aria-label="participants"
-                          >
-                          <ParticipantsIcon width={18} height={18} />
+                        <Detail>
+                          <Icon aria-label="participants">
+                            <ParticipantsIcon width={18} height={18} />
                           </Icon>
                           <LeagueInfoText>100</LeagueInfoText>
-                          <Divider />
-                      </LeagueInfoContent>
-                      <LeagueInfoContent>
-                        <Icon
-                          aria-label="game"
-                        >
-                          <GameIcon width={18} height={18} />
-                        </Icon>
-                        <LeagueInfoText>GT7</LeagueInfoText>
+                        </Detail>
                         <Divider />
                       </LeagueInfoContent>
                       <LeagueInfoContent>
-                        <Icon
-                          aria-label="host"
-                        >
+                        <Detail>
+                        <Icon aria-label="game">
+                          <GameIcon width={18} height={18} />
+                        </Icon>
+                        <LeagueInfoText>GT7</LeagueInfoText>
+                        </Detail>
+                        <Divider />
+                      </LeagueInfoContent>
+                      <LeagueInfoContent>
+                        <Detail>
+                        <Icon aria-label="host">
                           <HostIcon width={18} height={18} />
                         </Icon>
                         <LeagueInfoText>VIP Racing Team</LeagueInfoText>
+                        </Detail>
                       </LeagueInfoContent>
                     </LeagueInfoContainer>
                   </TextContainer>
@@ -213,17 +216,19 @@ const HomeScreen = () => {
                 <LeagueContent>
                   <LeagueContentTextContainer>
                     <LeagueContentTitle>The Ultimate League</LeagueContentTitle>
-                    <LeagueContentSubtitle>The four driver team championship kicks off its inaugural season from 8 July to 26 September. Each of the two divisions will battle across 8 challenging rounds, taking competitors around the world to crown a Team and Driver champion.</LeagueContentSubtitle>
+                    <LeagueContentSubtitle>
+                      The four driver team championship kicks off its inaugural
+                      season from 8 July to 26 September. Each of the two
+                      divisions will battle across 8 challenging rounds, taking
+                      competitors around the world to crown a Team and Driver
+                      champion.
+                    </LeagueContentSubtitle>
                   </LeagueContentTextContainer>
                   <LeagueContentButtonContainer>
-                    <ViewSeasonButton
-                      onClick={handleGoToSeasonGuide}
-                    >
-                      View Season
+                    <ViewSeasonButton onClick={handleGoToSeasonGuide}>
+                      View Season Guide
                     </ViewSeasonButton>
-                    <JoinButton
-                      onClick={handleGoToJoinLeague}
-                    >
+                    <JoinButton onClick={handleGoToJoinLeague}>
                       Join Discord
                     </JoinButton>
                   </LeagueContentButtonContainer>
@@ -261,20 +266,74 @@ const HomeScreen = () => {
           </TextContent>
           <DriversList>
             <LeftList>
-              <DriverCard flag={drivers[0].flag} id={0} name={drivers[0].name} rank={drivers[0].rank} gtTag={drivers[0].gtTag} psnId={drivers[0].psnId} favCar={drivers[0].favCar} favTrack={drivers[0].favTrack} hardware={drivers[0].hardware} cardImg={drivers[0].cardImg} socials={drivers[0].socials} />
-              <DriverCard flag={drivers[2].flag} id={3} name={drivers[2].name} rank={drivers[2].rank} gtTag={drivers[2].gtTag} psnId={drivers[2].psnId} favCar={drivers[2].favCar} favTrack={drivers[2].favTrack} hardware={drivers[2].hardware} cardImg={drivers[2].cardImg} socials={drivers[2].socials} />
+              <DriverCard
+                flag={drivers[0].flag}
+                id={0}
+                name={drivers[0].name}
+                rank={drivers[0].rank}
+                gtTag={drivers[0].gtTag}
+                psnId={drivers[0].psnId}
+                favCar={drivers[0].favCar}
+                favTrack={drivers[0].favTrack}
+                hardware={drivers[0].hardware}
+                cardImg={drivers[0].cardImg}
+                socials={drivers[0].socials}
+              />
+              <DriverCard
+                flag={drivers[2].flag}
+                id={3}
+                name={drivers[2].name}
+                rank={drivers[2].rank}
+                gtTag={drivers[2].gtTag}
+                psnId={drivers[2].psnId}
+                favCar={drivers[2].favCar}
+                favTrack={drivers[2].favTrack}
+                hardware={drivers[2].hardware}
+                cardImg={drivers[2].cardImg}
+                socials={drivers[2].socials}
+              />
             </LeftList>
             <RightList>
-              <DriverCard flag={drivers[1].flag} id={2} name={drivers[1].name} rank={drivers[1].rank} gtTag={drivers[1].gtTag} psnId={drivers[1].psnId} favCar={drivers[1].favCar} favTrack={drivers[1].favTrack} hardware={drivers[1].hardware} cardImg={drivers[1].cardImg} socials={drivers[1].socials} />
-              <DriverCard flag={drivers[3].flag} id={1} name={drivers[3].name} rank={drivers[3].rank} gtTag={drivers[3].gtTag} psnId={drivers[3].psnId} favCar={drivers[3].favCar} favTrack={drivers[3].favTrack} hardware={drivers[3].hardware} cardImg={drivers[3].cardImg} socials={drivers[3].socials} />
+              <DriverCard
+                flag={drivers[1].flag}
+                id={2}
+                name={drivers[1].name}
+                rank={drivers[1].rank}
+                gtTag={drivers[1].gtTag}
+                psnId={drivers[1].psnId}
+                favCar={drivers[1].favCar}
+                favTrack={drivers[1].favTrack}
+                hardware={drivers[1].hardware}
+                cardImg={drivers[1].cardImg}
+                socials={drivers[1].socials}
+              />
+              <DriverCard
+                flag={drivers[3].flag}
+                id={1}
+                name={drivers[3].name}
+                rank={drivers[3].rank}
+                gtTag={drivers[3].gtTag}
+                psnId={drivers[3].psnId}
+                favCar={drivers[3].favCar}
+                favTrack={drivers[3].favTrack}
+                hardware={drivers[3].hardware}
+                cardImg={drivers[3].cardImg}
+                socials={drivers[3].socials}
+              />
             </RightList>
           </DriversList>
-              <div style={{ zIndex: 4, position: "absolute", bottom: 0 }}><Button label="View All Drivers" onClick={() => navigate("/drivers")} icon={<ArrowRight width={16} height={16} />} /></div>
+          <div style={{ zIndex: 4, position: "absolute", bottom: 0 }}>
+            <Button
+              label="View All Drivers"
+              onClick={() => navigate("/drivers")}
+              icon={<ArrowRight width={16} height={16} />}
+            />
+          </div>
         </DriversContent>
       </SectionContainer>
       <SectionContainer>
         <SectionContent>
-            <TextContent>
+          <TextContent>
             <TextTitle>VIP Leagues</TextTitle>
             <Parallelogram />
           </TextContent>
@@ -332,7 +391,11 @@ const HomeScreen = () => {
               />
             ))}
           </StreamVideoContainer>
-            <Button label="View Gallery" onClick={() => navigate("/media")} icon={<ArrowRight width={16} height={16} />} />
+          <Button
+            label="View Gallery"
+            onClick={() => navigate("/media")}
+            icon={<ArrowRight width={16} height={16} />}
+          />
         </SectionContent>
       </SectionContainer>
       <FanZoneSection>

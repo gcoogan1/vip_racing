@@ -26,11 +26,11 @@ export const FooterContent = styled.div`
   justify-content: center;
   gap: ${theme.layout.space.xlarge};
 
-  @media (max-width: 703px) {
+  /* @media (max-width: 703px) {
     justify-content: center;
     flex-direction: column;
     align-items: flex-start;
-  }
+  } */
 `;
 
 export const BrandContainer = styled.div`

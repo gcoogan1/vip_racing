@@ -81,11 +81,29 @@ export const theme: Theme = {
         fontWeight: 400,
         lineHeight: "40px",
       },
+      mediumRegular: {
+        fontSize: "28px",
+        fontFamily: "'Zen Dots', sans-serif",
+        fontWeight: 400,
+        lineHeight: "36px",
+      },
       small: {
         fontSize: "24px",
         fontFamily: "'Zen Dots', sans-serif",
         fontWeight: 400,
         lineHeight: "32px",
+      },
+      smallRegular: {
+        fontSize: "18px",
+        fontFamily: "'Zen Dots', sans-serif",
+        fontWeight: 400,
+        lineHeight: "24px",
+      },
+      xSmall: {
+        fontSize: "17px",
+        fontFamily: "'Zen Dots', sans-serif",
+        fontWeight: 400,
+        lineHeight: "22px",
       },
     },
     subtitle: {
@@ -113,6 +131,12 @@ export const theme: Theme = {
       },
     },
     body: {
+      smallBold: {
+        fontSize: "13px",
+        fontFamily: "'Quantico', sans-serif",
+        fontWeight: 700,
+        lineHeight: "18px",
+      },
       bold: {
         fontSize: "14px",
         fontFamily: "'Quantico', sans-serif",

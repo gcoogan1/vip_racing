@@ -26,15 +26,20 @@ type VipLeaguesCardProps = {
   buttonIcon?: React.ReactNode;
 };
 
-const VipLeaguesCard = ({ cardImage, imgAlt, titleImg, title, subtitle, description, buttonLabel, route, buttonIcon }: VipLeaguesCardProps) => {
-  const navigate = useNavigate();
+const VipLeaguesCard = ({ cardImage, imgAlt, titleImg, title, subtitle, description, buttonLabel, buttonIcon }: VipLeaguesCardProps) => {
+  // const navigate = useNavigate();
 
-  const handleNavigation = (path: string | undefined) => {
-    if (path) {
-      navigate(path);
-    } else {
-      console.error("Route is undefined");
-    }
+  // const handleNavigation = (path: string | undefined) => {
+  //   if (path) {
+  //     navigate(path);
+  //   } else {
+  //     console.error("Route is undefined");
+  //   }
+  // }
+
+  const handleLeaguesClick = () => {
+    const url = "https://motorsportleagues.com/";
+    return window.open(url, "_blank", "noopener,noreferrer");
   }
   
   return (
@@ -54,7 +59,7 @@ const VipLeaguesCard = ({ cardImage, imgAlt, titleImg, title, subtitle, descript
           </TextInfo>
         </TextContent>
         <div>
-          <Button label={buttonLabel} onClick={() => handleNavigation(route)} icon={buttonIcon} />
+          <Button label={buttonLabel} onClick={handleLeaguesClick} icon={buttonIcon} />
         </div>
       </TextContainer>
     </CardContainer>

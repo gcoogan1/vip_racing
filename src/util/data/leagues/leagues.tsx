@@ -23,7 +23,7 @@ export const leagues: League[] = [
     miniImg: "👑",
     image: MclarenDrifting,
     imgAlt: "McLaren car drifting on a racetrack",
-    buttonLabel: "Coming Soon",
+    buttonLabel: "View League",
     route: "/leagues/vip-gt3"
   },
   {

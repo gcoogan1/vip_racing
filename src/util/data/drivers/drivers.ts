@@ -15,7 +15,9 @@ import Left2PassU from "../../../assets/drivers/Left2PassU.png";
 import JPScale from "../../../assets/drivers/JPScale.png";
 import RowdyBurns from "../../../assets/drivers/RowdyBurns.png";
 import CornBred from "../../../assets/drivers/CornBred.png";
-import Shahir from "../../../assets/drivers/Shahir.png"
+import Shahir from "../../../assets/drivers/Shahir.png";
+import Dumptey from "../../../assets/drivers/Dumptey.png";
+
 
 type SocialLink = {
   username: string;
@@ -306,5 +308,17 @@ export const drivers: Driver[] = [
       youtube: { username: "@Shahir Al-Mollah", url: "https://youtube.com/@ShahirAlMollah", channelId: "UCcFnGkofTMmKD7y3NFDV6qA" },
       twitch: { username: "@shahirDTG", url: "https://www.twitch.tv/shahirDTG" },
     }
+  },
+  {
+    id: 5,
+    name: "Dumptey",
+    rank: "tHE Racer",
+    gtTag: "VIP_Lumpytoad",
+    psnId: "LumpyToad5",
+    favCar: "Porsche 911 GT3 R (992) ‘22",
+    favTrack: "Deep Forest Raceway",
+    hardware: "Fanatec DD Pro",
+    cardImg: Dumptey,
+    flag: "us",
   },
 ]

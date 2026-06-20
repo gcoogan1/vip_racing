@@ -5,7 +5,7 @@ import { theme } from "../../styles/theme";
 export const HeroContainer = styled.section<{ $background: string, $large?: boolean }>`
   position: relative;
   display: flex;
-  height: ${(p) => (p.$large ? "1024px" : "640px")};
+  height: ${(p) => (p.$large ? "740px" : "640px")};
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -14,8 +14,17 @@ export const HeroContainer = styled.section<{ $background: string, $large?: bool
   will-change: background-image;
 
   @media (max-width: 703px) {
-    height: ${(p) => (p.$large ? "800px;" : "640px")};
+    height: ${(p) => (p.$large ? "480px;" : "640px")};
   }
+`;
+
+export const HeroVideo = styled.video`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 `;
 
 

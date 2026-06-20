@@ -2,8 +2,9 @@ import React, { useState, useRef, useCallback } from "react";
 import { DropdownMenuContainer, MenuContent } from "./dropdownMenu.styles";
 import DropdownButton from "./dropdownButton/dropdownButton";
 import DropdownLink from "./dropdownLink/dropdownLink";
-import ArrowRight from "../../assets/icon/ArrowRight.svg?react";
+// import ArrowRight from "../../assets/icon/ArrowRight.svg?react";
 import { useOutsideClick } from "../../util/hooks/useOutsideHook";
+import Button from "../button/button";
 
 type Link = {
   to: string;
@@ -18,14 +19,14 @@ type DropdownMenuProps = {
 
 const DropdownMenu = ({ links, leagues, menuLabel }: DropdownMenuProps) => {
   const [open, setOpen] = useState(false);
-  const [openLeague, setOpenLeague] = useState(false);
+  // const [openLeague, setOpenLeague] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   const insideMenu = leagues && leagues.length > 0;
 
   const close = useCallback(() => {
     setOpen(false);
-    setOpenLeague(false);
+    // setOpenLeague(false);
   }, []);
 
   // Close on outside click
@@ -35,12 +36,17 @@ const DropdownMenu = ({ links, leagues, menuLabel }: DropdownMenuProps) => {
   const toggle = () => {
     setOpen((prev) => {
       const newState = !prev;
-      if (!newState) setOpenLeague(false);
+      // if (!newState) setOpenLeague(false);
       return newState;
     });
   };
 
-  const toggleLeague = () => setOpenLeague((prev) => !prev);
+  // const toggleLeague = () => setOpenLeague((prev) => !prev);
+
+  const handleLeaguesClick = () => {
+    const url = "https://motorsportleagues.com/";
+    return window.open(url, "_blank", "noopener,noreferrer");
+  }
 
   return (
     <DropdownMenuContainer
@@ -57,7 +63,8 @@ const DropdownMenu = ({ links, leagues, menuLabel }: DropdownMenuProps) => {
           ))}
           {insideMenu && (
             <DropdownMenuContainer>
-              <DropdownButton
+              <Button onClick={handleLeaguesClick} label="Our Leagues" />
+              {/* <DropdownButton
                 label={"Leagues"}
                 onClick={toggleLeague}
                 isOpen={openLeague}
@@ -75,7 +82,7 @@ const DropdownMenu = ({ links, leagues, menuLabel }: DropdownMenuProps) => {
                     </div>
                   ))}
                 </>
-              )}
+              )} */}
             </DropdownMenuContainer>
           )}
         </MenuContent>

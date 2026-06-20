@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { useMediaQuery } from "../util/hooks/useMediaQuery";
 import { useNavigate } from "react-router-dom";
 import { teamData } from "../util/data/team/team";
 import { drivers } from "../util/data/drivers/drivers";
@@ -12,14 +13,21 @@ import OurTeamCard from "../components/sectionCards/ourTeamCard/ourTeamCard";
 import DriverCard from "../components/cards/driverCard/driverCard";
 import CarsRacingFinishLine from "../assets/hero/CarsRacingFinishLineLargeOp.jpg";
 import Parallelogram from "../assets/icon/Parallelogram.svg?react";
-import ArrowDown from "../assets/icon/ArrowDown.svg?react";
+// import ArrowDown from "../assets/icon/ArrowDown.svg?react";
 import ArrowRight from "../assets/icon/ArrowRight.svg?react";
-// import iRacing from "../assets/game/iRacing.svg";
+import iRacing from "../assets/game/iRacing.svg";
 import gt7 from "../assets/game/GT7.svg";
-// import f1 from "../assets/game/F125.svg";
+import f1 from "../assets/game/F125.svg";
+import vipLeagueImage from "../assets/new/leaguecard.jpg";
+import ParticipantsIcon from "../assets/new/Participants.svg?react";
+import GameIcon from "../assets/new/Game.svg?react";
+import HostIcon from "../assets/new/Hosts.svg?react";
+import CrasherCar from "../assets/new/CrasherCar.png";
+import CrasherAvatar from "../assets/new/crasherAvatar.png";
+import VIPHeroVideo from "../assets/video/VIPHeroVideo.mp4";
 import {
   AboutCardContainer,
-  ButtonsContainer,
+  // ButtonsContainer,
   DriversContent,
   DriversList,
   GamesContainer,
@@ -38,15 +46,59 @@ import {
   TextTitle,
   Title,
   TitleContainer,
+  IRacingLogo,
+  F1Logo,
+  VipSection,
+  VipContainer,
+  VipTitle,
+  VipTitleContainer,
+  VipMiniTitle,
+  VipSubtitle,
+  VipContent,
+  SpecialContent,
+  VipLeague,
+  VipLeagueCard,
+  ImageContainer,
+  TextContainer,
+  LeagueName,
+  IndicatorsContainer,
+  LeagueInfoContainer,
+  LeagueInfoContent,
+  Icon,
+  LeagueInfoText,
+  Divider,
+  StatusText,
+  StatusContainer,
+  LeagueContent,
+  LeagueContentButtonContainer,
+  LeagueContentTextContainer,
+  LeagueContentSubtitle,
+  LeagueContentTitle,
+  ViewSeasonButton,
+  JoinButton,
+  FanZoneSection,
+  FanZoneContainer,
+  FanZoneTitle,
+  FanZoneTitleContainer,
+  FanZoneContents,
+  FanZoneAvatar,
+  FanZoneFan,
+  FanZoneFanName,
+  FanZoneFanRole,
+  FanZoneFanTextContainer,
+  FanZoneImage,
 } from "./homeScreen.styles";
 import VipLeaguesCard from "../components/sectionCards/vipLeaguesCard/vipLeaguesCard";
 // import SportModeTable from "../components/tables/sportModeTable/sportModeTable";
 import VideoLink from "../components/videoLink/videoLink";
+import { useAnalytics } from "../util/hooks/useAnalytics";
 
 
 const HomeScreen = () => {
 
   const aboutRef = useRef<HTMLDivElement>(null);
+  const isMobile = useMediaQuery("(max-width: 703px)");
+  const { track } = useAnalytics();
 
   const { videos, error } = useYouTubeStreams(
     streamers,
@@ -58,41 +110,129 @@ const HomeScreen = () => {
     console.error("Error fetching YouTube streams:", error);
   }
 
-  const scrollToSection = () => {
-    aboutRef.current?.scrollIntoView({ behavior: "smooth" });
+  const handleGoToSeasonGuide = () => {
+    track("create_click", "Season Guide", "Homepage");
+    const url = "https://drive.google.com/file/d/1iG0xOqE32Oqwqzsv1CKEPfsTvvo8FuT6/view";
+    return window.open(url, "_blank", "noopener,noreferrer");
   };
+
+  const handleGoToJoinLeague = () => {
+    track("create_click", "Join League", "Homepage");
+    const url = "https://discord.gg/QqWMBUT6G";
+    return window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  // const scrollToSection = () => {
+  //   aboutRef.current?.scrollIntoView({ behavior: "smooth" });
+  // };
   
   return (
     <>
-      <HeroSection backgroundImage={CarsRacingFinishLine} large>
+      <HeroSection backgroundImage={CarsRacingFinishLine} large videoSrc={VIPHeroVideo}>
         <HeroTextContainer>
           <HeroTextContent>
             <TitleContainer>
               <Title>Victory in Performance</Title>
               <Subtitle>eSports Sim Racing Team</Subtitle>
             </TitleContainer>
-            <ButtonsContainer>
+            {/* <ButtonsContainer>
               <Button
                 label="Discover More"
                 onClick={() => scrollToSection()}
                 icon={<ArrowDown width={16} height={16} />}
               />
-              {/* <Button
+              <Button
                 label="THE 2026 vip f1 league"
                 onClick={() => navigate("/leagues/vip-formula1")}
                 icon={<ArrowRight width={16} height={16} />}
-              /> */}
-            </ButtonsContainer>
+              /> 
+            </ButtonsContainer> */}
           </HeroTextContent>
         </HeroTextContainer>
       </HeroSection>
       <GamesSection>
         <GamesContainer>
-          {/* <IRacingLogo loading="lazy" src={iRacing} alt="iRacing Logo" /> */}
+          {!isMobile && <IRacingLogo loading="lazy" src={iRacing} alt="iRacing Logo" />}
           <GtLogo loading="lazy" src={gt7} alt="GT7 Logo" />
-          {/* <F1Logo loading="lazy" src={f1} alt="F1 Logo" /> */}
+          {!isMobile && <F1Logo loading="lazy" src={f1} alt="F1 Logo" />}
         </GamesContainer>
       </GamesSection>
+      <VipSection>
+        <VipContainer>
+          <VipTitleContainer>
+            <VipMiniTitle>Motorsport Leagues presents</VipMiniTitle>
+            <VipTitle>VIP GT World Championship</VipTitle>
+            <VipSubtitle>The ultimate league.</VipSubtitle>
+          </VipTitleContainer>
+          <VipContent>
+            <SpecialContent>
+              <VipLeague>
+                <VipLeagueCard>
+
+                  <ImageContainer
+                    $imageBg={vipLeagueImage}
+                  >
+                    <IndicatorsContainer>
+                          <StatusContainer>
+                            <StatusText>Coming Soon</StatusText>
+                          </StatusContainer>
+                    </IndicatorsContainer>
+                  </ImageContainer>
+                  <TextContainer>
+                    <LeagueName>VIP GT World Championship</LeagueName>
+                    <LeagueInfoContainer>
+                      <LeagueInfoContent>
+                          <Icon
+                            aria-label="participants"
+                          >
+                          <ParticipantsIcon width={18} height={18} />
+                          </Icon>
+                          <LeagueInfoText>100</LeagueInfoText>
+                          <Divider />
+                      </LeagueInfoContent>
+                      <LeagueInfoContent>
+                        <Icon
+                          aria-label="game"
+                        >
+                          <GameIcon width={18} height={18} />
+                        </Icon>
+                        <LeagueInfoText>GT7</LeagueInfoText>
+                        <Divider />
+                      </LeagueInfoContent>
+                      <LeagueInfoContent>
+                        <Icon
+                          aria-label="host"
+                        >
+                          <HostIcon width={18} height={18} />
+                        </Icon>
+                        <LeagueInfoText>VIP Racing Team</LeagueInfoText>
+                      </LeagueInfoContent>
+                    </LeagueInfoContainer>
+                  </TextContainer>
+                </VipLeagueCard>
+                <LeagueContent>
+                  <LeagueContentTextContainer>
+                    <LeagueContentTitle>The Premium League</LeagueContentTitle>
+                    <LeagueContentSubtitle>Join this league for the ultimate experience available in Gran Turismo 7. It is held annually and is likely to be the best thing ever made!</LeagueContentSubtitle>
+                  </LeagueContentTextContainer>
+                  <LeagueContentButtonContainer>
+                    <ViewSeasonButton
+                      onClick={handleGoToSeasonGuide}
+                    >
+                      View Season
+                    </ViewSeasonButton>
+                    <JoinButton
+                      onClick={handleGoToJoinLeague}
+                    >
+                      Join Discord
+                    </JoinButton>
+                  </LeagueContentButtonContainer>
+                </LeagueContent>
+              </VipLeague>
+            </SpecialContent>
+          </VipContent>
+        </VipContainer>
+      </VipSection>
       <SectionContainer ref={aboutRef}>
         <SectionContent>
           <TextContent>
@@ -195,6 +335,24 @@ const HomeScreen = () => {
             <Button label="View Gallery" onClick={() => navigate("/media")} icon={<ArrowRight width={16} height={16} />} />
         </SectionContent>
       </SectionContainer>
+      <FanZoneSection>
+        <FanZoneContainer>
+          <FanZoneTitleContainer>
+            <FanZoneTitle>Fan Zone</FanZoneTitle>
+            <Parallelogram />
+          </FanZoneTitleContainer>
+          <FanZoneContents>
+            <FanZoneFan>
+              <FanZoneAvatar src={CrasherAvatar} alt="Fan Avatar" />
+              <FanZoneFanTextContainer>
+                <FanZoneFanName>Crasher</FanZoneFanName>
+                <FanZoneFanRole>VIP’S #1 Fan</FanZoneFanRole>
+              </FanZoneFanTextContainer>
+            </FanZoneFan>
+            <FanZoneImage src={CrasherCar} alt="Crasher Car" />
+          </FanZoneContents>
+        </FanZoneContainer>
+      </FanZoneSection>
     </>
   );
 };

@@ -8,6 +8,7 @@ export const NavbarContainer = styled.div`
   justify-content: center;
   padding: 0px ${theme.layout.space.xlarge};
   background: linear-gradient(180deg, #160E0B 0%, rgba(22, 14, 11, 0) 100%);
+  z-index: 1;
 
   @media (max-width: 703px) {
 		min-width: 360px;

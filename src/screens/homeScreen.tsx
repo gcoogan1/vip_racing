@@ -23,7 +23,7 @@ import ParticipantsIcon from "../assets/new/Participants.svg?react";
 import GameIcon from "../assets/new/Game.svg?react";
 import HostIcon from "../assets/new/Hosts.svg?react";
 import CrasherCar from "../assets/new/CrasherCar.png";
-import CrasherAvatar from "../assets/new/crasherAvatar.png";
+import CrasherAvatar from "../assets/new/CrasherAvatar.png";
 import VIPHeroVideo from "../assets/video/VIPHeroVideo.mp4";
 import {
   AboutCardContainer,

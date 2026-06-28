@@ -116,7 +116,7 @@ const HomeScreen = () => {
 
   const handleGoToJoinLeague = () => {
     track("create_click", "Join League", "Homepage");
-    const url = "https://discord.gg/QqWMBUT6G";
+    const url = "https://discord.com/invite/yjTMKydM9f";
     return window.open(url, "_blank", "noopener,noreferrer");
   };
 

@@ -124,6 +124,10 @@ const HomeScreen = () => {
   //   aboutRef.current?.scrollIntoView({ behavior: "smooth" });
   // };
 
+  const handleLeagueCardClick = () => {
+    return window.open(`https://motorsportleagues.com/league/45c95fc0-5a0e-4706-99e1-970173ab6353`, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <>
       <HeroSection
@@ -173,7 +177,7 @@ const HomeScreen = () => {
           <VipContent>
             <SpecialContent>
               <VipLeague>
-                <VipLeagueCard>
+                <VipLeagueCard onClick={() => handleLeagueCardClick()}>
                   <ImageContainer $imageBg={vipLeagueImage}>
                     <IndicatorsContainer>
                       <StatusContainer>

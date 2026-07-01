@@ -209,6 +209,7 @@ export const VipLeagueCard = styled.div`
   width: 100%;
   min-width: 264px;
   max-width: 384px;
+  cursor: pointer;
   padding: ${theme.layout.space.medSmall};
   flex-direction: column;
   align-items: flex-start;
